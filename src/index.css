@@ -1,0 +1,228 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100;200;300&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sono:wght@200;300;400;500;600;700;800&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  font-family: "Libre Baskerville", serif;
+  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
+  /* font-family: "Roboto Slab", serif; */
+}
+
+.logo {
+  height: auto;
+  width: auto;
+  padding: 2px;
+  max-height: 72px;
+  max-width: 250px;
+}
+
+.img-responsive {
+  height: 200px;
+  width: 96%;
+  margin: auto;
+  margin-top: 2px;
+}
+
+.responsive {
+  max-width: 80vw;
+  margin: 2px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 10px;
+}
+
+.responsive-item {
+  padding: 2px;
+  height: 300px;
+  max-width: 270px;
+  color: #222;
+  font-size: 0.77rem;
+  line-height: 1.7;
+  overflow: auto;
+}
+
+.services {
+  color-scheme: dark !important;
+}
+
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  color: #ec123a;
+  position: relative;
+  background: radial-gradient(10px, currentColor 94%, #0000);
+}
+.loader-index {
+  z-index: 100;
+}
+.loader:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(9px at bottom right, #0000 94%, currentColor) top
+      left,
+    radial-gradient(9px at bottom left, #0000 94%, currentColor) top right,
+    radial-gradient(9px at top right, #0000 94%, currentColor) bottom left,
+    radial-gradient(9px at top left, #0000 94%, currentColor) bottom right;
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  animation: l18 1.5s infinite cubic-bezier(0.3, 1, 0, 1);
+}
+@keyframes l18 {
+  33% {
+    inset: -10px;
+    transform: rotate(0deg);
+  }
+  66% {
+    inset: -10px;
+    transform: rotate(90deg);
+  }
+  100% {
+    inset: 0;
+    transform: rotate(90deg);
+  }
+}
+
+.black-gradient {
+  background: #000000; /* Fallback for older browsers */
+  background: -webkit-linear-gradient(
+    45deg,
+    /* Adjust the angle as needed */ #434343,
+    #000000
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    45deg,
+    /* Adjust the angle as needed */ #434343,
+    #000000
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+/* pricing component */
+.App-header {
+  background-color: whitesmoke;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.main {
+  width: 700px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  background-color: #eeeeee;
+  border-radius: 12px;
+}
+
+.topContainer {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  flex: 1 1;
+  padding: 18px 48px;
+  box-sizing: border-box;
+}
+
+.bottomContainer {
+  display: flex;
+  flex-direction: row;
+  flex: 1.4 1;
+}
+
+.bottomLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #b3612b;
+  flex: 1 1;
+  padding: 48px;
+  border-radius: 0 0 0 12px;
+}
+
+.bottomRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #c18a4c;
+  flex: 1 1;
+  padding: 48px;
+  border-radius: 0 0 12px 0;
+}
+
+.heading {
+  color: #efefef;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.button {
+  color: #efefef;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 10px 2px #77777777;
+  width: 100%;
+  margin-top: 24px;
+}
+
+/* Default styles for larger screens */
+.my-sidebar {
+  width: 18vw;
+}
+.my-other-sidebar {
+  width: 15vw;
+}
+
+.my-body {
+  width: 75vw;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 767px) {
+  /* Hide the sidebar with absolute positioning */
+
+  .my-sidebar {
+    display: none;
+  }
+  .my-other-sidebar {
+    display: none;
+  }
+
+  /* Make the body take full width */
+  .my-body {
+    width: 100vw;
+    /* Optionally, add some margin on the left for spacing */
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .search {
+    display: none !important;
+  }
+}
+.slick-slide > div {
+  margin: 0 10px;
+}
+
+
+input{
+  width: 100%;
+  padding: 10px;
+  height: 50px;
+  /* border: 1px solid #ccc; */
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+

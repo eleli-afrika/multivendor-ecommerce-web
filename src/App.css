@@ -1,0 +1,189 @@
+/* slider.css */
+
+/* Define the width and background color for the text container */
+.text-container {
+  width: 80vw; /* 80% of the viewport width */
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with 50% opacity */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 20px; /* Adjust as needed */
+  color: white; /* Text color */
+}
+
+/* Style the text content */
+.text-content {
+  font-size: 24px; /* Adjust the font size as needed */
+  line-height: 1.4;
+  margin: 0; /* Remove default margin */
+  padding: 10px; /* Adjust as needed */
+}
+
+/* Center the text horizontally and vertically */
+.text-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style the full-width image */
+.full-width-image {
+  width: 80vw; /* 80% of the viewport width */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.main {
+  height: 600px;
+}
+img {
+  /* width: 100%; */
+  display: block;
+  border-radius: 0.25rem;
+  object-fit: cover;
+}
+.gallery {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 1rem;
+  img {
+    height: 100px;
+    cursor: pointer;
+  }
+}
+.active {
+  border: 2px solid orange;
+}
+@media (max-width: 576px) {
+  .main {
+    height: 300px;
+  }
+  .gallery {
+    img {
+      height: 50px;
+    }
+  }
+}
+@media (min-width: 992px) {
+  .main {
+    height: 500px;
+  }
+  .gallery {
+    img {
+      height: 75px;
+    }
+  }
+}
+
+.section-center {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: var(--max-width);
+}
+
+@media screen and (min-width: 992px) {
+  .section-center {
+    width: 95vw;
+  }
+}
+
+.section {
+  padding: 5rem 0;
+}
+.section-center {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: var(--max-width);
+}
+
+@media screen and (min-width: 992px) {
+  .section-center {
+    width: 95vw;
+  }
+}
+.text-center {
+  text-align: center;
+}
+
+.submenu {
+  background: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 10rem;
+  left: 0;
+  z-index: 100;
+  display: block;
+  padding: 2rem;
+  border-radius: 0.25rem;
+  transition: all 0.3s linear;
+  max-width: 600px;
+  min-width: 200px;
+  height: 55vh;
+}
+
+/* Add styles for the submenu to be displayed in a horizontal list */
+.submenu ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  /* Display submenu items in a row */
+}
+
+.submenu li {
+  margin: 0 1rem; /* Add margin between submenu items */
+}
+enu::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid var(--clr-white);
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.submenu-center {
+  display: grid;
+  gap: 0.25rem 2rem;
+}
+.col-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.col-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.col-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+.submenu h4 {
+  margin-bottom: 1.5rem;
+}
+.submenu-center a {
+  width: 10rem;
+  display: block;
+  color: var(--clr-grey-1);
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+}
+.submenu-center svg {
+  color: var(--clr-grey-5);
+  margin-right: 1rem;
+}
+
+.price {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+table {
+  height: auto;
+  max-width: 100%;
+  overflow-x: hidden;
+}
