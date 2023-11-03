@@ -29,19 +29,20 @@
 .responsive {
   max-width: 80vw;
   margin: 2px auto;
+  background-color: #dddcdc;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 10px;
+  
 }
 
 .responsive-item {
   padding: 2px;
-  height: 300px;
-  max-width: 270px;
+  height: 340px;
+  max-width: 320px;
   color: #222;
   font-size: 0.77rem;
   line-height: 1.7;
   overflow: auto;
+  background-color: #fff;
 }
 
 .services {
@@ -56,7 +57,7 @@
   background: radial-gradient(10px, currentColor 94%, #0000);
 }
 .loader-index {
-  z-index: 100;
+  /* z-index: 100; */
 }
 .loader:before {
   content: "";
@@ -226,3 +227,21 @@ input{
 }
 
 
+
+
+.slider {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider-item {
+  width: 300px; /* Adjust the width as per your card */
+  transition: transform 0.7s ease;
+  transform: translateX(0);
+  display: none;
+}
+
+.slider-item.show {
+  display: block;
+}

@@ -1,116 +1,114 @@
-import { useRef, useEffect, useState } from "react";
-import { MdChevronLeft, MdChevronRight } from "react-icons/md";
-import { setLoader } from "../../Redux/slices/LoaderSlice";
-import { FetchProducts } from "../../Redux/hooks/Ads.actions";
-import { useSelector, useDispatch } from "react-redux";
-import { toast } from "react-toastify";
-import { setAds } from "../../Redux/slices/AdsSlice";
-import Productcard from "../Global/Productcard";
+import { useRef, useEffect, useState } from 'react';
+import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
+import Productcard from '../Global/Productcard';
+import { products } from '../../data/sponsered';
 
 function AnotherSlider() {
-  const Ads = useSelector((state: any) => state.AllAds.Ads);
-  const dispatch = useDispatch();
-  const sliderRef = useRef<HTMLDivElement | null>(null); // Explicitly specify the type
-  const [currentIndex, setCurrentIndex] = useState(0);
+    const Ads = products;
+    const sliderRef = useRef<HTMLDivElement | null>(null);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [intervalId, setIntervalId] = useState<NodeJS.Timeout | undefined>();
 
-  const getData = async () => {
-    try {
-      dispatch(setLoader(true));
-      const response = await FetchProducts();
-      dispatch(setLoader(false));
-      dispatch(setAds(response.Data));
-    } catch (error: any) {
-      dispatch(setLoader(false));
-      toast.error(error.message);
-    }
-  };
+    const sliderWidth = 300; // Assuming each card is 300px wide
+    const totalAds = Ads.length;
 
-  useEffect(() => {
-    getData();
-  }, [dispatch]);
+    const slideLeft = () => {
+        // Add a delay in milliseconds
+        const delay = 500; // Adjust this value as needed
 
-  const slideLeft = () => {
-    const slider = sliderRef.current;
-    if (slider) {
-      const firstChild = slider.firstElementChild as HTMLElement;
-      const itemWidth = firstChild.offsetWidth + 16; // Adjust 16 to match your margin or padding
-      setCurrentIndex((prevIndex) => (prevIndex - 1 + Ads.length) % Ads.length);
-      slider.scrollLeft -= itemWidth;
-    }
-  };
-
-  const slideRight = () => {
-    const slider = sliderRef.current;
-    if (slider) {
-      const firstChild = slider.firstElementChild as HTMLElement;
-      const itemWidth = firstChild.offsetWidth + 16; // Adjust 16 to match your margin or padding
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % Ads.length);
-      slider.scrollLeft += itemWidth;
-    }
-  };
-
-  const autoSlide = () => {
-    slideRight();
-  };
-
-  useEffect(() => {
-    // Automatically slide every 2 seconds
-    const intervalId = setInterval(autoSlide, 2000);
-
-    return () => {
-      clearInterval(intervalId);
+        // Set a timeout to delay the sliding action
+        setTimeout(() => {
+            setCurrentIndex((prevIndex) => (prevIndex - 1 + totalAds) % totalAds);
+        }, delay);
     };
-  }, []);
 
-  // Clone Ads to create the effect of an infinite loop
-  const clonedAds = [...Ads, ...Ads, ...Ads];
+    // const slideRight = () => {
+    //     setCurrentIndex((prevIndex) => (prevIndex + 1) % totalAds);
+    // };
 
-  return (
-    <div className="relative flex items-center mt-10">
-      <MdChevronLeft
-        className="opacity-50 cursor-pointer hover:opacity-100 hidden"
-        onClick={slideLeft}
-        size={40}
-      />
-      <div
-        ref={sliderRef}
-        className="w-full h-full overflow-hidden whitespace-nowrap scroll-smooth scrollbar-hide"
-        style={{
-          display: "flex",
-          overflowX: "hidden", // Hide overflow of card elements
-        }}
-      >
-        {clonedAds.map((item, index) => (
-          <div
-            key={index}
-            className="p-4 gap-3 responsive"
-            style={{
-              display:
-                index >= currentIndex && index < currentIndex + Ads.length
-                  ? "block"
-                  : "none",
-            }}
-          >
-            <div className="w-[300px]">
-              <Productcard
-                key={item.producttid}
-                image={`data:image/jpeg;base64, ${item.mainimage}`}
-                name={item?.productname}
-                price={item.productprice}
-                seller="John Doe"
-                id={item.producttid}
-              />
+    const slideRight = () => {
+        setCurrentIndex((prevIndex) => {
+            let nextIndex = prevIndex + 1;
+
+            // Set the max index value
+            const maxIndex = totalAds * 2;
+
+            // Calculate the adjusted index to maintain continuous scrolling
+            const adjustedIndex = nextIndex % maxIndex;
+
+            // Update the index
+
+            if (nextIndex == Ads.length) nextIndex = 0;
+            return nextIndex;
+        });
+    };
+
+    const autoSlide = () => {
+        slideRight();
+    };
+
+    useEffect(() => {
+        const id = setInterval(autoSlide, 7000);
+        setIntervalId(id);
+
+        return () => {
+            if (intervalId) {
+                clearInterval(intervalId);
+            }
+        };
+    }, [currentIndex]); // Update based on currentIndex
+
+    const clonedAds = Ads.length ? [...Ads, ...Ads, ...Ads, ...Ads, ...Ads, ...Ads] : [];
+
+    const sliderStyle: React.CSSProperties = {
+        display: 'flex',
+        transition: 'transform 0.7s ease',
+        transform: `translateX(-${currentIndex * sliderWidth}px)`,
+        width: `${clonedAds.length * sliderWidth}px`,
+    };
+
+    return (
+        <div className="flex mt-5">
+            <MdChevronLeft
+                className="opacity-50 top-0 cursor-pointer hover:opacity-100 absolute"
+                onClick={slideLeft}
+                size={20}
+            />
+            <div
+                ref={sliderRef}
+                className="w-full h-full overflow-hidden whitespace-nowrap scroll-smooth scrollbar-hide"
+                style={{
+                    display: 'flex',
+                    overflowX: 'hidden',
+                    position: 'relative',
+                }}
+            >
+                <div style={sliderStyle}>
+                    {clonedAds.map((item, index) => (
+                        <div
+                            key={index}
+                            className="p-4 gap-3 responsive"
+                            style={{ width: `${sliderWidth}px` }}
+                        >
+                            <Productcard
+                                key={item.name}
+                                image={item.image}
+                                name={item?.name}
+                                price={item.price}
+                                seller={item.seller}
+                                id={item.name}
+                            />
+                        </div>
+                    ))}
+                </div>
             </div>
-          </div>
-        ))}
-      </div>
-      <MdChevronRight
-        className="opacity-50 cursor-pointer hover:opacity-100"
-        onClick={slideRight}
-        size={40}
-      />
-    </div>
-  );
+            <MdChevronRight
+                className="opacity-50 top-0 cursor-pointer hover:opacity-100 absolute"
+                onClick={slideRight}
+                size={20}
+            />
+        </div>
+    );
 }
 
 export default AnotherSlider;
