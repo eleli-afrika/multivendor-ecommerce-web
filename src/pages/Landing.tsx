@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 import { currentUser } from '../Redux/hooks/user.actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLoader } from '../Redux/slices/LoaderSlice';
-import { toast } from 'react-toastify';
 import { setUser } from '../Redux/slices/AuthSlice';
 import Minslider from '../components/landing/minislider';
 import AnotherSlider from '../components/landing/AotherSlider';
