@@ -47,17 +47,21 @@ const ImageSlider = () => {
                             className="object-cover rounded-[0.25rem] w-[100%] p-0 m-0 h-[20vh] lg:h-[55vh]"
                         />
                         <div
-                            className="absolute top-0 left-0 text-white text-center 
+                            className=" flex flex-col py-4 absolute top-0 left-0 text-white text-center 
               rounded-[20px] w-[90%] p-[1rem] "
                             style={{
                                 position: 'absolute',
-                                top: '40%',
+                                top: '50%',
                                 left: '50%',
                                 transform: 'translate(-50%, -50%)',
                                 backgroundColor: 'rgba(0,0,0,0.7)',
                             }}
                         >
-                            <h2 className="text-2xl font-bold">{image.tagline}</h2>
+                            <p>EDUKA</p>
+                            <p>
+                                <i className="text-gray-500">Let's help you sell </i>
+                            </p>
+                            <h2 className=" text-xl lg:text-2xl font-bold">{image.tagline}</h2>
                             <button className="border-secondary-orange border-spacing-1 bg-secondary-orange rounded p-2 capitalize m-2 font-normal text-sm hover:bg-primary-orange cursor-pointer">
                                 {image.navigate}
                             </button>

@@ -68,12 +68,12 @@ const Footer = () => {
 
                 <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4 mb-4">
                     <h1 className="text-lg font-semibold mb-2">Reach Us</h1>
-                    <ul className="list-none">
+                    <ul className="list-none flex gap-1">
                         <li className="mb-1">
                             <IconButton
                                 style={{
                                     backgroundColor: 'white',
-                                    padding: '0.5rem',
+                                    padding: '0.4rem',
                                     borderRadius: '50%',
                                 }}
                             >
@@ -86,7 +86,7 @@ const Footer = () => {
                             <IconButton
                                 style={{
                                     backgroundColor: 'white',
-                                    padding: '0.5rem',
+                                    padding: '0.4rem',
                                     borderRadius: '50%',
                                 }}
                             >
@@ -99,7 +99,7 @@ const Footer = () => {
                             <IconButton
                                 style={{
                                     backgroundColor: 'white',
-                                    padding: '0.5rem',
+                                    padding: '0.4rem',
                                     borderRadius: '50%',
                                 }}
                             >
@@ -112,7 +112,7 @@ const Footer = () => {
                             <IconButton
                                 style={{
                                     backgroundColor: 'white',
-                                    padding: '0.5rem',
+                                    padding: '0.4rem',
                                     borderRadius: '50%',
                                 }}
                             >
@@ -125,7 +125,7 @@ const Footer = () => {
                             <IconButton
                                 style={{
                                     backgroundColor: 'white',
-                                    padding: '0.5rem',
+                                    padding: '0.4rem',
                                     borderRadius: '50%',
                                 }}
                             >
