@@ -245,3 +245,8 @@ input{
 .slider-item.show {
   display: block;
 }
+
+.my-form span{
+width: 100%;
+padding: 2px 0;
+}

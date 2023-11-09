@@ -5,13 +5,14 @@ import { getLoggedInUser } from '../../Redux/slices/AuthSlice';
 import { AppDispatch } from '../../Redux/store';
 import { UpdattingOfUser } from '../../Redux/slices/AuthSlice';
 import { useNavigate } from 'react-router-dom';
+import Loader from '../../constants/loader';
 
 type FormData = {
     firstname: string;
     middlename: string;
     lastname: string;
     location: string;
-    phonenumber: string;
+    phone: string;
     email: string;
     userimage: string;
 };
@@ -21,13 +22,24 @@ const Profile: React.FC = () => {
     const navigate = useNavigate();
     const user = useSelector((state: any) => state.auth.user);
     const userid = user?.userid;
-    console.log(user);
+    const { isLoading } = useSelector((state: any) => state.loaders);
+
+    const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
         dispatch(getLoggedInUser());
     }, []);
-    // console.log(user);
-    // Function to handle form input changes
+
+    const [formData, setFormData] = useState<FormData>({
+        firstname: user?.firstname,
+        middlename: user?.middlename,
+        lastname: user?.lastname,
+        location: user?.location,
+        phone: user?.phone,
+        email: user?.email,
+        userimage: user?.userimage,
+    });
+
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({
@@ -35,26 +47,17 @@ const Profile: React.FC = () => {
             [name]: value,
         }));
     };
-    const [formData, setFormData] = useState<FormData>({
-        firstname: user?.firstname,
-        middlename: user?.middlename,
-        lastname: user?.lastname,
-        location: user?.location,
-        phonenumber: user?.phone,
-        email: user?.email,
-        userimage: user?.userimage,
-    });
 
-    // Function to handle form submission
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         dispatch(UpdattingOfUser({ userid, formData }));
-
-        console.log('Edited data:', formData);
-        navigate('/profile');
-        // You can send the data to a server or update it locally as needed
+        navigate('/login');
+        setIsEditing(false); // Toggle editing off after submission
     };
 
+    const handleEdit = () => {
+        setIsEditing(true);
+    };
     // Function to handle user image upload
     const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files && e.target.files[0];
@@ -72,16 +75,19 @@ const Profile: React.FC = () => {
             reader.readAsDataURL(file);
         }
     };
+    if (isLoading) {
+        return <Loader />;
+    }
 
     return (
-        <div className="flex flex-col md:flex-row gap-5 ">
+        <div className="flex flex-col md:flex-row gap-10 ">
             {/* linkings */}
             <div
-                className=" bg-gray-100 h-72 p-4 pb-3 flex flex-col gap-2 capitalize"
+                className=" bg-gray-100 h-72 p-4 pb-3 flex flex-col gap-2 capitalize min-w-[350px] lg:min-w-[400px]"
                 style={{ borderRadius: '0.25rem', minWidth: '350px' }}
             >
                 <div
-                    className="price bg-white p-4 text-gray-500"
+                    className="price bg-primary-orange p-4 text-white"
                     style={{ borderRadius: '0.25rem' }}
                 >
                     <p>Account Settings</p>
@@ -89,6 +95,7 @@ const Profile: React.FC = () => {
                 <div
                     className="price bg-white p-4 text-gray-500"
                     style={{ borderRadius: '0.25rem' }}
+                    onClick={() => navigate('/notifications')}
                 >
                     <p>Notifications</p>
                 </div>
@@ -125,52 +132,81 @@ const Profile: React.FC = () => {
                     className="mt-2 text-gray-500 bg-white p-4"
                     style={{ borderRadius: '0.25rem' }}
                 >
-                    <p className="text-center">Change your Info</p>
-                    <form onSubmit={handleSubmit}>
+                    <div className="text-center">
+                        {!isEditing && (
+                            <button
+                                onClick={handleEdit}
+                                className="bg-primary-orange p-3 text-white rounded hover:bg-secondary-orange transition-colors delay-300 "
+                            >
+                                Update your Info
+                            </button>
+                        )}
+                        {isEditing && (
+                            <button
+                                onClick={() => setIsEditing(false)}
+                                className="bg-primary-orange p-3 text-white rounded hover:bg-secondary-orange transition-colors delay-300 "
+                            >
+                                Cancel
+                            </button>
+                        )}
+                    </div>
+                    <form onSubmit={handleSubmit} className="my-form">
                         <div className="flex flex-col gap-4">
                             <div>
                                 <div>
                                     <label htmlFor="firstName">First Name:</label>
                                 </div>
                                 <div>
-                                    <input
-                                        type="text"
-                                        id="firstname"
-                                        name="firstname"
-                                        className="bg-gray-200 w-full p-3 rounded"
-                                        value={user?.firstname}
-                                        onChange={handleInputChange}
-                                    />
+                                    {isEditing ? (
+                                        <input
+                                            type="text"
+                                            id="firstname"
+                                            name="firstname"
+                                            className="bg-gray-200 w-full p-3 rounded"
+                                            value={formData.firstname}
+                                            onChange={handleInputChange}
+                                        />
+                                    ) : (
+                                        <span>{user?.firstname}</span>
+                                    )}
                                 </div>
                             </div>
                             <div>
                                 <div>
-                                    <label htmlFor="middlename">Middle Name:</label>
+                                    <label htmlFor="middleName">Middle Name:</label>
                                 </div>
                                 <div>
-                                    <input
-                                        type="text"
-                                        id="middlename"
-                                        name="middlename"
-                                        className="bg-gray-200 w-full p-3 rounded"
-                                        value={user?.middlename}
-                                        onChange={handleInputChange}
-                                    />
+                                    {isEditing ? (
+                                        <input
+                                            type="text"
+                                            id="middlename"
+                                            name="middlename"
+                                            className="bg-gray-200 w-full p-3 rounded"
+                                            value={formData.middlename}
+                                            onChange={handleInputChange}
+                                        />
+                                    ) : (
+                                        <span>{user?.middlename}</span>
+                                    )}
                                 </div>
                             </div>
                             <div>
                                 <div>
-                                    <label htmlFor="lastname">Last Name:</label>
+                                    <label htmlFor="lastName">Last Name:</label>
                                 </div>
                                 <div>
-                                    <input
-                                        type="text"
-                                        id="lastname"
-                                        name="lastname"
-                                        className="bg-gray-200 w-full p-3 rounded"
-                                        value={user?.lastname}
-                                        onChange={handleInputChange}
-                                    />
+                                    {isEditing ? (
+                                        <input
+                                            type="text"
+                                            id="lastname"
+                                            name="lastname"
+                                            className="bg-gray-200 w-full p-3 rounded"
+                                            value={formData.lastname}
+                                            onChange={handleInputChange}
+                                        />
+                                    ) : (
+                                        <span>{user?.lastname}</span>
+                                    )}
                                 </div>
                             </div>
                             <div>
@@ -178,29 +214,37 @@ const Profile: React.FC = () => {
                                     <label htmlFor="location">Location:</label>
                                 </div>
                                 <div>
-                                    <input
-                                        type="text"
-                                        id="location"
-                                        name="location"
-                                        className="bg-gray-200 w-full p-3 rounded"
-                                        value={user?.location}
-                                        onChange={handleInputChange}
-                                    />
+                                    {isEditing ? (
+                                        <input
+                                            type="text"
+                                            id="location"
+                                            name="location"
+                                            className="bg-gray-200 w-full p-3 rounded"
+                                            value={formData.location}
+                                            onChange={handleInputChange}
+                                        />
+                                    ) : (
+                                        <span>{user?.location}</span>
+                                    )}
                                 </div>
                             </div>
                             <div>
                                 <div>
-                                    <label htmlFor="phonenumber">Phone Number:</label>
+                                    <label htmlFor="phone">Phone Number:</label>
                                 </div>
                                 <div>
-                                    <input
-                                        type="text"
-                                        id="phonenumber"
-                                        name="phonenumber"
-                                        className="bg-gray-200 w-full p-3 rounded"
-                                        value={user?.phonenumber}
-                                        onChange={handleInputChange}
-                                    />
+                                    {isEditing ? (
+                                        <input
+                                            type="text"
+                                            id="phone"
+                                            name="phone"
+                                            className="bg-gray-200 w-full p-3 rounded"
+                                            value={formData.phone}
+                                            onChange={handleInputChange}
+                                        />
+                                    ) : (
+                                        <span>{user?.phone}</span>
+                                    )}
                                 </div>
                             </div>
                             <div>
@@ -208,23 +252,29 @@ const Profile: React.FC = () => {
                                     <label htmlFor="email">Email:</label>
                                 </div>
                                 <div>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        className="bg-gray-200 w-full p-3 rounded"
-                                        value={user?.email}
-                                        onChange={handleInputChange}
-                                    />
+                                    {isEditing ? (
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            className="bg-gray-200 w-full p-3 rounded"
+                                            value={formData.email}
+                                            onChange={handleInputChange}
+                                        />
+                                    ) : (
+                                        <span>{user?.email}</span>
+                                    )}
                                 </div>
                             </div>
                         </div>
-                        <button
-                            type="submit"
-                            className="bg-orange-500 w-full p-3 rounded mt-5 text-white"
-                        >
-                            Edit your info
-                        </button>
+                        {isEditing && (
+                            <button
+                                type="submit"
+                                className="bg-primary-orange hover:bg-secondary-orange transition-colors delay-300 w-full p-3 rounded mt-5 text-white"
+                            >
+                                Save Changes
+                            </button>
+                        )}
                     </form>
                 </div>
             </div>

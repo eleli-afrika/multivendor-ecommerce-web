@@ -1,165 +1,117 @@
-import { useState } from "react";
-import {
-  FaFacebook,
-  FaPhone,
-  FaEnvelope,
-  FaYoutube,
-  FaWhatsapp,
-} from "react-icons/fa";
-import { IconButton } from "@mui/material";
+import { useState } from 'react';
+import { FaFacebook, FaPhone, FaEnvelope, FaYoutube, FaWhatsapp } from 'react-icons/fa';
+import { IconButton } from '@mui/material';
 
 const Contact = () => {
-  const [loading] = useState(false);
+    const [loading] = useState(false);
 
-  return (
-    <div className="xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 p-20  bg-gray-200 shadow-xl ">
-      {/* Contact card */}
-      <div className="flex-[0.55] bg-gray-light p-8 rounded-2xl">
-        <h1 className="text-2xl font-bold text-primary mb-6">
-          Send us a Message
-        </h1>
-        <form className="space-y-6">
-          {/* Your Name */}
-          <div>
-            <label htmlFor="name" className="block text-black font-medium mb-2">
-              Your Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Enter Your Name"
-              className="w-full py-3 px-4 bg-white text-black placeholder-text-secondary rounded-lg outline-none border-none font-medium"
-            />
-          </div>
-          {/* Your Email */}
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-black font-medium mb-2"
-            >
-              Your Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Enter Your Email"
-              className="w-full py-3 px-4 bg-white text-black placeholder-text-secondary rounded-lg outline-none border-none font-medium"
-            />
-          </div>
-          {/* Your Message */}
-          <div>
-            <label
-              htmlFor="message"
-              className="block text-black font-medium mb-2"
-            >
-              Your Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              placeholder="Enter Your Message"
-              className="w-full py-3 px-4 bg-white text-black placeholder-text-secondary rounded-lg outline-none border-none font-medium resize-none"
-            />
-          </div>
-          {/* Submit Button */}
-          <div>
-            <button
-              type="submit"
-              className={`w-full py-3 px-8 rounded-xl text-white font-bold shadow-md focus:outline-none ${
-                loading
-                  ? "bg-gray-500 cursor-not-allowed"
-                  : "bg-tertiary-orange"
-              }`}
-              disabled={loading}
-            >
-              {loading ? "Sending..." : "Send"}
-            </button>
-          </div>
-        </form>
-      </div>
-      {/* Message */}
-      <div>
-        <h1 className="text-2xl font-bold text-primary mb-6">
-          Need to Make an Enquiry?
-        </h1>
-        <p className="text-gray-600 mb-6">
-          We respond between 9 a.m. and 9 p.m.
-        </p>
-        <div className="flex items-center space-x-2">
-          <h1 className="text-lg font-semibold">Reach Us</h1>
-          <ul className="flex space-x-2">
-            <li>
-              <IconButton
-                style={{
-                  backgroundColor: "white",
-                  padding: "0.5rem",
-                  borderRadius: "50%",
-                }}
-              >
-                <a href="#" className="text-black">
-                  <FaFacebook color="blue" />
-                </a>
-              </IconButton>
-            </li>
-            <li>
-              <IconButton
-                style={{
-                  backgroundColor: "white",
-                  padding: "0.5rem",
-                  borderRadius: "50%",
-                }}
-              >
-                <a href="#" className="text-black">
-                  <FaPhone color="gray" />
-                </a>
-              </IconButton>
-            </li>
-            <li>
-              <IconButton
-                style={{
-                  backgroundColor: "white",
-                  padding: "0.5rem",
-                  borderRadius: "50%",
-                }}
-              >
-                <a href="#" className="text-black">
-                  <FaEnvelope color="orange" />
-                </a>
-              </IconButton>
-            </li>
-            <li>
-              <IconButton
-                style={{
-                  backgroundColor: "white",
-                  padding: "0.5rem",
-                  borderRadius: "50%",
-                }}
-              >
-                <a href="#" className="text-black">
-                  <FaYoutube color="red" />
-                </a>
-              </IconButton>
-            </li>
-            <li>
-              <IconButton
-                style={{
-                  backgroundColor: "white",
-                  padding: "0.5rem",
-                  borderRadius: "50%",
-                }}
-              >
-                <a href="#" className="text-black">
-                  <FaWhatsapp color="green" />
-                </a>
-              </IconButton>
-            </li>
-          </ul>
+    return (
+        <div className="xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 p-20  bg-gray-200 shadow-xl ">
+            {/* Contact card */}
+            <div className="w-full lg:w-1/2 mb-4 lg:mb-0 border-r-2 pr-4">
+                <form className="bg-white shadow-md rounded px-8 pt-6 pb-8">
+                    <div className="mb-4">
+                        <label
+                            htmlFor="name"
+                            className="block text-gray-700 text-sm font-bold mb-2"
+                        >
+                            Name
+                        </label>
+                        <input
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-100"
+                            id="name"
+                            type="text"
+                            placeholder="Enter your name"
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label
+                            htmlFor="phone"
+                            className="block text-gray-700 text-sm font-bold mb-2"
+                        >
+                            Phone
+                        </label>
+                        <input
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-100"
+                            id="name"
+                            type="text"
+                            placeholder="Enter your phone number"
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label
+                            htmlFor="email"
+                            className="block text-gray-700 text-sm font-bold mb-2"
+                        >
+                            Email
+                        </label>
+                        <input
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-100"
+                            id="email"
+                            type="email"
+                            placeholder="Enter your email"
+                        />
+                    </div>
+                    <div className="mb-6">
+                        <label
+                            htmlFor="message"
+                            className="block text-gray-700 text-sm font-bold mb-2"
+                        >
+                            Message
+                        </label>
+                        <textarea
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32 resize-none bg-gray-100"
+                            id="message"
+                            placeholder="Your message here"
+                        ></textarea>
+                    </div>
+                    <div className="flex items-center justify-end">
+                        <button
+                            className="bg-primary-orange hover:bg-secondary-orange text-white font-bold w-full py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            type="button"
+                        >
+                            Send
+                        </button>
+                    </div>
+                </form>
+            </div>
+            {/* Message */}
+            <div>
+                <h1 className="text-2xl font-bold text-primary mb-6">Need to Make an Enquiry?</h1>
+                <p className="text-gray-600 mb-6">We respond between 9 a.m. and 9 p.m.</p>
+                <div className="flex items-center space-x-2">
+                    <h1 className="text-lg font-semibold">Reach Us</h1>
+                    <div className="flex items-center space-x-2">
+                        <a href="#" className="text-black">
+                            <button className="rounded-full p-2 bg-white">
+                                <FaFacebook className="text-blue-500" />
+                            </button>
+                        </a>
+                        <a href="#" className="text-black">
+                            <button className="rounded-full p-2 bg-white">
+                                <FaPhone className="text-gray-500" />
+                            </button>
+                        </a>
+                        <a href="#" className="text-black">
+                            <button className="rounded-full p-2 bg-white">
+                                <FaEnvelope className="text-orange-500" />
+                            </button>
+                        </a>
+                        <a href="#" className="text-black">
+                            <button className="rounded-full p-2 bg-white">
+                                <FaYoutube className="text-red-500" />
+                            </button>
+                        </a>
+                        <a href="#" className="text-black">
+                            <button className="rounded-full p-2 bg-white">
+                                <FaWhatsapp className="text-green-500" />
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default Contact;
