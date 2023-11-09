@@ -57,7 +57,7 @@
   background: radial-gradient(10px, currentColor 94%, #0000);
 }
 .loader-index {
-  z-index: 100;
+  z-index: 9999!important;
 }
 .loader:before {
   content: "";
@@ -250,3 +250,5 @@ input{
 width: 100%;
 padding: 2px 0;
 }
+
+

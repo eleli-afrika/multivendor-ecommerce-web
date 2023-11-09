@@ -2,19 +2,10 @@ import { useRef, useEffect, useState } from 'react';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import Productcard from '../Global/Productcard';
 // import { products } from '../../data/sponsered';
-import { useSelector, useDispatch } from 'react-redux';
-import { FetchProductsAsync } from '../../Redux/slices/AdsSlice';
-import { AppDispatch } from '../../Redux/store';
 
-function AnotherSlider() {
-    const Ads = useSelector((state: any) => state.AllAds.Ads);
+function AnotherSlider({ Ads }: any) {
     // console.log(Ads);
     // const isLoading = useSelector((state: any) => state.AllAds.isLoading);
-    const dispatch = useDispatch<AppDispatch>();
-
-    useEffect(() => {
-        dispatch(FetchProductsAsync());
-    }, [dispatch]);
 
     function formatPriceWithCommas(price: any) {
         if (price) {
@@ -76,7 +67,7 @@ function AnotherSlider() {
         };
     }, [currentIndex]); // Update based on currentIndex
 
-    const clonedAds = Ads?.length ? Array(50).fill(Ads).flat() : [];
+    const clonedAds = Ads?.length ? Array(200).fill(Ads).flat() : [];
 
     const sliderStyle: React.CSSProperties = {
         display: 'flex',
@@ -105,7 +96,7 @@ function AnotherSlider() {
                 />
                 <div
                     ref={sliderRef}
-                    className="w-full h-full overflow-hidden whitespace-nowrap scroll-smooth scrollbar-hide"
+                    className="w-full h-full overflow-hidden whitespace-nowrap scroll-smooth scrollbar-hidden  bg-gray-light lg:bg-none"
                     style={{
                         display: 'flex',
                         overflowX: 'hidden',
@@ -126,6 +117,7 @@ function AnotherSlider() {
                                     price={formatPriceWithCommas(item?.product_data.productprice)}
                                     seller={item?.user_name}
                                     id={item?.product_data.producttid}
+                                    description={item?.product_data.productdescription}
                                 />
                             </div>
                         ))}

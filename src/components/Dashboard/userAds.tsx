@@ -5,7 +5,7 @@ import { FetchLoggedUsersProducts } from '../../Redux/slices/AdsSlice';
 import { AppDispatch } from '../../Redux/store';
 import Loader from '../../constants/loader';
 import { ProductData } from '../../interface/common';
-import Productcard from '../Global/Productcard';
+import Productcard from '../Global/RelatedCard';
 
 const AdsComp = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -26,7 +26,7 @@ const AdsComp = () => {
         <div className="flex flex-col ">
             {/* seller's ads */}
             <div>
-                <div className="responsive">
+                <div className="flex px-2 gap-3 flex-wrap lg:gap-5">
                     {isLoading ? (
                         // Show loading indicator or message
                         <div>
@@ -37,11 +37,12 @@ const AdsComp = () => {
                         Ads.map((product: ProductData) => (
                             <Productcard
                                 key={product.producttid}
-                                image={`data:image/jpeg;base64, ${product.mainimage}`}
+                                image={`${product.mainimage}`}
                                 name={product.productname}
                                 price={product.productprice}
                                 seller="John Doe"
                                 id={product.producttid}
+                                description={product.productdescription}
                             />
                         ))
                     ) : (

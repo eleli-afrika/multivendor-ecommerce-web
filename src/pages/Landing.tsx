@@ -19,6 +19,7 @@ import { AppDispatch } from '../Redux/store';
 const Landing = () => {
     const userToken = useSelector((state: any) => state.auth.userToken);
     const dispatch = useDispatch<AppDispatch>();
+    const Ads = useSelector((state: any) => state.AllAds.Ads);
 
     const getUser = async () => {
         try {
@@ -54,9 +55,9 @@ const Landing = () => {
 
                 <div className="parent px-0 lg:px-32">
                     <div className="mx-0 lg:mx:auto">
-                        <Minslider />
-                        <Sponsered />
-                        <Popular />
+                        <Minslider Ads={Ads} />
+                        <Sponsered Ads={Ads} />
+                        <Popular Ads={Ads} />
                         <div className=" md:block">
                             {' '}
                             <Package />

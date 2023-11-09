@@ -23,11 +23,12 @@ const Related = () => {
                     {Ads?.map((product: any) => (
                         <Productcard
                             key={product?.product_data.producttid}
-                            image={`data:image/jpeg;base64, ${product?.product_data.mainimage}`}
+                            image={`${product?.product_data.mainimage}`}
                             name={product?.product_data.productname}
                             price={formatPriceWithCommas(product?.product_data.productprice)}
                             seller={product?.user_name}
                             id={product?.product_data.producttid}
+                            description={product?.product_data.productdescription}
                         />
                     ))}
                 </div>

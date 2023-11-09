@@ -157,7 +157,10 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                                         >
                                             dashboard
                                         </p>
-                                        <p className="hover:underline hover:text-green-400 cursor-pointer">
+                                        <p
+                                            className="hover:underline hover:text-green-400 cursor-pointer"
+                                            onClick={() => navigate('/notifications')}
+                                        >
                                             notifications
                                         </p>
                                         <button className="hover:underline hover:text-green-400 cursor-pointer">
@@ -267,7 +270,10 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                                                 >
                                                     dashboard
                                                 </p>
-                                                <p className="hover:underline hover:text-green-400 cursor-pointer">
+                                                <p
+                                                    className="hover:underline hover:text-green-400 cursor-pointer"
+                                                    onClick={() => navigate('/notifications')}
+                                                >
                                                     notifications
                                                 </p>
                                                 <button className="hover:underline hover:text-green-400 cursor-pointer">

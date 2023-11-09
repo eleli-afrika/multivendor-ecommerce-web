@@ -1,19 +1,11 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { FetchProductsAsync } from '../../Redux/slices/AdsSlice';
+import { useSelector } from 'react-redux';
 import Productcard from '../Global/PopularCard';
 // import { ProductData } from '../../interface/common';
-import { AppDispatch } from '../../Redux/store';
 
 import Loader from '../../constants/loader';
-const Popular = () => {
-    const Ads = useSelector((state: any) => state.AllAds.Ads);
+const Popular = ({ Ads }: any) => {
     const isLoading = useSelector((state: any) => state.AllAds.isLoading);
-    const dispatch = useDispatch<AppDispatch>();
-
-    useEffect(() => {
-        dispatch(FetchProductsAsync());
-    }, [dispatch]);
+    // const dispatch = useDispatch<AppDispatch>();
 
     function formatPriceWithCommas(price: any) {
         if (price) {
@@ -24,7 +16,7 @@ const Popular = () => {
 
     return (
         <div className="">
-            <div className="py-3  flex flex-row items-center justify-between px-5">
+            <div className="py-3  flex flex-row items-center justify-between ">
                 <h1 className="text-stone-500">Suggested Ads</h1>
                 <button className="underline rounded-lg px-2 text-sm py-1 text-slate-500">
                     see all
@@ -47,6 +39,7 @@ const Popular = () => {
                             price={formatPriceWithCommas(product?.product_data.productprice)}
                             seller={product?.user_name}
                             id={product?.product_data.producttid}
+                            description={product?.product_data.productdescription}
                         />
                     ))
                 )}

@@ -16,7 +16,15 @@ export interface productCard {
   image: string;
   seller: string;
   price: string;
-  // description: string | undefined;
+  description: string | undefined;
+  id: string;
+}
+export interface productCard1 {
+  name: string;
+  image: string;
+  seller: string;
+  price: string;
+
   id: string;
 }
 

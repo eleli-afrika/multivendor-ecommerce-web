@@ -100,6 +100,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
 
         // negotiable: false,
     });
+
     const [mainimagePreview, setmainimagePreview] = useState<string | null>(null);
     const [selectedImages, setSelectedImages] = useState<File[]>([]);
 
@@ -243,7 +244,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
             toast.error(error.message || 'Duplicate product!');
             dispatch(setLoader(false));
         }
-        navigate('/');
+        navigate('/profile/pending');
 
         // clear form data after submission
         setFormData({
@@ -261,12 +262,18 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
             isactive: true,
             isapproved: false,
         });
+        setmainimagePreview(null);
+        setSelectedImages([]);
     };
 
     // console.log(subcategories);
 
     if (isLoading) {
-        return <Loader />;
+        return (
+            <div style={{ zIndex: '9999' }}>
+                <Loader />
+            </div>
+        );
     }
 
     return (
