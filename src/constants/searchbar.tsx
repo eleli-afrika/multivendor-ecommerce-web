@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { axiosService } from '../Redux/helpers/axios';
 import { fetchCategories } from '../Redux/hooks/categories.actions';
 import { useSelector } from 'react-redux';
+import { Search } from '@mui/icons-material';
 
 const SearchBar: React.FC = () => {
     const [category, setCategory] = useState<string>('all');
@@ -12,7 +13,7 @@ const SearchBar: React.FC = () => {
     const [categories, setCategories] = useState<any[]>([]);
     const [subcategories, setSubcategories] = useState<any[]>([]);
     const [, setIsLoading] = useState<boolean>(false);
-    const navigate = useNavigate();
+    const navigate = useNavigate;
     const { open } = useSelector((state: any) => state.opener);
     const Ads = useSelector((state: any) => state.AllAds.Ads);
 
@@ -64,18 +65,14 @@ const SearchBar: React.FC = () => {
 
     return (
         <>
-            <div className=" hidden h- md:flex items-center gap-10 shadow-custom p-3 bg-primary-orange w-screen">
-                <button className="p-2 bg-white rounded w-[200px]" onClick={() => navigate('/ads')}>
-                    View All
-                </button>
-
+            <div className=" hidden h-[50px] md:flex items-center   p-3 w-screen my-4 px-40 bg-[white]">
                 <select
                     id="categorySelect"
                     value={category}
                     onChange={handleCategoryChange}
-                    className="p-2 border rounded w-[200px] bg-white outline-none shadow-custom"
+                    className="p-5 border border-r-0 rounded w-[200px] bg-white outline-none rounded-l-[20px]"
                 >
-                    <option value="all">Select Category</option>
+                    <option value="all">Search by category</option>
                     {categories.map((category) => (
                         <option key={category.categoryid} value={category.categoryname}>
                             {category.categoryname}
@@ -83,80 +80,29 @@ const SearchBar: React.FC = () => {
                     ))}
                 </select>
 
-                <select
-                    id="subcategorySelect"
-                    value={subcategory}
-                    onChange={(e) => setSubcategory(e.target.value)}
-                    className="p-2 border rounded w-[200px] bg-white outline-none shadow-custom"
-                >
-                    <option value="all">Select Subcategory</option>
-                    {subcategories.map((subcategory) => (
-                        <option key={subcategory.subcategoryid} value={subcategory.subcategoryname}>
-                            {subcategory.subcategoryname}
-                        </option>
-                    ))}
-                </select>
-
-                <select
-                    id="minPriceSelect"
-                    value={minPrice}
-                    onChange={(e) => setMinPrice(e.target.value)}
-                    className="p-2 border rounded w-[200px] bg-white outline-none shadow-custom"
-                >
-                    <option value="0">Select Min Price:</option>
-                    <option value="200">200</option>
-                    <option value="400">400</option>
-                </select>
-
-                <select
-                    id="maxPriceSelect"
-                    value={maxPrice}
-                    onChange={(e) => setMaxPrice(e.target.value)}
-                    className="p-2 border rounded w-[200px] bg-white outline-none shadow-custom cursor-pointer"
-                >
-                    <option value="100000000">Select Max Price:</option>
-                    <option value="100000000">100,000,000</option>
-                    <option value="200000000">200,000,000</option>
-                </select>
-
-                <select
-                    id="brand"
-                    onChange={(e) => setMaxPrice(e.target.value)} // Note: This line might need to be corrected to handle the brand selection
-                    className="p-2 border rounded w-[200px] bg-white outline-none shadow-custom"
-                >
-                    <option value="All">Select Brand:</option>
-                    <option value="Innovia">Innovia</option>
-                </select>
+                <div className="relative w-[70%] border border-l-0 px-10 py-1">
+                    <input type="text" placeholder="search for anything" className="px-10    " />
+                </div>
 
                 <button
                     onClick={handleSearch}
-                    className="bg-black text-white p-2 rounded hover:bg-secondary-orange transition-colors delay-300 w-[250px] outline-none shadow-custom"
+                    className="bg-primary-orange text-white rounded hover:bg-secondary-orange transition-colors delay-300 w-[250px] outline-none shadow-custom py-5 rounded-r-[20px]"
                 >
-                    Search
+                    Search [{Ads?.length}Ads]
                 </button>
             </div>
 
             {/* for smaller devices */}
 
             {open && (
-                <div
-                    className="sm:hidden search flex-col flex-wrap gap-2 shadow-custom p-3 bg-primary-orange w-screen  pl-4"
-                    style={{ display: 'flex' }}
-                >
-                    <button
-                        className="p-2 bg-white rounded w-[200px]"
-                        onClick={() => navigate('/ads')}
-                    >
-                        View All
-                    </button>
-
+                <div className=" search h-[60px] flex items-center w-screen my-4 px-1">
                     <select
                         id="categorySelect"
                         value={category}
                         onChange={handleCategoryChange}
-                        className="p-2 border rounded w-[200px] bg-white outline-none shadow-custom"
+                        className="p-5 border border-r-0 rounded w-[30%]  bg-white outline-none rounded-l-[20px]"
                     >
-                        <option value="all">Select Category</option>
+                        <option value="all">All</option>
                         {categories.map((category) => (
                             <option key={category.categoryid} value={category.categoryname}>
                                 {category.categoryname}
@@ -164,59 +110,19 @@ const SearchBar: React.FC = () => {
                         ))}
                     </select>
 
-                    <select
-                        id="subcategorySelect"
-                        value={subcategory}
-                        onChange={(e) => setSubcategory(e.target.value)}
-                        className="p-2 border rounded w-[200px] bg-white outline-none shadow-custom"
-                    >
-                        <option value="all">Select Subcategory</option>
-                        {subcategories.map((subcategory) => (
-                            <option
-                                key={subcategory.subcategoryid}
-                                value={subcategory.subcategoryname}
-                            >
-                                {subcategory.subcategoryname}
-                            </option>
-                        ))}
-                    </select>
-
-                    <select
-                        id="minPriceSelect"
-                        value={minPrice}
-                        onChange={(e) => setMinPrice(e.target.value)}
-                        className="p-2 border rounded w-[200px] bg-white outline-none shadow-custom"
-                    >
-                        <option value="0">Select Min Price:</option>
-                        <option value="200">200</option>
-                        <option value="400">400</option>
-                    </select>
-
-                    <select
-                        id="maxPriceSelect"
-                        value={maxPrice}
-                        onChange={(e) => setMaxPrice(e.target.value)}
-                        className="p-2 border rounded w-[200px] bg-white outline-none shadow-custom"
-                    >
-                        <option value="100000000">Select Max Price:</option>
-                        <option value="100000000">100,000,000</option>
-                        <option value="200000000">200,000,000</option>
-                    </select>
-
-                    <select
-                        id="brand"
-                        onChange={(e) => setMaxPrice(e.target.value)} // Note: This line might need to be corrected to handle the brand selection
-                        className="p-2 border rounded w-[200px] bg-white outline-none shadow-custom"
-                    >
-                        <option value="All">Select Brand:</option>
-                        <option value="Innovia">Innovia</option>
-                    </select>
+                    <div className="relative  border border-l-0 py-1 h-[100%]">
+                        <input
+                            type="text"
+                            placeholder="search for anything"
+                            className="p-5 h-100%"
+                        />
+                    </div>
 
                     <button
                         onClick={handleSearch}
-                        className="bg-black text-white p-2 rounded hover-bg-secondary-orange transition-colors delay-300 w-[250px] outline-none shadow-custom"
+                        className="bg-primary-orange text-white rounded hover:bg-secondary-orange transition-colors delay-300 outline-none shadow-custom rounded-r-[20px] p-[1.2rem]"
                     >
-                        {Ads?.length || 'Search'}
+                        Search
                     </button>
                 </div>
             )}

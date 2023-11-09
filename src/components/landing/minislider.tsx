@@ -8,7 +8,7 @@ import { AppDispatch } from '../../Redux/store';
 
 function AnotherSlider() {
     const Ads = useSelector((state: any) => state.AllAds.Ads);
-    console.log(Ads);
+    // console.log(Ads);
     // const isLoading = useSelector((state: any) => state.AllAds.isLoading);
     const dispatch = useDispatch<AppDispatch>();
 
@@ -29,7 +29,7 @@ function AnotherSlider() {
     // const userId = '8522c53e-6473-472d-bb09-49095097c1ba';
 
     const sliderWidth = 220; // Assuming each card is 300px wide
-    const totalAds = Ads.length;
+    const totalAds = Ads?.length;
 
     const slideLeft = () => {
         // Add a delay in milliseconds
@@ -48,19 +48,21 @@ function AnotherSlider() {
     const slideRight = () => {
         setCurrentIndex((prevIndex) => {
             let nextIndex = prevIndex + 1;
-            // Set the max index value
-            // const maxIndex = totalAds * 2;
-            // Calculate the adjusted index to maintain continuous scrolling
-            // const adjustedIndex = nextIndex % maxIndex;
-            // Update the index
 
-            if (nextIndex == Ads.length) nextIndex = 0;
+            // If the next index exceeds the total number of ads, reset it to 0
+            if (nextIndex === clonedAds.length) {
+                nextIndex = 0;
+            }
             return nextIndex;
         });
     };
 
     const autoSlide = () => {
-        slideRight();
+        if (currentIndex === clonedAds.length - 1) {
+            setCurrentIndex(0); // Reset back to the beginning
+        } else {
+            slideRight(); // Move to the next slide
+        }
     };
 
     useEffect(() => {
@@ -74,34 +76,7 @@ function AnotherSlider() {
         };
     }, [currentIndex]); // Update based on currentIndex
 
-    const clonedAds = Ads.length
-        ? [
-              ...Ads,
-              ...Ads,
-              ...Ads,
-              ...Ads,
-              ...Ads,
-              ...Ads,
-              ...Ads,
-              ...Ads,
-              ...Ads,
-              ...Ads,
-              ...Ads,
-              ...Ads,
-              ...Ads,
-              ...Ads,
-              ...Ads,
-              ...Ads,
-              ...Ads,
-              ...Ads,
-              ...Ads,
-              ...Ads,
-              ...Ads,
-              ...Ads,
-              ...Ads,
-              ...Ads,
-          ]
-        : [];
+    const clonedAds = Ads?.length ? Array(50).fill(Ads).flat() : [];
 
     const sliderStyle: React.CSSProperties = {
         display: 'flex',
@@ -146,7 +121,7 @@ function AnotherSlider() {
                             >
                                 <Productcard
                                     key={item.product_data.productid}
-                                    image={`data:image/jpeg;base64, ${item?.product_data.mainimage}`}
+                                    image={` ${item?.product_data.mainimage}`}
                                     name={item?.product_data.productname}
                                     price={formatPriceWithCommas(item?.product_data.productprice)}
                                     seller={item?.user_name}

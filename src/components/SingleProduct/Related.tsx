@@ -20,7 +20,7 @@ const Related = () => {
                 </div>
 
                 <div className="flex lg:px-5 gap-3 lg:gap-10 px-2 flex-wrap ">
-                    {Ads.map((product: any) => (
+                    {Ads?.map((product: any) => (
                         <Productcard
                             key={product?.product_data.producttid}
                             image={`data:image/jpeg;base64, ${product?.product_data.mainimage}`}

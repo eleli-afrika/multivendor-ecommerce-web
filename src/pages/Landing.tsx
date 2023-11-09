@@ -8,21 +8,17 @@ import { setLoader } from '../Redux/slices/LoaderSlice';
 import { setUser } from '../Redux/slices/AuthSlice';
 import Minslider from '../components/landing/minislider';
 // import AnotherSlider from '../components/landing/AotherSlider';
-import Filters from '../constants/Filters';
+// import Filters from '../constants/Filters';
 // import Packages from "../components/packages";
 import Package from '../components/services/Package';
 import Sponsered from '../components/landing/Sponsered';
+import { FetchProductsAsync } from '../Redux/slices/AdsSlice';
+import { AppDispatch } from '../Redux/store';
 // import axios from "axios";
 
 const Landing = () => {
     const userToken = useSelector((state: any) => state.auth.userToken);
-    const dispatch = useDispatch();
-    // const login = async () => {
-    //   const response = await axios.get(
-    //     "http://13.245.255.54:8000/products/getproducts"
-    //   );
-    //   console.log(response.data);
-    // };
+    const dispatch = useDispatch<AppDispatch>();
 
     const getUser = async () => {
         try {
@@ -36,10 +32,9 @@ const Landing = () => {
             // toast.error(error.message);
         }
     };
-
-    // useEffect(() => {
-    //   console.log(login());
-    // }, []);
+    useEffect(() => {
+        dispatch(FetchProductsAsync());
+    }, []);
 
     useEffect(() => {
         if (userToken) {
@@ -57,9 +52,8 @@ const Landing = () => {
                 </div>
                 {/* <AnotherSlider /> */}
 
-                <div className="flex parent">
-                    <Filters />
-                    <div className="flex-1 mx-auto  my-body ">
+                <div className="parent px-0 lg:px-32">
+                    <div className="mx-0 lg:mx:auto">
                         <Minslider />
                         <Sponsered />
                         <Popular />

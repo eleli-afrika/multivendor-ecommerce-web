@@ -57,7 +57,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
 
     return (
         <nav
-            className={`w-full  flex flex-col items-center justify-center px-1 price  fixed top-0 z-20 ${
+            className={`w-full  flex flex-col items-center justify-center px-1 lg:px-20 fixed top-0 z-20 ${
                 scrolled ? 'bg-white' : 'bg-white'
             }`}
             // style={{ marginBottom: "2px" }}
@@ -291,6 +291,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                     </div>
                 </div>
             </div>
+
             <Searchbar />
         </nav>
     );

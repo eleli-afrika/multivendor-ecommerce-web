@@ -50,7 +50,7 @@ const Popular = () => {
             </div>
 
             <div className="flex flex-wrap gap-3 px-2 lg:px-10 lg:gap-5">
-                {Ads.map((product: any) => (
+                {Ads?.map((product: any) => (
                     <SponsereCard
                         key={product.product_data.producttid}
                         image={`data:image/jpeg;base64, ${product.product_data.mainimage}`}
