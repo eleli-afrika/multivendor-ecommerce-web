@@ -117,7 +117,7 @@ const Package = () => {
                             >
                                 <div className="relative ">
                                     <img
-                                        src={Photo}
+                                        src={item.image}
                                         alt="Sample Musician"
                                         className="w-full h-48 object-cover"
                                     />
