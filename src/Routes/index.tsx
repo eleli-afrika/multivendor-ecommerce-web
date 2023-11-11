@@ -53,8 +53,8 @@ const Index = () => {
             <div className=" mt-20 md:mt-[11rem]" id="root">
                 <ScrollToTop>
                     <Routes>
-                        <Route path="/login" element={loggedIn ? <Login /> : <Landing />} />
-                        <Route path="/register" element={loggedIn ? <Register /> : <Landing />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/register" element={<Register />} />
                         <Route path="/" element={<Landing />} />
                         <Route
                             path="/Dashboard"
