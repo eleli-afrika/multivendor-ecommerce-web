@@ -243,7 +243,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
             navigate('/');
             console.log(response);
         } catch (error: any) {
-            toast.error(error.message || 'Duplicate product!');
+            // toast.error(error.message || 'Duplicate product!');
             dispatch(setLoader(false));
         }
         navigate('/profile/pending');

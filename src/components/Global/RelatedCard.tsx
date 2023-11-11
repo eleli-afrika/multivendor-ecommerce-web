@@ -15,18 +15,20 @@ function Productcard({ image, name, price, seller, description, id }: productCar
                 />
                 <div className="px-3 py-2">
                     <div className="flex flex-row justify-between text-md">
-                        <p className="text-green-400 truncate text-[10px] lg:text-md ">{seller} </p>
+                        <p className="text-green-400 truncate text-[12px] font-bold lg:text-md ">
+                            {seller}{' '}
+                        </p>
                     </div>
-                    <h1 className=" text-[10px] text-stone-400 lg:text-md font-bold uppercase ">
+                    <h1 className=" text-[12px] text-stone-400 lg:text-md font-bold uppercase ">
                         {name}
                     </h1>
                     <div className="flex flex-row items-center justify-start">
-                        <p className="text-slate-400 text-[10px] line-clamp-2 lowercase ">
+                        <p className="text-slate-400 text-[14px] line-clamp-2 lowercase ">
                             {' '}
                             {description}{' '}
                         </p>
                     </div>
-                    <p className="text-stone-500 text-sm font-bold">Ksh: {price}</p>
+                    <p className="text-stone-500 text-[18px] font-bold">Ksh: {price}</p>
                 </div>
             </div>
         </div>
