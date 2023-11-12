@@ -22,6 +22,7 @@ const AdsComp = () => {
     }, [dispatch, id]);
 
     const filteredAds = Ads.filter((product: ProductData) => !product.isapproved);
+    console.log(filteredAds);
 
     return (
         <div className="flex flex-col">
@@ -46,7 +47,7 @@ const AdsComp = () => {
                                 image={`${product.mainimage}`}
                                 name={product.productname}
                                 price={product.productprice}
-                                seller="John Doe"
+                                seller={`${user?.firstname} ${user?.lastname}`}
                                 id={product.producttid}
                                 description={product.productdescription}
                             />

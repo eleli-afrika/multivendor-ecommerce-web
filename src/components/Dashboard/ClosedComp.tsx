@@ -43,10 +43,10 @@ const AdsComp = () => {
                         filteredAds.map((product: ProductData) => (
                             <Productcard
                                 key={product.producttid}
-                                image={`data:image/jpeg;base64, ${product.mainimage}`}
+                                image={` ${product.mainimage}`}
                                 name={product.productname}
                                 price={product.productprice}
-                                seller="John Doe"
+                                seller={`${user?.firstname} ${user?.lastname}`}
                                 id={product.producttid}
                                 description={product.productdescription}
                             />
