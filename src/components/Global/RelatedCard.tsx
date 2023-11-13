@@ -10,7 +10,7 @@ function Productcard({ image, name, price, seller, description, id }: productCar
                 onClick={() => navigate(`/ad_info/${id}`)}
             >
                 <img
-                    className="rounded-xl w-full h-2/3 lg:h-3/5  object-contain lg:object-cover"
+                    className="rounded-xl w-full h-2/3 lg:h-3/5  object-cover lg:object-cover"
                     src={image}
                 />
                 <div className="px-3 py-2">
