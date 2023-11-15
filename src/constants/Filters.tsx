@@ -1,95 +1,84 @@
 const Filters = ({ Ads }: any) => {
-    console.log('====================================');
-    console.log(Ads);
-    console.log('====================================');
+    // Extract unique categories
+    const categories = Array.from(new Set(Ads.map((ad: any) => ad.product_data.category)));
 
-    const budgetOptions = [
-        'Kshs  100 -  200',
-        'Kshs  200 -   300',
-        'Kshs  300 -   400',
-        'Kshs  400 -   500',
-        'Kshs  500 -   600',
-        'Kshs  600 -   700',
-        'Kshs  700 -   800',
-        'Kshs  800 -   900',
-        'Kshs  900 -  1,000',
-    ];
-    var cat: string[] = [];
-    const brandOptions = [
-        'Apple',
-        'Samsung',
-        'Sony',
-        'Nike',
-        'Adidas',
-        'IKEA',
-        // Add more brand options
-    ];
+    // Extract unique brands
+    const brands = Array.from(new Set(Ads.map((ad: any) => ad.product_data.brand)));
+
+    // Calculate price ranges dynamically
+    const calculatePriceRanges = () => {
+        if (Ads.length === 0) {
+            // Return some default ranges or an empty array based on your requirements
+            return [];
+        }
+        if (Ads.length === 1) {
+            const price = Ads.map((ad: any) => ad.product_data.productprice);
+            return [price];
+        }
+
+        const prices = Ads.map((ad: any) => ad.product_data.productprice);
+        const minPrice = Math.floor(Math.min(...prices) / 1000) * 1000; // Round down to the nearest thousand
+        const maxPrice = Math.ceil(Math.max(...prices) / 1000) * 1000; // Round up to the nearest thousand
+
+        const ranges = [];
+        const numberOfRanges = 10; // You can adjust this based on your preference
+
+        const rangeSize = (maxPrice - minPrice) / numberOfRanges;
+
+        for (let i = 0; i < numberOfRanges; i++) {
+            const rangeStart = minPrice + i * rangeSize;
+            const rangeEnd = minPrice + (i + 1) * rangeSize;
+            const rangeLabel = `${rangeStart.toLocaleString()} - ${rangeEnd.toLocaleString()}`;
+            ranges.push(rangeLabel);
+        }
+
+        return ranges;
+    };
+
+    // Extract unique price ranges
+    const priceRanges = calculatePriceRanges();
+
     return (
-        <div className="flex flex-col space-y-4 bg-gray-light mt-5 my-other-sidebar rounded ">
+        <div className="flex flex-col space-y-4 bg-gray-light mt-5 my-other-sidebar rounded  h-[100%] sticky top-10">
             {/* Filter By Category */}
-            <div className=" p-4 ">
+            <div className="p-4">
                 <button className="px-3 py-1 bg-primary-orange text-white cursor-pointer rounded mb-2">
-                    Filter by Category
+                    Categories
                 </button>
                 <div className="scrollable-list">
-                    <ul className="flex flex-wrap gap-2 text-[10px] text-stone-500 ">
-                        {Ads.map(
-                            (option: any, index: any) => {
-                                console.log(option.product_data.category + index);
-                                if (!cat.includes(option.product_data.category)) {
-                                    cat.push(option.product_data.category);
-                                    return (
-                                        <li key={index} className="border rounded-[10px] p-2">
-                                            {option?.product_data?.category}
-                                        </li>
-                                    );
-                                }
-                            }
-                            //  (
-                            //     <li key={index} className="border rounded-[10px] p-2">
-                            //         {option?.product_data?.category}
-                            //     </li>
-                            // )
-                        )}
-                    </ul>
-                </div>
-            </div>
-
-            {/* Filter by Subcategory */}
-            {/* <div className="bg-gray-100 p-4">
-        <button >Filter by Subcategory</button>
-        <div className="scrollable-list">
-          <ul className="space-y-2">
-            {subcategoryOptions.map((option, index) => (
-              <li key={index}>{option}</li>
-            ))}
-          </ul>
-        </div>
-      </div> */}
-
-            {/* Filter by Budget */}
-            <div className="p-4 ">
-                <button className="px-3 py-1 bg-primary-orange text-white cursor-pointer rounded mb-2">
-                    Filter by Budget
-                </button>
-                <div className="scrollable-list">
-                    <ul className="space-y-2">
-                        {budgetOptions.map((option, index) => (
-                            <li key={index}>{option}</li>
+                    <ul className="flex flex-wrap gap-2 text-[16px] text-gray-500">
+                        {categories.map((category: any, index) => (
+                            <li key={index} className="border rounded-[16px] p-2">
+                                {category}
+                            </li>
                         ))}
                     </ul>
                 </div>
             </div>
 
-            {/* Filter by Brands */}
-            <div className=" p-4 ">
+            {/* Filter by Budget */}
+            <div className="p-4">
                 <button className="px-3 py-1 bg-primary-orange text-white cursor-pointer rounded mb-2">
-                    Filter by Brand
+                    Price range
                 </button>
                 <div className="scrollable-list">
+                    <ul className="space-y-2 text-[16px] text-gray-500">
+                        {priceRanges.map((priceRange, index) => (
+                            <li key={index}>{priceRange}</li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+
+            {/* Filter by Brand */}
+            <div className="p-4">
+                <button className="px-3 py-1 bg-primary-orange text-white cursor-pointer rounded mb-2">
+                    Brands
+                </button>
+                <div className="scrollable-list text-[16px] text-gray-500">
                     <ul className="space-y-2">
-                        {brandOptions.map((option, index) => (
-                            <li key={index}>{option}</li>
+                        {brands.map((brand: any, index) => (
+                            <li key={index}>{brand}</li>
                         ))}
                     </ul>
                 </div>

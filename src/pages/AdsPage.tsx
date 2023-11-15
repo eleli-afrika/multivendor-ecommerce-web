@@ -9,7 +9,10 @@ const AdsPage = () => {
     console.log(`Hello view my ads`, Ads);
     return (
         <div className="flex parent ">
-            <Filters Ads={Ads} />
+            <div className="h-screen">
+                {' '}
+                <Filters Ads={Ads} />
+            </div>
             <div className="flex-1 mx-auto  my-body p-5">
                 {isLoading && <Loader />}
                 {Ads?.length > 0 ? (
