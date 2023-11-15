@@ -64,13 +64,13 @@ export const getSingleProduct = async (id: any): Promise<any> => {
 
 export const fetchOurProducts = async () => {
     // Your API call using Axios
-    const response = await axiosService.get('/products/getads');
+    const response = await axiosService.get('/products/getproductsdata');
     return response;
 };
 
 export const searchOurProducts = async (param: any) => {
     console.log(param);
-    const response = await axiosService.get(`/products/getads?search=${param}`, { timeout: 10000 });
+    const response = await axiosService.get(`/products/getproductsdata?search=${param}`);
     return response;
 };
 

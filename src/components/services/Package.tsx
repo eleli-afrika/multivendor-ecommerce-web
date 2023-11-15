@@ -1,31 +1,33 @@
 import { useRef, useState, useEffect } from 'react';
 // import Photo from '../../assets/M-PESA.jpeg';
 import { sliderContent } from '../../data/package';
+import { ChevronLeft, ChevronRight } from '@mui/icons-material';
 
 const Package = () => {
     const sliderRef = useRef<HTMLDivElement | null>(null);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [intervalId, setIntervalId] = useState<number | undefined>();
 
-    const sliderWidth = 300; // Assuming each card is 300px wide
-    // const totalAds = sliderContent.length;
+    const sliderWidth = 300; //
 
-    // const slideLeft = () => {
-    //     const delay = 0;
-
-    //     setTimeout(() => {
-    //         setCurrentIndex((prevIndex) => (prevIndex - 1 + totalAds) % totalAds);
-    //     }, delay);
-    // };
-
-    const slideRight = () => {
+    const slideLeft = () => {
         setCurrentIndex((prevIndex) => {
-            let nextIndex = prevIndex + 1;
+            let nextIndex = prevIndex - 1;
 
-            if (nextIndex == sliderContent.length) nextIndex = 0;
+            if (nextIndex < 0) nextIndex = sliderContent.length - 1;
             return nextIndex;
         });
     };
+
+    const slideRight = () => {
+        setCurrentIndex((currentIndex + 1) % sliderContent.length);
+    };
+
+    useEffect(() => {
+        if (currentIndex === sliderContent.length) {
+            setCurrentIndex(0);
+        }
+    }, []);
 
     const autoSlide = () => {
         slideRight();
@@ -42,9 +44,7 @@ const Package = () => {
         };
     }, [currentIndex]); // Update based on currentIndex
 
-    const clonedAds = sliderContent.length
-        ? [...sliderContent, ...sliderContent, ...sliderContent]
-        : [];
+    const clonedAds = sliderContent.length ? [...sliderContent, ...sliderContent] : [];
 
     const sliderStyle: React.CSSProperties = {
         display: 'flex',
@@ -98,13 +98,23 @@ const Package = () => {
                 {/* small screens */}
                 <div
                     ref={sliderRef}
-                    className="w-full h-full overflow-hidden whitespace-nowrap scroll-smooth scrollbar-hide"
+                    className="w-full h-full overflow-hidden whitespace-nowrap scroll-smooth scrollbar-hidden rounded-[0.25rem] "
                     style={{
                         display: '',
                         overflowX: 'hidden',
                         position: 'relative',
                     }}
                 >
+                    <ChevronLeft
+                        onClick={slideLeft}
+                        className="absolute cursor-pointer text-white left-[-5] top-[52%] transform -translate-y-[60%] z-50 bg-primary-orange rounded-full"
+                        style={{ fontSize: '24px' }}
+                    />
+                    <ChevronRight
+                        onClick={slideRight}
+                        className="absolute cursor-pointer text-white right-3 top-[52%] transform -translate-y-[60%] z-50  bg-primary-orange  rounded-full"
+                        style={{ fontSize: '24px' }}
+                    />
                     <div
                         style={sliderStyle}
                         className=" flex gap-2 rounded-[0.25rem]  lg:hidden md:hidden overflow-x-hidden "
@@ -119,7 +129,7 @@ const Package = () => {
                                     <img
                                         src={item.image}
                                         alt="Sample Musician"
-                                        className="w-full h-48 object-cover"
+                                        className="w-full h-48 object-cover rounded-t-[0.25rem]"
                                     />
                                     <div className="absolute bottom-0 left-0 right-0 bg-opacity-70 bg-gray-800 p-4">
                                         <h3 className="text-white text-xl font-semibold mb-2">

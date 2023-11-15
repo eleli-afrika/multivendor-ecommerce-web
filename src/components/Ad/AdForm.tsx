@@ -274,16 +274,16 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
     return (
         <>
             {showAdsForm && (
-                <div className="fixed inset-0 px-5 min-h-full w-full bg-stone-300/50 z-50 flex items-center justify-center py-2 overflow-y-auto">
+                <div className="fixed inset-0 px-[10px] lg:px-5 min-h-full w-full bg-black-200/50 z-50 flex items-center justify-center py-2 overflow-y-auto ">
                     {loading && <Loader />}
                     <form
                         className="w-full lg:w-4/6 h-5/6  rounded-2xl shadow-2xl"
                         onSubmit={handleSubmit}
                         encType="multipart/form-data"
                     >
-                        <div className="w-full h-full flex flex-col md:flex-row overflow-scroll price bg-white px-4 rounded py-4">
+                        <div className="w-full h-full flex flex-col md:flex-row overflow-scroll price bg-white px-4 rounded py-4 gap-3">
                             {/* left-side div */}
-                            <div className="w-full lg:w-3/6 h-full rounded-l-2xl p-5">
+                            <div className="w-full lg:w-3/6 h-auto rounded-l-2xl p-[5px] lg:p-5 ">
                                 <div className="flex flex-col items-end justify-center md:hidden">
                                     <img
                                         src={close}
@@ -444,7 +444,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
 
                             {/* Right side div starts here */}
 
-                            <div className="w-full lg:w-3/6 h-full rounded-r-2xl p-5">
+                            <div className="w-full lg:w-3/6 h-full rounded-r-2xl p-[5px] lg:p-5">
                                 <div className="hidden md:flex flex-col items-end justify-center">
                                     <img
                                         src={close}

@@ -1,8 +1,9 @@
 import { useSelector } from 'react-redux';
-import Productcard from '../Global/RelatedCard';
+import Productcard from '../Global/PopularCard';
 
 const Related = () => {
     const Ads = useSelector((state: any) => state.AllAds.Ads);
+    console.log(Ads);
     function formatPriceWithCommas(price: any) {
         if (price) {
             return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -13,7 +14,7 @@ const Related = () => {
         <div className="lg:p-5 ">
             <div className="bg-green-700 bg-opacity-10 pb-2 ">
                 <div className="py-3  flex flex-row items-center justify-between px-5 md:justify-center">
-                    <h1 className="text-stone-700">You May also like</h1>
+                    <h1 className="text-stone-700">You May also like.</h1>
                     <button className="underline rounded-lg px-2 text-sm py-1 text-slate-500">
                         see all
                     </button>

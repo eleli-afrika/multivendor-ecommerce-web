@@ -40,7 +40,7 @@ const AdsComp = () => {
                                 image={`${product.mainimage}`}
                                 name={product.productname}
                                 price={product.productprice}
-                                seller="John Doe"
+                                seller={`${user.firstname} ${user.lastname}`}
                                 id={product.producttid}
                                 description={product.productdescription}
                             />

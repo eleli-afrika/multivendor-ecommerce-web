@@ -1,11 +1,7 @@
-const Filters = () => {
-    const categoryOptions = [
-        'Electronics',
-        'Clothing',
-        'Furniture',
-        'Automobile',
-        // Add more category options
-    ];
+const Filters = ({ Ads }: any) => {
+    console.log('====================================');
+    console.log(Ads);
+    console.log('====================================');
 
     const budgetOptions = [
         'Kshs  100 -  200',
@@ -18,7 +14,7 @@ const Filters = () => {
         'Kshs  800 -   900',
         'Kshs  900 -  1,000',
     ];
-
+    var cat: string[] = [];
     const brandOptions = [
         'Apple',
         'Samsung',
@@ -28,7 +24,6 @@ const Filters = () => {
         'IKEA',
         // Add more brand options
     ];
-
     return (
         <div className="flex flex-col space-y-4 bg-gray-light mt-5 my-other-sidebar rounded ">
             {/* Filter By Category */}
@@ -37,12 +32,25 @@ const Filters = () => {
                     Filter by Category
                 </button>
                 <div className="scrollable-list">
-                    <ul className="space-y-2">
-                        {categoryOptions.map((option, index) => (
-                            <li key={index} className="">
-                                {option}
-                            </li>
-                        ))}
+                    <ul className="flex flex-wrap gap-2 text-[10px] text-stone-500 ">
+                        {Ads.map(
+                            (option: any, index: any) => {
+                                console.log(option.product_data.category + index);
+                                if (!cat.includes(option.product_data.category)) {
+                                    cat.push(option.product_data.category);
+                                    return (
+                                        <li key={index} className="border rounded-[10px] p-2">
+                                            {option?.product_data?.category}
+                                        </li>
+                                    );
+                                }
+                            }
+                            //  (
+                            //     <li key={index} className="border rounded-[10px] p-2">
+                            //         {option?.product_data?.category}
+                            //     </li>
+                            // )
+                        )}
                     </ul>
                 </div>
             </div>

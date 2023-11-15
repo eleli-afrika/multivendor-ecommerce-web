@@ -10,7 +10,6 @@ const ImageSlider = () => {
 
     const nextSlide = () => {
         setCurrentSlide((currentSlide + 1) % Accordions.length);
-        console.log(Accordions.length);
     };
 
     const prevSlide = () => {
@@ -31,6 +30,7 @@ const ImageSlider = () => {
             clearInterval(slider);
         };
     }, [currentSlide]);
+
     return (
         <div className="flex px-2 gap-2 ">
             <div className="relative w-[100%]  rounded-[0.25rem] h-[20vh] lg:h-[55vh]">
