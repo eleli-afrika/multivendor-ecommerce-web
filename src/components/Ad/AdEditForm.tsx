@@ -33,8 +33,8 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
     const dispatch = useDispatch<AppDispatch>();
 
     useEffect(() => {
+        Reset();
         dispatch(FetchProduct(id));
-        dispatch(FetchProductImages(id));
         setFormData({
             productname: ad?.productname,
             productdescription: ad?.productdescription,
@@ -50,9 +50,10 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
             isactive: true,
             isapproved: false,
         });
-    }, [dispatch, id]);
+        dispatch(FetchProductImages(id));
+    }, [dispatch, id, ad]);
 
-    console.log(adImages);
+    console.log('This aads', ad);
 
     const getCategory = async () => {
         setLoading(true);
@@ -302,7 +303,7 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
             {isEditing && (
                 <div className="fixed inset-0 px-5 min-h-full w-full bg-stone-300/50 z-50 flex items-center justify-center py-2 overflow-y-auto">
                     {loading && <Loader />}
-                    {/* {isLoading && <Loader />} */}
+
                     <form
                         className="w-full lg:w-4/6 h-5/6  rounded-2xl shadow-2xl"
                         onSubmit={handleSubmit}

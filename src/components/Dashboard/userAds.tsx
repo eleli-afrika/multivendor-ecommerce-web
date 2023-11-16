@@ -12,12 +12,12 @@ const AdsComp = () => {
     const { isLoading, Ads } = useSelector((state: any) => state.AllAds);
     const user = useSelector((state: any) => state.auth.user);
     const id = user?.userid;
-    console.log(id);
-    console.log(user);
+    // console.log(id);
+    // console.log(user);
 
     useEffect(() => {
         dispatch(FetchLoggedUsersProducts(id));
-        console.log(id);
+        // console.log(id);
     }, [dispatch, id]);
 
     // console.log(Ads);

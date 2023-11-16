@@ -16,47 +16,58 @@ const initialState: AdState = {
     isLoading: false,
 };
 
-export const FetchProduct = createAsyncThunk('ad/fetchproduct', async (id: any) => {
+export const FetchProduct = createAsyncThunk('ad/fetchproduct', async (id: any, { dispatch }) => {
     try {
         const response = await fetchOurSingleProduct(id);
-        console.log(response);
-        return response.data.Data.product_data;
+        const productData = response.data.Data.product_data;
+
+        // Dispatch the setAd action to immediately update the state
+        dispatch(setAd(productData));
+
+        return productData;
     } catch (error) {
         console.error('Error fetching product:', error);
-        throw error; // Re-throw the error to be caught by the rejection handler
+        throw error;
     }
 });
 
-export const FetchAd = createAsyncThunk('ad/fetchproduct', async (id: any) => {
-    try {
-        const response = await fetchOurSingleProduct(id);
-        console.log(response);
-        return response.data.Data.product_data;
-    } catch (error) {
-        console.error('Error fetching product:', error);
-        throw error; // Re-throw the error to be caught by the rejection handler
-    }
-});
+// Update for FetchProductImages thunk
+export const FetchProductImages = createAsyncThunk(
+    'ad/fetchproductimages',
+    async (id: any, { dispatch }) => {
+        try {
+            const response = await fetchOurSingleProduct(id);
+            const productImages = response.data.Data.product_images;
+            // Dispatch the setAdImages action to immediately update the state
+            dispatch(setAdImages(productImages));
 
-export const FetchProductImages = createAsyncThunk('ad/fetchproductimages', async (id: any) => {
-    try {
-        const response = await fetchOurSingleProduct(id);
-        return response.data.Data.product_images;
-    } catch (error) {
-        console.error('Error fetching productimages:', error);
-        throw error; // Re-throw the error to be caught by the rejection handler
+            return productImages;
+        } catch (error) {
+            console.error('Error fetching product images:', error);
+            throw error;
+        }
     }
-});
+);
 
-export const FetchProductSeller = createAsyncThunk('ad/fetchproductseller', async (id: any) => {
-    try {
-        const response = await fetchOurSingleProduct(id);
-        return response.data.Data.seller_details;
-    } catch (error) {
-        console.error('Error fetching product seller:', error);
-        throw error; // Re-throw the error to be caught by the rejection handler
+// Update for FetchProductSeller thunk
+export const FetchProductSeller = createAsyncThunk(
+    'ad/fetchproductseller',
+    async (id: any, { dispatch }) => {
+        try {
+            const response = await fetchOurSingleProduct(id);
+            const sellerDetails = response.data.Data.seller_details;
+
+            // Dispatch the setSeller action to immediately update the state
+            dispatch(setSeller(sellerDetails));
+
+            return sellerDetails;
+        } catch (error) {
+            console.error('Error fetching product seller:', error);
+            throw error;
+        }
     }
-});
+);
+
 const AdSlice = createSlice({
     name: 'Ad',
     initialState,
@@ -85,8 +96,8 @@ const AdSlice = createSlice({
             })
             .addCase(FetchProduct.fulfilled, (state, action) => {
                 // console.log(action);
-                state.isLoading = false;
                 state.ad = action.payload;
+                state.isLoading = false;
             })
             .addCase(FetchProductImages.fulfilled, (state, action) => {
                 // console.log(action);
