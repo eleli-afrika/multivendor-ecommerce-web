@@ -27,10 +27,14 @@ import ScrollToTop from '../components/ScrollToTop';
 // import ProtectedRoutes from "./ProtectedRoutes";
 import Notification from '../pages/userDash/Notifications';
 import Messages from '../pages/userDash/Messages';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../Redux/store';
+import { getLoggedInUser } from '../Redux/slices/AuthSlice';
 
 const Index = () => {
     const [, setShowLogin] = useState<boolean>(false);
     const [loggedIn, setLoggedIn] = useState(false);
+    const dispatch = useDispatch<AppDispatch>();
 
     useEffect(() => {
         const auth = localStorage.getItem('userToken');
@@ -40,6 +44,20 @@ const Index = () => {
             setLoggedIn(false);
         } else {
             setLoggedIn(true);
+        }
+    }, []);
+
+    const getUser = async () => {
+        dispatch(getLoggedInUser());
+    };
+
+    // useEffect(() => {
+    //     dispatch(GettingSellers());
+    // }, []);
+
+    useEffect(() => {
+        if (localStorage.getItem('userToken')) {
+            getUser();
         }
     }, []);
 
