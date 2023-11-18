@@ -30,6 +30,10 @@ import Messages from '../pages/userDash/Messages';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../Redux/store';
 import { getLoggedInUser } from '../Redux/slices/AuthSlice';
+import Freemium from '../components/Packages/Freemium';
+import BasicPackage from '../components/Packages/Basic';
+import PremiumPackage from '../components/Packages/Premium';
+import StandardPackage from '../components/Packages/standard';
 
 const Index = () => {
     const [, setShowLogin] = useState<boolean>(false);
@@ -79,6 +83,10 @@ const Index = () => {
                             element={loggedIn ? <UserDashboard /> : <Login />}
                         />
                         <Route path="/pricing" element={<Pricing />} />
+                        <Route path="/free" element={<Freemium />} />
+                        <Route path="/basic" element={<BasicPackage />} />
+                        <Route path="/standard" element={<StandardPackage />} />
+                        <Route path="/premium" element={<PremiumPackage />} />
                         <Route path="/search/products" element={<AdsPage />} />
                         <Route path="/terms_and_conditions" element={<Terms />} />
                         <Route path="/contact" element={<Contact />} />

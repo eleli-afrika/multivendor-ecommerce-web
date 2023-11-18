@@ -13,7 +13,8 @@ export const sliderContent = [
         '🗙 Sponsered ads per month',
       ],
       button: 'Get Started',
-      image: freemium
+      image: freemium,
+      price:0
     },
     {
       title: 'Basic Kshs:2500',
@@ -24,7 +25,8 @@ export const sliderContent = [
         '🗙 No ads Sponsorship',
       ],
       button: 'Get Started',
-      image: basic
+      image: basic,
+      price:2500
     },
     {
       title: 'Standard Ksh: 3500',
@@ -35,7 +37,8 @@ export const sliderContent = [
         '🗙 No Ads Sponsorship',
       ],
       button: 'Get Started',
-      image: standard
+      image: standard,
+      price:3500
     },
     {
       title: 'Premium Ksh: 4500',
@@ -46,6 +49,7 @@ export const sliderContent = [
         ' ✔Get Bonus sponsorship for your ads',
       ],
       button: 'Get started',
-      image: premium
+      image: premium,
+      price:4500
     },
   ];

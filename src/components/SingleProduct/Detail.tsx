@@ -44,7 +44,7 @@ const ProductInfo = () => {
     //     'https://img.freepik.com/free-photo/elegant-smartphone-composition_23-2149437105.jpg?size=626&ext=jpg&ga=GA1.1.1961618914.1698752855&semt=sph',
     // ];
     return (
-        <div className="flex flex-col md:flex-row lg:gap-5 lg:p-5 max-w-screen mb-10 h-auto">
+        <div className="flex flex-col md:flex-row lg:gap-5 p-3 lg:p-5 max-w-screen mb-10 h-auto">
             {/* {isLoading && <Loader />} */}
             {/* Part 1 */}
             <div className="md:flex-1">
