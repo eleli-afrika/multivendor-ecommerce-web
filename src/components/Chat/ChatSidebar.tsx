@@ -11,7 +11,7 @@ const ChatSidebar = () => {
                 <h1 className="text-gray-500 font-bold">My Messages </h1>
                 <FaBars className="text-gray-500 font-bold" />
             </div>
-            <div className="h-16 w-full bg-yellow-200 px-4 py-2 ">
+            <div className="h-16 w-full bg-gray-200 px-4 py-2 ">
                 <form action="">
                     <input
                         type="text"

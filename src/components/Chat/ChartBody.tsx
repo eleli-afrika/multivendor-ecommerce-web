@@ -1,5 +1,8 @@
 import { Avatar } from 'antd';
 import { AttachFile, MoreVert, SearchOutlined, InsertEmoticon } from '@mui/icons-material';
+import Chart from './Chart';
+import { BiMicrophone } from 'react-icons/bi';
+import Picker from 'emoji-picker-react';
 
 const ChartBody = () => {
     return (
@@ -14,6 +17,20 @@ const ChartBody = () => {
                     <AttachFile />
                     <MoreVert />
                 </div>
+            </div>
+            <div>
+                <Chart />
+            </div>
+            <div>
+                <form action="" className="flex justify-between items-center p-[1.17rem]">
+                    <InsertEmoticon className="font-bold text-gray-600" />
+                    <input
+                        type="'text'"
+                        className="border rounded-[25px] px-5"
+                        placeholder="Type your message"
+                    />
+                    <BiMicrophone className="font-bold text-gray-600" />
+                </form>
             </div>
         </div>
     );

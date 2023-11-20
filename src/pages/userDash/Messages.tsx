@@ -4,9 +4,9 @@ import ChartBody from '../../components/Chat/ChartBody';
 
 const Messages = () => {
     return (
-        <div className="flex parent h-screen">
+        <div className="flex parent h-screen price">
             {/* <Sidebar /> */}
-            <div className="flex p-1 mx-auto my-body bg-yellow-600 h-[80vh]">
+            <div className="flex  mx-auto my-body bg-[whitesmoke] border h-[80vh]">
                 <div className="bg-white flex-[0.3] price">
                     <ChatSidebar />
                 </div>
