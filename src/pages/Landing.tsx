@@ -43,7 +43,7 @@ const Landing = () => {
                     </div>
                 </div>
 
-                <div className="parent px-0 lg:px-32">
+                <div className="parent px-0 lg:px-5">
                     <div className="mx-0 lg:mx:auto">
                         <Minslider Ads={Ads} />
                         <Sponsered Ads={Ads} />

@@ -55,7 +55,7 @@ const Sidebar = () => {
 
     return (
         <div className="rounded">
-            <div className="px-4  h-[55vh] max-h-[55vh]  sticky top-0 bg-slate-200 shadow-custom rounded overflow-y-auto my-sidebar no-scrollbar ">
+            <div className="px-4  h-[55vh] max-h-[55vh]  sticky top-0 bg-gray-light shadow-custom rounded overflow-y-auto my-sidebar no-scrollbar ">
                 <ul className="py-1">
                     <h1 className="my-3 text-stone-600 text-sm font-bold">Top Categories</h1>
                     {categories.map((Menu: categoryData, index: number) => (

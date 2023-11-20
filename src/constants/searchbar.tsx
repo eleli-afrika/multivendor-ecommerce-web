@@ -96,7 +96,7 @@ const SearchBar: React.FC = () => {
                     <div className="relative w-[70%] px-10 ">
                         <input
                             type="text"
-                            placeholder="search thousands of products, users, categories, subcategories, price and brands!!"
+                            placeholder="Search thousands of products, users, categories, subcategories, price and brands!!"
                             className="px-10 h-[30px] py-3 text-sm  "
                             value={searchParam}
                             onChange={(e) => setSearchParam(e.target.value)}

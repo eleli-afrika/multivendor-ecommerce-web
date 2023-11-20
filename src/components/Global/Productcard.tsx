@@ -21,7 +21,9 @@ function Productcard({ image, name, price, seller, description, id }: productCar
             />
             <div className="px-3 py-1">
                 <div className="flex flex-row justify-between text-md">
-                    <p className="text-green-400 truncate text-[10px] lg:text-md">{seller}</p>
+                    <p className="text-green-dark truncate text-[14px] lg:text-md font-bold">
+                        {seller}
+                    </p>
                 </div>
                 <h1 className="text-[10px] text-stone-400 lg:text-md font-bold uppercase">
                     {name}
@@ -29,7 +31,7 @@ function Productcard({ image, name, price, seller, description, id }: productCar
                 <p className="text-slate-400 text-[10px] line-clamp-1 lowercase">{description}</p>
                 <p className="text-stone-500 text-sm font-bold">Ksh: {price}</p>
 
-                <button className="bg-primary-orange mt-2 w-full rounded-[15px] duration-300 hover:bg-orange-300 hover:scale-105">
+                <button className="bg-primary-orange mt-2 w-full rounded-[15px] duration-300 hover:bg-secondary-orange hover:scale-105 text-white text-bold">
                     Inquire
                 </button>
             </div>

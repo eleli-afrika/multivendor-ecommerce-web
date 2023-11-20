@@ -30,7 +30,7 @@ const ChatSidebar: React.FC<Props> = ({
                     <input
                         type="text"
                         className="border rounded-[25px] px-5"
-                        placeholder="search or start a new chat"
+                        placeholder="Search or start a new chat"
                     />
                 </form>
             </div>

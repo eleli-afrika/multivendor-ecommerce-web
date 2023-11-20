@@ -4,7 +4,7 @@ import { Avatar } from 'antd';
 // import mpesa from '../../assets/M-PESA.jpeg';
 
 const PremiumPackage = () => {
-    const Premium = sliderContent[3];
+    const Premium = sliderContent[2];
     const user = useSelector((state: any) => state.auth.user);
     // console.log(user);
     return (

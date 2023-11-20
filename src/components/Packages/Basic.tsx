@@ -4,7 +4,7 @@ import { Avatar } from 'antd';
 // import mpesa from '../../assets/M-PESA.jpeg';
 
 const BasicPackage = () => {
-    const Basic = sliderContent[1];
+    const Basic = sliderContent[0];
     const user = useSelector((state: any) => state.auth.user);
     // console.log(user);
     return (
@@ -25,7 +25,7 @@ const BasicPackage = () => {
                         </div>
                     </div>
                     <div className="flex flex-col w-full  price  ">
-                        <div className="p-4 bg-green-600 rounded-t-[0.25rem] ">
+                        <div className="p-4 bg-green-dark rounded-t-[0.25rem] ">
                             <p>Payment Details</p>
                         </div>
                         <div className=" text-gray-700 p-2 pb-5 rounded-b-[0.25rem] flex lg:flex-row flex-col lg:justify-between gap-2 lg:gap-20 ">
@@ -39,24 +39,24 @@ const BasicPackage = () => {
                                     <h2 className="capitalize mt-5 font-bold"> paypill No:</h2>
                                     <ul className="flex gap-3 font-bold text-2xl">
                                         <div className="flex gap-2">
-                                            <li className=" border-[4px] rounded p-5 border-green-400">
+                                            <li className=" border-[4px] rounded p-5 border-green-dark">
                                                 5
                                             </li>
-                                            <li className=" border-[4px] rounded p-5 border-green-400">
+                                            <li className=" border-[4px] rounded p-5 border-green-dark">
                                                 4
                                             </li>
-                                            <li className=" border-[4px] rounded p-5 border-green-400">
+                                            <li className=" border-[4px] rounded p-5 border-green-dark">
                                                 6
                                             </li>
                                         </div>
                                         <div className="flex gap-2">
-                                            <li className=" border-[4px] rounded p-5 border-green-400">
+                                            <li className=" border-[4px] rounded p-5 border-green-dark">
                                                 1
                                             </li>
-                                            <li className=" border-[4px] rounded p-5 border-green-400">
+                                            <li className=" border-[4px] rounded p-5 border-green-dark">
                                                 5
                                             </li>
-                                            <li className=" border-[4px] rounded p-5 border-green-400">
+                                            <li className=" border-[4px] rounded p-5 border-green-dark">
                                                 9
                                             </li>
                                         </div>

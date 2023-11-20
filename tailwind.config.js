@@ -5,10 +5,10 @@ export default {
     extend: {
       colors: {
         "primary-orange": {
-          DEFAULT: "#DC5F00",
+          DEFAULT: "#F75A0D",
         },
         "secondary-orange": {
-          DEFAULT: "#CF0A0A",
+          DEFAULT: "#F34508",
         },
         "tertiary-orange": {
           DEFAULT: "#D63505",
@@ -18,9 +18,15 @@ export default {
           100: "#100d25",
           200: "#090325",
         },
+          green: {
+         
+          dark: "#3A5e27",
+        light: "#859448",
+        },
         "gray-light": {
           DEFAULT: "#EEEEEE",
         },
+        
         "white-100": {
           DEFAULT: "#f3f3f3",
         },
