@@ -307,7 +307,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         onChange={handleInputChange}
                                         className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
                                         placeholder="Enter your Product Name"
-                                        maxLength={50}
+                                        // maxLength={50}
                                         required
                                     />
                                 </div>
@@ -326,7 +326,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
                                         placeholder="Enter your Product description"
                                         minLength={100}
-                                        maxLength={200}
+                                        // maxLength={200}
                                         required
                                     />
                                 </div>

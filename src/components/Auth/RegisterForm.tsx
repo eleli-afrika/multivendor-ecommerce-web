@@ -219,6 +219,7 @@ const RegisterForm: React.FC = ({}) => {
                                 value={formData.location}
                                 onChange={handleChange}
                                 className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange "
+                                required
                             >
                                 <option value="select location">select location</option>
                                 {locations.map((location) => (
