@@ -55,9 +55,9 @@ const Index = () => {
         dispatch(getLoggedInUser());
     };
 
-    // useEffect(() => {
-    //     dispatch(GettingSellers());
-    // }, []);
+    useEffect(() => {
+        getUser();
+    }, []);
 
     const token = localStorage.getItem('userToken');
 

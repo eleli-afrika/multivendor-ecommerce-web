@@ -10,7 +10,7 @@ const Package = () => {
     const [intervalId, setIntervalId] = useState<number | undefined>();
     const navigate = useNavigate();
 
-    const sliderWidth = 300; //
+    const sliderWidth = 400; //
 
     const slideLeft = () => {
         setCurrentIndex((prevIndex) => {
@@ -55,17 +55,23 @@ const Package = () => {
         width: `${clonedAds.length * sliderWidth}px`,
     };
 
+    const sliderContainerStyle: React.CSSProperties = {
+        width: '100%', // Set the width to 100% for small screens
+        overflow: 'hidden',
+        position: 'relative',
+    };
+
     return (
         <section className="m-2 bg-gray-light" style={{ borderRadius: '0.24rem' }}>
-            <div className="max-w-6xl mx-auto w-full px-2 py-4">
+            <div className=" w-full px-2 py-4 ">
                 <h2 className="text-3xl md:text-2xl lg:text-2xl font-bold mb-6 text-gray-600 text-center">
                     Packages
                 </h2>
-                <div className="grid gap-6 lg:grid-cols-4 text-sm">
+                <div className=" flex  justify-center items-center gap-5 text-sm">
                     {sliderContent.map((item, index) => (
                         <div
                             key={index}
-                            className="bg-white rounded-lg overflow-hidden shadow-lg hidden lg:flex flex-col h-full"
+                            className="bg-white rounded-lg overflow-hidden shadow-lg hidden lg:flex flex-col h-full w-[360px] "
                         >
                             <div className="relative">
                                 <img
@@ -129,8 +135,9 @@ const Package = () => {
                         {clonedAds.map((item, index) => (
                             <div
                                 key={index}
-                                className=" gap-4 bg-white price block lg:hidden"
-                                style={{ width: `${sliderWidth}px` }}
+                                className=" bg-white price block lg:hidden  w-full mx-auto"
+                                // style={{ width: `${sliderWidth}px` }}
+                                style={sliderContainerStyle}
                             >
                                 <div className="relative ">
                                     <img

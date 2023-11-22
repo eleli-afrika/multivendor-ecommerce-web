@@ -15,7 +15,7 @@ const SearchBar: React.FC = () => {
     const { open } = useSelector((state: any) => state.opener);
     const [searchParam, setSearchParam] = useState<string>('');
 
-    const Ads = useSelector((state: any) => state.AllAds.Ads);
+    // const Ads = useSelector((state: any) => state.AllAds.Ads);
 
     const dispatch = useDispatch<AppDispatch>();
     const navigate = useNavigate();
@@ -107,7 +107,7 @@ const SearchBar: React.FC = () => {
                         type="submit"
                         className="bg-primary-orange capitalize text-white rounded hover:bg-secondary-orange transition-colors delay-300 w-[250px] outline-none shadow-custom rounded-r-[20px] text-xs h-[28px]"
                     >
-                        Search over <span> {Ads?.length} </span> products
+                        Search
                     </button>
                 </div>
             </form>

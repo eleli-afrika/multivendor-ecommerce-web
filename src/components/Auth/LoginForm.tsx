@@ -68,7 +68,7 @@ const LoginForm: React.FC = ({}) => {
                                 value={formData.email}
                                 onChange={handleChange}
                                 className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange h-12"
-                                placeholder="Enter your Email Address"
+                                placeholder="Enter your email address"
                             />
                         </div>
                         <div className="mb-4">
@@ -104,15 +104,15 @@ const LoginForm: React.FC = ({}) => {
                         </button>
 
                         <p className="text-gray-500 text-center mt-3">
-                            Forgot Password?
+                            Forgot password?
                             <Link to="/login" className="ml-2 text-blue-500">
-                                Reset Password
+                                Reset password
                             </Link>{' '}
                         </p>
                         <p className="text-gray-500 text-center mt-3">
                             You do not have an account?
                             <Link to="/register" className="ml-2 text-blue-500">
-                                Sign Up
+                                Sign up
                             </Link>{' '}
                         </p>
                     </form>

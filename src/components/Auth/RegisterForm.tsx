@@ -133,7 +133,7 @@ const RegisterForm: React.FC = ({}) => {
                                     value={formData.firstname}
                                     onChange={handleChange}
                                     className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
-                                    placeholder="Enter your First Name"
+                                    placeholder="Enter your first name"
                                 />
                             </div>
 
@@ -142,7 +142,7 @@ const RegisterForm: React.FC = ({}) => {
                                     htmlFor="middlename"
                                     className="block text-gray-700 text-sm font-bold mb-2"
                                 >
-                                    Middle Name:
+                                    Second Name:
                                 </label>
                                 <input
                                     type="text"
@@ -151,7 +151,7 @@ const RegisterForm: React.FC = ({}) => {
                                     value={formData.middlename}
                                     onChange={handleChange}
                                     className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
-                                    placeholder="Enter your Middle Name"
+                                    placeholder="Enter your second name"
                                 />
                             </div>
                         </div>
