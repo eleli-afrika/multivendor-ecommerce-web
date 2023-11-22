@@ -55,6 +55,12 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
     const [userSmallnav, setUserSmallNav] = useState(false);
     // console.log(user);
 
+    const Logout = () => {
+        localStorage.removeItem('userToken');
+        navigate('/login');
+    };
+
+    useEffect(() => {}, [userToken]);
     return (
         <nav
             className={`w-full  flex flex-col items-center justify-center py-0 px-1 lg:px-20 fixed price top-0 z-20 ${
@@ -163,7 +169,10 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                                         >
                                             notifications
                                         </p>
-                                        <button className="hover:underline hover:text-green-400 cursor-pointer">
+                                        <button
+                                            className="hover:underline hover:text-green-400 cursor-pointer"
+                                            onClick={Logout}
+                                        >
                                             log out
                                         </button>
                                     </div>
@@ -276,7 +285,10 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                                                 >
                                                     notifications
                                                 </p>
-                                                <button className="hover:underline hover:text-green-400 cursor-pointer">
+                                                <button
+                                                    className="hover:underline hover:text-green-400 cursor-pointer "
+                                                    onClick={Logout}
+                                                >
                                                     log out
                                                 </button>
                                             </div>

@@ -2,17 +2,9 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { FetchProduct, FetchProductImages, FetchProductSeller } from '../../Redux/slices/adSlice';
-import {
-    Facebook,
-    Favorite,
-    LocationOn,
-    Phone,
-    Reviews,
-    WhatsApp,
-    YouTube,
-} from '@mui/icons-material';
+import { Email, Favorite, LocationOn, Phone, Reviews, WhatsApp } from '@mui/icons-material';
 import { Avatar } from 'antd';
 import { Rating } from '@mui/material';
 import { AppDispatch } from '../../Redux/store';
@@ -37,12 +29,7 @@ const ProductInfo = () => {
     if (isLoading) {
         return <Loader />;
     }
-    // const pictures = [
-    //     'https://img.freepik.com/free-photo/phone-screen-with-abstract-marble-aesthetic_53876-145553.jpg?size=626&ext=jpg&ga=GA1.1.1961618914.1698752855&semt=sph',
-    //     'https://img.freepik.com/free-photo/still-life-books-versus-technology_23-2150063043.jpg?size=626&ext=jpg&ga=GA1.1.1961618914.1698752855&semt=sph',
-    //     'https://img.freepik.com/free-photo/smartphone-balancing-with-violet-background_23-2150271744.jpg?size=626&ext=jpg&ga=GA1.1.1961618914.1698752855&semt=sph',
-    //     'https://img.freepik.com/free-photo/elegant-smartphone-composition_23-2149437105.jpg?size=626&ext=jpg&ga=GA1.1.1961618914.1698752855&semt=sph',
-    // ];
+
     return (
         <div className="flex flex-col md:flex-row lg:gap-5 p-3 lg:p-5 max-w-screen mb-10 h-auto">
             {/* {isLoading && <Loader />} */}
@@ -242,17 +229,34 @@ const ProductInfo = () => {
                                 </div>
                             </div>
                             <div className="flex gap-3 mt-4 p-5 text-center">
-                                <button className="p-2 rounded-full bg-gray-200">
-                                    <WhatsApp className="text-green-500" />
+                                <button className="p-2 rounded-full bg-gray-200" onClick={() => {}}>
+                                    <Link
+                                        to={`https://wa.me/+254${seller?.seller_phonenumber
+                                            ?.toString()
+                                            ?.substring(1)}?text=hello, ${seller?.seller_name}`}
+                                        target="_blank"
+
+                                        // to=""
+                                    >
+                                        <WhatsApp className="text-green-500" />
+                                    </Link>
                                 </button>
-                                <button className="p-2 rounded-full bg-gray-200">
+                                {/* <button className="p-2 rounded-full bg-gray-200">
                                     <Facebook className="text-blue-500" />
+                                </button> */}
+                                <button className="p-2 rounded-full bg-gray-200">
+                                    <Link
+                                        to={`mailto:${seller?.seller_email}`}
+                                        className=""
+                                        target="_blank"
+                                    >
+                                        <Email className="text-red-500" />
+                                    </Link>
                                 </button>
                                 <button className="p-2 rounded-full bg-gray-200">
-                                    <YouTube className="text-red-500" />
-                                </button>
-                                <button className="p-2 rounded-full bg-gray-200">
-                                    <Phone />
+                                    <Link to={`tel:${seller?.seller_phonenumber}`} target="_blank">
+                                        <Phone />
+                                    </Link>
                                 </button>
                             </div>
                         </div>

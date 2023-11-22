@@ -146,7 +146,6 @@ const Footer = () => {
                                 <Link
                                     to="https://wa.me/+254706244557/?"
                                     className="text-white flex items-center"
-                                    target="_blank"
                                 >
                                     <FaWhatsapp color="green" />
                                 </Link>
