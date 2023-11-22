@@ -6,26 +6,22 @@ function Productcard({ image, name, price, seller, description, id }: productCar
 
     return (
         <div
-            className="rounded-lg bg-none  radius-2xl w-[200px] lg:h-[300px] mb-2 duration-200 cursor-pointer hover:scale-95"
+            className="rounded-lg overflow-hidden bg-none radius-2xl w-full lg:w-[200px] h-[300px] lg:h-[300px] mb-2 duration-200 cursor-pointer hover:scale-95"
             onClick={() => navigate(`/ad_info/${id}`)}
             style={{
                 display: 'flex',
                 flexDirection: 'column',
-                height: '100%',
                 justifyContent: 'space-between',
             }}
         >
-            <img
-                className="rounded-xl w-full h-2/3 lg:h-3/5 lg:w-full object-contain lg-object-cover"
-                src={image}
-            />
+            <img className="w-full h-2/3 lg:h-3/5 object-cover" src={image} alt={name} />
             <div className="px-3 py-1">
                 <div className="flex flex-row justify-between text-md">
                     <p className="text-green-dark truncate text-[14px] lg:text-md font-bold">
                         {seller}
                     </p>
                 </div>
-                <h1 className="text-[10px] text-stone-400 lg:text-md font-bold uppercase">
+                <h1 className="text-[10px] text-stone-400 lg:text-md font-bold uppercase truncate">
                     {name}
                 </h1>
                 <p className="text-slate-400 text-[10px] line-clamp-1 lowercase">{description}</p>
