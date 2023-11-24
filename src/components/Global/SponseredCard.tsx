@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { productCard } from '../../interface/common';
 // import { FaFacebook, FaPhone, FaWhatsapp } from 'react-icons/fa';
 
-function Productcard({ image, name, price, description, id }: productCard) {
+function Productcard({ image, name, price, id }: productCard) {
     const navigate = useNavigate();
     return (
         <div className="relative w-[45vw] md:w-72 lg:h-[350px]  p-0 h-[300px] mb-2 cursor-pointer  rounded-lg radius-2xl ">
@@ -29,14 +29,14 @@ function Productcard({ image, name, price, description, id }: productCard) {
                             {seller}{' '}
                         </p> */}
                     </div>
-                    <h1 className=" text-[15px] text-black-main lg:text-md  capitalize font-bold truncate  ">
+                    <h1 className=" text-[15px] text-black-main lg:text-md  capitalize line-clamp-3  ">
                         {name}
                     </h1>
                     <div className="flex flex-row items-center justify-start">
-                        <p className=" text-[14px] line-clamp-2 lowercase text-black-main">
+                        {/* <p className=" text-[14px] line-clamp-3 lowercase text-black-main">
                             {' '}
                             {description}{' '}
-                        </p>
+                        </p> */}
                     </div>
                     <p className=" text-[18px] font-bold text-black-main">Ksh: {price}</p>
                 </div>

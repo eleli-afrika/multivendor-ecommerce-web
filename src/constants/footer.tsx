@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <div className=" w-full relative">
             <div
-                className="top-0 left-0 p-10 flex flex-wrap justify-around"
+                className="top-0 left-0 p-10 flex flex-wrap justify-center items-center"
                 style={{
                     position: 'absolute',
                     top: '0',
@@ -157,10 +157,6 @@ const Footer = () => {
                 <div style={{ borderTop: ' solid 2px #DC5F00' }} className="w-full">
                     <p className="text-center text-white py-2 mt-2">
                         © EDUKA 2023 || All Rights Reserved
-                    </p>
-                    <p className="text-center text-white py-2 mt-2">0706244557</p>
-                    <p className="text-center text-white py-2 mt-2">
-                        Physical Location @ Moi Avenue , Veteran House 6Th Floor Room 606
                     </p>
                 </div>
             </div>

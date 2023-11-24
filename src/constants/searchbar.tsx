@@ -85,12 +85,12 @@ const SearchBar: React.FC = () => {
                         onChange={handleCategoryChange}
                         className="px-5 rounded border-r w-[200px] bg-white outline-none rounded-l-[20px] py-1 text-sm text-stone-400"
                     >
-                        <option value="all">Search by category</option>
-                        {categories.map((category) => (
+                        <option value="all">Search for products</option>
+                        {/* {categories.map((category) => (
                             <option key={category.categoryid} value={category.categoryname}>
                                 {category.categoryname}
                             </option>
-                        ))}
+                        ))} */}
                     </select>
 
                     <div className="relative w-[70%] px-10 ">

@@ -24,14 +24,10 @@ function Productcard({
                     <div className="flex flex-row justify-between text-md">
                         {/* <p className="text-green-400 truncate text-[10px] lg:text-md ">{seller} </p> */}
                     </div>
-                    <h1 className="text-slate-700 text-xs lg:text-md font-bold uppercase truncate">
+                    <h1 className="text-slate-700 text-xs lg:text-md font-bold uppercase">
                         {name}
                     </h1>
                     <p className="text-stone-500 text-sm font-bold">Ksh: {price}</p>
-                    <div className="flex flex-row items-center justify-start">
-                        <p className="text-slate-400 text-xs"> rated 4.5 </p>
-                        <p className="text-xs text-slate-400 my-2">(of 200 reviews)</p>
-                    </div>
 
                     <button className="p-2 bg-orange-600 rounded-[0.25rem] text-white">
                         View Ad
