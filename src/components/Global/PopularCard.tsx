@@ -4,7 +4,7 @@ import { productCard } from '../../interface/common';
 function Productcard({ image, name, price, id }: productCard) {
     const navigate = useNavigate();
     return (
-        <div className="w-[45vw] md:w-72  rounded-xl p-0 lg:h-[350px] mb-2 cursor-pointer ">
+        <div className="w-[45vw] md:w-[230px]  rounded-xl p-0 lg:h-[300px] mb-2 cursor-pointer ">
             <div
                 className="flex h-full flex-col max-w-sm rounded-xl bg-none md:bg-stone-50 radius-2xl  border-gray-300 mb-2  relative hover:scale-105 duration-300"
                 onClick={() => navigate(`/ad_info/${id}`)}
@@ -17,7 +17,7 @@ function Productcard({ image, name, price, id }: productCard) {
                         borderTopLeftRadius: '0.75rem',
                     }}
                 />
-                <div className=" py-2 ">
+                <div className=" py-2 lg:px-2 ">
                     <div className="flex flex-row justify-between text-md">
                         {/* <p className="text-green-dark truncate text-[15px] font-bold lg:text-md capitalize">
                             {seller}{' '}

@@ -4,7 +4,7 @@ import { productCard } from '../../interface/common';
 function Productcard({ image, name, price, id }: productCard) {
     const navigate = useNavigate();
     return (
-        <div className="w-[45vw] md:w-72  rounded-xl p-0 lg:h-[350px] mb-2 cursor-pointer ">
+        <div className="w-[45vw] md:w-[240px]  rounded-xl p-0 lg:h-[300px] mb-2 cursor-pointer ">
             <div
                 className="flex h-full flex-col max-w-sm rounded-xl bg-none  radius-2xl   mb-2  relative hover:scale-105 duration-300"
                 onClick={() => navigate(`/ad_info/${id}`)}

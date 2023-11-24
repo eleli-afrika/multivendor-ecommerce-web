@@ -5,7 +5,7 @@ import { productCard } from '../../interface/common';
 function Productcard({ image, name, price, id }: productCard) {
     const navigate = useNavigate();
     return (
-        <div className="relative w-[45vw] md:w-72 lg:h-[350px]  p-0 h-[300px] mb-2 cursor-pointer  rounded-lg radius-2xl ">
+        <div className="relative w-[45vw] md:w-[280px] lg:h-[300px]  p-0 h-[300px] mb-2 cursor-pointer  rounded-lg radius-2xl ">
             <div className="absolute top-0 right-[5px] lg:left-0 z-10 ">
                 <button className="bg-secondary-orange text-[10px] px-[3px] py-[1px] lg:text-[10px] text-white lg:px-3 lg:py-1 rounded hover:bg-primary-orange ">
                     Sponsored
@@ -23,7 +23,7 @@ function Productcard({ image, name, price, id }: productCard) {
                         borderTopLeftRadius: '0.75rem',
                     }}
                 />
-                <div className=" py-0 lg:py-2">
+                <div className=" py-0 lg:p-2">
                     <div className="flex flex-row justify-between text-md">
                         {/* <p className="text-green-dark truncate text-[15px] font-bold lg:text-md capitalize">
                             {seller}{' '}
