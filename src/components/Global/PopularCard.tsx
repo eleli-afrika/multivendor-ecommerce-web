@@ -26,6 +26,7 @@ function Productcard({ image, name, price, id }: productCard) {
                     <h1 className=" text-[15px] text-black-main lg:text-md  capitalize  line-clamp-3  ">
                         {name}
                     </h1>
+
                     <div className="flex flex-row items-center justify-start">
                         {/* <p className=" text-[14px] line-clamp-2 lowercase text-black-main">
                             {' '}

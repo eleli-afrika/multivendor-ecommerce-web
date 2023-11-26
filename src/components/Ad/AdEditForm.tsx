@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BsFillImageFill, BsImages } from 'react-icons/bs';
 import close from '../../assets/close.png';
 import { useDispatch, useSelector } from 'react-redux';
-import { createProduct } from '../../Redux/hooks/Ads.actions';
+import { UpdateProduct } from '../../Redux/hooks/Ads.actions';
 import { setLoader } from '../../Redux/slices/LoaderSlice';
 import { toast } from 'react-toastify';
 import { ProductData, subcategoryData } from '../../interface/common';
@@ -27,33 +27,37 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
     const [subcategories, setSubcategories] = useState<subcategoryData[]>([]);
     const [loading, setLoading] = useState(false);
-    const { ad, adImages } = useSelector((state: any) => state.ad);
+    const { ad, adImages, isLoading } = useSelector((state: any) => state.ad);
 
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
+    console.log('this is the id passed', id);
 
     useEffect(() => {
         Reset();
-        dispatch(FetchProduct(id));
-        setFormData({
-            productname: ad?.productname,
-            productdescription: ad?.productdescription,
-            productprice: ad?.productprice,
-            quantity: ad?.quantity,
-            category: ad?.category,
-            subcategory: ad?.subcategory,
-            producttype: ad?.producttype,
-            brand: ad?.brand,
-            mainimage: ad?.mainimage,
-            productimages: adImages,
-            producttid: '',
-            isactive: true,
-            isapproved: false,
-        });
-        dispatch(FetchProductImages(id));
-    }, [dispatch, id, ad]);
+        const fetchData = async () => {
+            dispatch(FetchProduct(id));
+            dispatch(FetchProductImages(id));
+            setFormData({
+                productname: ad?.productname,
+                productdescription: ad?.productdescription,
+                productprice: ad?.productprice,
+                quantity: ad?.quantity,
+                category: ad?.category,
+                subcategory: ad?.subcategory,
+                producttype: ad?.producttype,
+                brand: ad?.brand,
+                mainimage: ad?.mainimage,
+                productimages: adImages,
+                producttid: '',
+                isactive: true,
+                isapproved: false,
+            });
+        };
+        fetchData();
+    }, []);
 
-    console.log('This aads', ad);
+    // console.log('This aads', ad);
 
     const getCategory = async () => {
         setLoading(true);
@@ -61,7 +65,7 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
         dispatch(setCategories(response.data.Data));
         setLoading(false);
     };
-    console.log(`is loading,`, loading);
+    // console.log(`is loading,`, loading);
 
     useEffect(() => {
         getCategory();
@@ -278,7 +282,7 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
         }
         try {
             setLoading(true);
-            const response = await createProduct(formData);
+            const response = await UpdateProduct(id, formData);
             if (response.status === 201) {
                 setLoading(false);
                 toast.success('product added successfully');
@@ -303,6 +307,7 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
             {isEditing && (
                 <div className="fixed inset-0 px-5 min-h-full w-full bg-stone-300/50 z-50 flex items-center justify-center py-2 overflow-y-auto">
                     {loading && <Loader />}
+                    {isLoading && <Loader />}
 
                     <form
                         className="w-full lg:w-4/6 h-5/6  rounded-2xl shadow-2xl"

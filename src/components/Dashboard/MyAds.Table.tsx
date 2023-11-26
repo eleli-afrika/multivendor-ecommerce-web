@@ -233,9 +233,11 @@ const AdsTable = () => {
                     />
                     <Edit
                         className="text-green-500"
-                        onClick={() => {
+                        onClick={async () => {
+                            await setAdID(record.producttid);
                             setIsEditing(true);
-                            setAdID(record.producttid);
+                            console.log('this is record id', record.producttid);
+                            console.log('this is ad id', AdID);
                         }}
                     />
                 </div>

@@ -35,13 +35,12 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
         dispatch(setCategories(response.data.Data));
         setLoading(false);
     };
-    console.log(`is loading,`, loading);
 
     useEffect(() => {
         getCategory();
 
         if (selectedCategory === null) {
-            setSelectedCategory(''); // Set selectedCategory to an empty string initially
+            setSelectedCategory('');
         }
 
         if (selectedCategory) {
