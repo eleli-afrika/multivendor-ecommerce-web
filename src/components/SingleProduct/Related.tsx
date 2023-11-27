@@ -20,7 +20,7 @@ const Related = () => {
                     </button> */}
                 </div>
 
-                <div className="flex lg:px-5 gap-2 lg:gap-10 px-2 flex-wrap items-center justify-center lg:justify-normal ">
+                <div className="flex flex-wrap items-center justify-center lg:justify-normal">
                     {Ads?.map((product: any) => (
                         <>
                             <Productcard

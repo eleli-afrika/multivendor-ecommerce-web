@@ -33,7 +33,7 @@ const Popular = ({ Ads }: any) => {
         );
     }
     return (
-        <div className="  mt-10">
+        <div className="mt-3">
             <div className="py-3 px-[20px]  flex flex-row items-center justify-between ">
                 <h1 className="text-stone-500">Sponsored Ads</h1>
                 <button className="underline rounded-lg px-2 text-sm py-1 text-slate-500">

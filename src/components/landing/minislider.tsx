@@ -50,11 +50,7 @@ function AnotherSlider({ Ads }: any) {
     };
 
     const autoSlide = () => {
-        if (currentIndex === clonedAds.length - 1) {
-            setCurrentIndex(0); // Reset back to the beginning
-        } else {
-            slideRight(); // Move to the next slide
-        }
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % clonedAds.length);
     };
 
     useEffect(() => {
@@ -76,13 +72,6 @@ function AnotherSlider({ Ads }: any) {
         transform: `translateX(-${currentIndex * sliderWidth}px)`,
         width: `${clonedAds.length * sliderWidth}px`,
     };
-    // if (isLoading) {
-    //     return (
-    //         <div className="">
-    //             <Loader />
-    //         </div>
-    //     );
-    // }
 
     return (
         <>
@@ -97,18 +86,18 @@ function AnotherSlider({ Ads }: any) {
                 />
                 <div
                     ref={sliderRef}
-                    className="w-full h-full whitespace-nowrap scroll-smooth scrollbar-hidden  bg-gray-light lg:bg-none"
+                    className="w-full h-full overflow-hidden scroll-smooth scrollbar-hidden  bg-gray-light lg:bg-none"
                     style={{
                         display: 'flex',
                         overflowX: 'hidden',
                         position: 'relative',
                     }}
                 >
-                    <div style={sliderStyle}>
+                    <div style={sliderStyle} className="">
                         {clonedAds.map((item, index) => (
                             <div
                                 key={index}
-                                className=" p-[10px] lg:p-4 lg:gap-3 "
+                                className=" p-[5px] lg:p-4 lg:gap-5 "
                                 style={{ width: `${sliderWidth}px` }}
                             >
                                 <Productcard
@@ -116,9 +105,7 @@ function AnotherSlider({ Ads }: any) {
                                     image={` ${item?.product_data?.mainimage}`}
                                     name={item?.product_data?.productname}
                                     price={formatPriceWithCommas(item?.product_data?.productprice)}
-                                    // seller={item?.user_name}
                                     id={item?.product_data?.producttid}
-                                    // description={item?.product_data?.productdescription}
                                 />
                             </div>
                         ))}

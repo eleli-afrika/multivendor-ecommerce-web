@@ -158,6 +158,7 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
 
     const handlemainimageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
+
         if (file) {
             // Create a URL for the selected file to set as a preview
             const previewURL = URL.createObjectURL(file);
@@ -173,6 +174,7 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
                 // Trim the base64 string to remove the data URL prefix
                 const trimmedBase64 = base64String.split(',')[1];
 
+                // Update main image only if a new image is selected
                 setFormData((prevData) => ({
                     ...prevData,
                     mainimage: trimmedBase64, // Set mainimage to the trimmed base64 image data
@@ -188,30 +190,33 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
         if (files) {
             const imageFiles = Array.from(files).filter((file) => file.type.startsWith('image/'));
 
-            const base64Images = await Promise.all(
-                imageFiles.map(async (file) => {
-                    // Convert image file to base64
-                    return new Promise<string>((resolve, reject) => {
-                        const reader = new FileReader();
-                        reader.onload = (event) => {
-                            const base64String = event.target?.result as string;
+            if (imageFiles.length > 0) {
+                const base64Images = await Promise.all(
+                    imageFiles.map(async (file) => {
+                        // Convert image file to base64
+                        return new Promise<string>((resolve, reject) => {
+                            const reader = new FileReader();
+                            reader.onload = (event) => {
+                                const base64String = event.target?.result as string;
 
-                            // Trim the base64 string to remove the data URL prefix
-                            const trimmedBase64 = base64String.split(',')[1];
+                                // Trim the base64 string to remove the data URL prefix
+                                const trimmedBase64 = base64String.split(',')[1];
 
-                            resolve(trimmedBase64);
-                        };
-                        reader.onerror = (error) => reject(error);
-                        reader.readAsDataURL(file);
-                    });
-                })
-            );
+                                resolve(trimmedBase64);
+                            };
+                            reader.onerror = (error) => reject(error);
+                            reader.readAsDataURL(file);
+                        });
+                    })
+                );
 
-            setSelectedImages([...selectedImages, ...imageFiles]);
-            setFormData((prevData) => ({
-                ...prevData,
-                productimages: [...prevData.productimages, ...base64Images],
-            }));
+                setSelectedImages([...selectedImages, ...imageFiles]);
+
+                setFormData((prevData) => ({
+                    ...prevData,
+                    productimages: [...prevData.productimages, ...base64Images],
+                }));
+            }
         }
     };
 
@@ -283,9 +288,9 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
         try {
             setLoading(true);
             const response = await UpdateProduct(id, formData);
-            if (response.status === 201) {
+            if (response.status === 200) {
                 setLoading(false);
-                toast.success('product added successfully');
+                toast.success('product updated successfully');
                 navigate('/profile/pending');
                 setIsEditing(false);
             } else {
@@ -439,7 +444,7 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
                                         id="subcategory"
                                         name="subcategory"
                                         className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
-                                        required
+                                        // required
                                     >
                                         <option value="">Select a Subcategory</option>
                                         {subcategories.map((c) => (

@@ -5,14 +5,14 @@ function Productcard({ image, name, price, id }: productCard) {
     const navigate = useNavigate();
 
     return (
-        <div className="relative w-[45vw] md:w-[280px] h-[250px] lg:h-[280px] p-0 mb-2 cursor-pointer rounded-lg">
+        <div className="relative w-[45vw] md:w-[280px] h-[200px] lg:h-[280px] p-0 cursor-pointer rounded-lg">
             <div className="absolute top-0 right-[5px] lg:left-0 z-10">
                 <button className="bg-secondary-orange text-[10px] px-[3px] py-[1px] lg:text-[10px] text-white lg:px-3 lg:py-1 rounded hover:bg-primary-orange">
                     Sponsored
                 </button>
             </div>
             <div
-                className="flex h-full flex-col lg:flex-col rounded-lg sm:bg-[white] border-gray-300 mb-2 relative hover:scale-105 duration-300"
+                className="flex h-full flex-col lg:flex-col rounded-lg sm:bg-[white] border-gray-300 relative hover:scale-105 duration-300"
                 onClick={() => navigate(`/ad_info/${id}`)}
             >
                 <img
@@ -23,14 +23,14 @@ function Productcard({ image, name, price, id }: productCard) {
                         borderTopLeftRadius: '0.75rem',
                     }}
                 />
-                <div className="flex-grow flex flex-col justify-between py-0 lg:p-2">
+                <div className=" flex flex-col justify-between py-0 lg:p-2">
                     <div className="flex flex-row justify-between text-md">
                         {/* <p className="text-green-dark truncate text-[15px] font-bold lg:text-md capitalize">
                             {seller}{' '}
                         </p> */}
                     </div>
                     <div>
-                        <h1 className="text-[15px] lg:text-[18px] text-black-main lg:text-md capitalize line-clamp-3">
+                        <h1 className="text-[15px] ] text-black-main lg:text-md capitalize line-clamp-2 h-[40px]">
                             {name}
                         </h1>
                         {/* <p className="text-[14px] line-clamp-3 lowercase text-black-main">
