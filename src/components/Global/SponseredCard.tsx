@@ -23,14 +23,14 @@ function Productcard({ image, name, price, id }: productCard) {
                         borderTopLeftRadius: '0.75rem',
                     }}
                 />
-                <div className=" flex flex-col justify-between py-0 lg:p-2">
+                <div className=" flex flex-col justify-between py-2 lg:p-2">
                     <div className="flex flex-row justify-between text-md">
                         {/* <p className="text-green-dark truncate text-[15px] font-bold lg:text-md capitalize">
                             {seller}{' '}
                         </p> */}
                     </div>
                     <div>
-                        <h1 className="text-[15px] ] text-black-main lg:text-md capitalize line-clamp-2 h-[40px]">
+                        <h1 className="text-[15px] text-black-main lg:text-md capitalize h-[40px] line-clamp-2 leading-tight overflow-y-hidden">
                             {name}
                         </h1>
                         {/* <p className="text-[14px] line-clamp-3 lowercase text-black-main">
@@ -38,7 +38,7 @@ function Productcard({ image, name, price, id }: productCard) {
                             {description}{' '}
                         </p> */}
                     </div>
-                    <p className="text-[18px] font-bold text-black-main">Ksh: {price}</p>
+                    <p className="text-[18px] font-bold text-black-main mt-2">Ksh: {price}</p>
                 </div>
             </div>
         </div>

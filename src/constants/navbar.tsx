@@ -13,7 +13,7 @@ import Searchbar from './searchbar';
 // import { setLoader } from "../Redux/slices/LoaderSlice";
 import { getLoggedInUser } from '../Redux/slices/AuthSlice';
 import { AppDispatch } from '../Redux/store';
-import { Search } from '@mui/icons-material';
+// import { Search } from '@mui/icons-material';
 // import { currentUser } from "../Redux/hooks/user.actions";
 // import { toast } from "react-toastify";
 
@@ -98,7 +98,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
 
                     <div className="p-2 ml-5 block sm:hidden">
                         <button
-                            className="bg-primary-orange text-white p-1 capitalize rounded px-4 hover:bg-secondary-orange"
+                            className="bg-primary-orange text-white p-1 capitalize rounded px-5 hover:bg-secondary-orange py-2 mt-2"
                             onClick={() => {
                                 user ? SetShowAdsForm(true) : navigate('/login');
                             }}
@@ -192,13 +192,13 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                 </ul>
 
                 <div className="sm:hidden flex flex-1 justify-end items-center">
-                    <button
+                    {/* <button
                         className="bg-gray-light h-10  w-10 mr-4 rounded-full"
                         onClick={() => dispatch(setOpener(!open))}
                     >
                         {' '}
                         <Search className="font-bold" />
-                    </button>
+                    </button> */}
                     <IconButton
                         style={{
                             color: '#991b1b',

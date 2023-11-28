@@ -19,10 +19,10 @@ function Productcard({ image, name, price, id }: productCard) {
                 }}
             />
             <div className="py-1 lg:h-2/5 flex flex-col ">
-                <h1 className="text-[15px] text-black-main lg:text-md capitalize flex line-clamp-2 h-[40px] ">
+                <h1 className="text-[15px] text-black-main lg:text-md capitalize h-[40px] line-clamp-2 leading-tight overflow-y-hidden">
                     {name}
                 </h1>
-                <p className="text-black-main text-[18px] font-bold ">Ksh: {price}</p>
+                <p className="text-black-main text-[18px] font-bold mt-2 ">Ksh: {price}</p>
             </div>
         </div>
     );

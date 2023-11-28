@@ -20,11 +20,11 @@ function Productcard({ image, name, price, id }: productCard) {
                 />
                 <div className="py-2 lg:px-2  flex flex-col justify-between">
                     <div className="">
-                        <h1 className="text-[15px]  text-black-main lg:text-md capitalize line-clamp-2 h-[40px]">
+                        <h1 className="text-[15px] text-black-main lg:text-md capitalize h-[40px] line-clamp-2 leading-tight overflow-y-hidden">
                             {name}
                         </h1>
                     </div>
-                    <p className="text-[18px] font-bold text-black-main">Ksh: {price}</p>
+                    <p className="text-[18px] font-bold text-black-main mt-2">Ksh: {price}</p>
                 </div>
             </div>
         </div>

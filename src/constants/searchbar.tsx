@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { axiosService } from '../Redux/helpers/axios';
 import { fetchCategories } from '../Redux/hooks/categories.actions';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { SearchingProduct } from '../Redux/slices/AdsSlice';
 import { AppDispatch } from '../Redux/store';
 import { useNavigate } from 'react-router-dom';
@@ -12,7 +12,7 @@ const SearchBar: React.FC = () => {
     const [, setCategories] = useState<any[]>([]);
     const [, setSubcategories] = useState<any[]>([]);
     const [, setIsLoading] = useState<boolean>(false);
-    const { open } = useSelector((state: any) => state.opener);
+    // const { open } = useSelector((state: any) => state.opener);
     const [searchParam, setSearchParam] = useState<string>('');
 
     // const Ads = useSelector((state: any) => state.AllAds.Ads);
@@ -114,48 +114,46 @@ const SearchBar: React.FC = () => {
 
             {/* for smaller devices */}
 
-            {open && (
-                <form
-                    onSubmit={(e) => {
-                        e.preventDefault();
-                        handleSearch();
-                    }}
-                    className="search flex items-center justify-center my-2 px-1"
-                >
-                    <div className="flex w-full max-w-screen-md border-2 border-secondary-orange rounded-[20px]">
-                        <select
-                            id="categorySelect"
-                            value={category}
-                            onChange={handleCategoryChange}
-                            className="p-3 border border-r-0 rounded-l-[20px] bg-white outline-none w-[10%]"
-                        >
-                            {/* <option value="all">All</option> */}
-                            {/* {categories.map((category) => (
+            <form
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    handleSearch();
+                }}
+                className="search flex items-center justify-center my-2 px-1"
+            >
+                <div className="flex w-full max-w-screen-md border-2 border-secondary-orange rounded-[20px]">
+                    <select
+                        id="categorySelect"
+                        value={category}
+                        onChange={handleCategoryChange}
+                        className="p-3 border border-r-0 rounded-l-[20px] bg-white outline-none w-[10%]"
+                    >
+                        {/* <option value="all">All</option> */}
+                        {/* {categories.map((category) => (
                     <option key={category.categoryid} value={category.categoryname}>
                       {category.categoryname}
                     </option>
                   ))} */}
-                        </select>
+                    </select>
 
-                        <div className="relative flex-1 border py-1">
-                            <input
-                                type="text"
-                                placeholder="What are you looking for?"
-                                className="h-full w-full px-2 py-1"
-                                value={searchParam}
-                                onChange={(e) => setSearchParam(e.target.value)}
-                            />
-                        </div>
-
-                        <button
-                            type="submit"
-                            className="bg-primary-orange text-white  hover:bg-secondary-orange transition-colors delay-300 outline-none shadow-custom rounded-r-[15px] p-3"
-                        >
-                            Search
-                        </button>
+                    <div className="relative flex-1 border py-1">
+                        <input
+                            type="text"
+                            placeholder="What are you looking for?"
+                            className="h-full w-full px-2 py-1"
+                            value={searchParam}
+                            onChange={(e) => setSearchParam(e.target.value)}
+                        />
                     </div>
-                </form>
-            )}
+
+                    <button
+                        type="submit"
+                        className="bg-primary-orange text-white  hover:bg-secondary-orange transition-colors delay-300 outline-none shadow-custom rounded-r-[15px] p-3"
+                    >
+                        Search
+                    </button>
+                </div>
+            </form>
         </>
     );
 };

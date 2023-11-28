@@ -23,7 +23,7 @@ const Footer = () => {
                 }}
             >
                 <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4 mb-4">
-                    <h1 className="text-lg font-semibold mb-2">Quick Links</h1>
+                    <h1 className="text-lg font-semibold mb-2 capitalize">Quick Links</h1>
                     <ul className="list-none ">
                         <li>
                             <Link to={'/'}> Home</Link>
