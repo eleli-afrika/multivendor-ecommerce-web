@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Logo from '../../assets/logo.jpeg';
+import Logo from '../../assets/logo.png';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaEyeSlash, FaEye } from 'react-icons/fa';
@@ -17,7 +17,7 @@ const RegisterForm: React.FC = ({}) => {
     const [formData, setFormData] = useState({
         firstname: '',
         middlename: '',
-        lastname: '',
+        // lastname: '',
         email: '',
         phone: '',
         userimage: '',
@@ -63,10 +63,10 @@ const RegisterForm: React.FC = ({}) => {
         //     return;
         // }
 
-        if (!nameRegex.test(formData.lastname)) {
-            toast.error('Last name cannot contain numbers.');
-            return;
-        }
+        // if (!nameRegex.test(formData.lastname)) {
+        //     toast.error('Last name cannot contain numbers.');
+        //     return;
+        // }
 
         // Password validation: at least 8 characters, one special character, and one capital letter
         const passwordRegex = /^(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\-])(?=.*[A-Z]).{8,}$/;
@@ -89,7 +89,7 @@ const RegisterForm: React.FC = ({}) => {
         setFormData({
             firstname: '',
             middlename: '',
-            lastname: '',
+            // lastname: '',
             email: '',
             phone: '',
             userimage: '',
@@ -118,14 +118,13 @@ const RegisterForm: React.FC = ({}) => {
                         onSubmit={handleSubmit}
                         className="mx-auto p-4 border rounded-lg shadow-lg mt-4"
                     >
+                        <p className="block text-gray-700 text-sm font-bold ml-2"> Full name:</p>
                         <div className="flex gap-2">
                             <div className="mb-4">
                                 <label
                                     htmlFor="firstname"
                                     className="block text-gray-700 text-sm font-bold mb-2"
-                                >
-                                    First Name:
-                                </label>
+                                ></label>
                                 <input
                                     type="text"
                                     id="firstname"
@@ -133,16 +132,16 @@ const RegisterForm: React.FC = ({}) => {
                                     value={formData.firstname}
                                     onChange={handleChange}
                                     className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
-                                    placeholder="Enter your first name"
+                                    placeholder=" First name"
                                 />
                             </div>
 
-                            <div className="mb-4">
+                            <div className="mb-5">
                                 <label
                                     htmlFor="middlename"
                                     className="block text-gray-700 text-sm font-bold mb-2"
                                 >
-                                    Second Name:
+                                    <p className="hidden"></p>
                                 </label>
                                 <input
                                     type="text"
@@ -151,11 +150,11 @@ const RegisterForm: React.FC = ({}) => {
                                     value={formData.middlename}
                                     onChange={handleChange}
                                     className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
-                                    placeholder="Enter your second name"
+                                    placeholder="Last name"
                                 />
                             </div>
                         </div>
-                        <div className="mb-4">
+                        {/* <div className="mb-4">
                             <label
                                 htmlFor="lastname"
                                 className="block text-gray-700 text-sm font-bold mb-2"
@@ -171,7 +170,7 @@ const RegisterForm: React.FC = ({}) => {
                                 className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
                                 placeholder="Enter your Last Name"
                             />
-                        </div>
+                        </div> */}
                         <div className="mb-4">
                             <label
                                 htmlFor="email"
@@ -186,7 +185,7 @@ const RegisterForm: React.FC = ({}) => {
                                 value={formData.email}
                                 onChange={handleChange}
                                 className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
-                                placeholder="Enter your Email Address"
+                                placeholder="Enter your email address"
                             />
                         </div>
                         <div className="mb-4">
@@ -203,7 +202,7 @@ const RegisterForm: React.FC = ({}) => {
                                 value={formData.phone}
                                 onChange={handleChange}
                                 className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
-                                placeholder="Enter your Phone Number"
+                                placeholder="Enter your phone number"
                             />
                         </div>
                         <div className="mb-4">
@@ -265,6 +264,7 @@ const RegisterForm: React.FC = ({}) => {
                                     onChange={handleChange}
                                     className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
                                     placeholder={`Enter password `}
+                                    minLength={4}
                                 />
                                 <button
                                     type="button"
@@ -275,11 +275,11 @@ const RegisterForm: React.FC = ({}) => {
                                 </button>
                             </label>
                             <p className="text-sm text-gray-500 px-2">
-                                The password must be at least 8 characters long{' '}
+                                The password must be at least 4 characters long{' '}
                             </p>
-                            <p className="text-sm text-gray-500 px-2">
+                            {/* <p className="text-sm text-gray-500 px-2">
                                 Must contain a symbol, a number, and an Uppercase Letter
-                            </p>
+                            </p> */}
                         </div>
 
                         <div className="mb-4">
@@ -295,7 +295,7 @@ const RegisterForm: React.FC = ({}) => {
                                     value={formData.confirmPassword}
                                     onChange={handleChange}
                                     className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
-                                    placeholder={`confirm your password `}
+                                    placeholder={`Confirm your password `}
                                 />
                                 <button
                                     type="button"

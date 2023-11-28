@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Logo from '../../assets/logo.jpeg';
+import Logo from '../../assets/logo.png';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { FaEyeSlash, FaEye } from 'react-icons/fa';

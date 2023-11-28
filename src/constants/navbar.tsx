@@ -8,7 +8,7 @@ import { IconButton } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { AiOutlineMenuUnfold } from 'react-icons/ai';
 import { BiSolidBellRing } from 'react-icons/bi';
-import { setOpener, setProfileOpener } from '../Redux/slices/opener';
+import { setProfileOpener } from '../Redux/slices/opener';
 import Searchbar from './searchbar';
 // import { setLoader } from "../Redux/slices/LoaderSlice";
 import { getLoggedInUser } from '../Redux/slices/AuthSlice';
