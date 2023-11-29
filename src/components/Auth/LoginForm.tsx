@@ -26,13 +26,15 @@ const LoginForm: React.FC = ({}) => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        dispatch(LoggingUser(formData));
-        navigate('/');
-
-        setFormData({
-            email: '',
-            password: '',
-        });
+        try {
+            await dispatch(LoggingUser(formData));
+            setFormData({
+                email: '',
+                password: '',
+            });
+        } catch (error) {
+            navigate('/login');
+        }
     };
 
     if (isLoading) {

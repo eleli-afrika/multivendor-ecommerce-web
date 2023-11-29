@@ -78,10 +78,10 @@ export const LoggingUser = createAsyncThunk('auth/logginguser', async (formData:
             toast.success(`welcome, ${response.data.Message}`);
             return response;
         } else {
-            toast.error('Login failed. Please check your credentials.');
+            toast.error(response.data.Error);
         }
-    } catch (error) {
-        toast.error('Login failed. Please check your credentials.');
+    } catch (error: any) {
+        toast.error(error.response.data.Error);
         throw error;
     }
 });

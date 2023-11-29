@@ -183,7 +183,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                         <div>
                             <button
                                 className="bg-primary-orange text-white p-1 rounded px-4 hover:bg-secondary-orange"
-                                onClick={() => navigate('/register')}
+                                onClick={() => navigate('/login')}
                             >
                                 Sign in
                             </button>

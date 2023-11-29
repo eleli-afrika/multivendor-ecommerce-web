@@ -119,19 +119,6 @@ const Sidebar = () => {
                         </div>
                     ))}
                 </ul>
-                {/* <ul className="flex flex-col py-2">
-          <h1 className=" text-stone-600 text-sm font-bold">Top Products</h1>
-          <div className="flex flex-row no-scrollbar overflow-x-scroll w-fit">
-            {TopProducts.map((top_product) => (
-              <div className="flex flex-col bg-slate-300 p-1 w-[50px]  rounded-[5px] mr-3">
-                <img className=" " src={top_product.image} alt="" />
-                <h5 className=" text-ellipsis line-clamp-1 text-stone-500 text-[10px]">
-                  {top_product.name}
-                </h5>
-              </div>
-            ))}
-          </div>
-        </ul> */}
             </div>
             {submenuOpen && (
                 <div
