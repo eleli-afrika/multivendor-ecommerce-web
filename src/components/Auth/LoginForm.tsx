@@ -32,6 +32,8 @@ const LoginForm: React.FC = ({}) => {
                 email: '',
                 password: '',
             });
+
+            navigate('/');
         } catch (error) {
             navigate('/login');
         }
