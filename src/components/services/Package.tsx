@@ -120,12 +120,12 @@ const Package = () => {
                 >
                     <ChevronLeft
                         onClick={slideLeft}
-                        className="absolute cursor-pointer text-white left-[-5] top-[52%] transform -translate-y-[60%] z-50 bg-primary-orange rounded-full"
+                        className="absolute cursor-pointer text-white left-[-5] top-[52%] transform -translate-y-[60%] z-10 bg-primary-orange rounded-full"
                         style={{ fontSize: '24px' }}
                     />
                     <ChevronRight
                         onClick={slideRight}
-                        className="absolute cursor-pointer text-white right-3 top-[52%] transform -translate-y-[60%] z-50  bg-primary-orange  rounded-full"
+                        className="absolute cursor-pointer text-white right-3 top-[52%] transform -translate-y-[60%] z-10  bg-primary-orange  rounded-full"
                         style={{ fontSize: '24px' }}
                     />
                     <div
