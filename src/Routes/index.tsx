@@ -24,7 +24,6 @@ import Profile from '../pages/userDash/profile';
 import Login from '../pages/login';
 import Register from '../pages/Register';
 import ScrollToTop from '../components/ScrollToTop';
-// import ProtectedRoutes from "./ProtectedRoutes";
 import Notification from '../pages/userDash/Notifications';
 import Messages from '../pages/userDash/Messages';
 import { useDispatch } from 'react-redux';
@@ -35,6 +34,7 @@ import BasicPackage from '../components/Packages/Basic';
 import PremiumPackage from '../components/Packages/Premium';
 import StandardPackage from '../components/Packages/standard';
 import UserSidebar from '../components/Dashboard/Sidebar';
+import PrivateRoute from '../components/PrivateRoute';
 
 const Index = () => {
     const [, setShowLogin] = useState<boolean>(false);
@@ -60,16 +60,6 @@ const Index = () => {
         getUser();
     }, []);
 
-    const token = localStorage.getItem('userToken');
-
-    useEffect(() => {
-        console.log(token);
-
-        // if (localStorage.getItem('userToken')) {
-        //     getUser();
-        // }
-    }, []);
-
     const [showAdsForm, setShowAdsForm] = useState<boolean>(false);
     return (
         <div className=" ">
@@ -88,18 +78,45 @@ const Index = () => {
                         <Route path="/" element={<Landing />} />
                         <Route
                             path="/Dashboard"
-                            element={loggedIn ? <UserDashboard /> : <Login />}
+                            element={
+                                <PrivateRoute>
+                                    {' '}
+                                    <UserDashboard />{' '}
+                                </PrivateRoute>
+                            }
                         />
                         <Route path="/pricing" element={<Pricing />} />
-                        <Route path="/free" element={loggedIn ? <Freemium /> : <Login />} />
-                        <Route path="/basic" element={loggedIn ? <BasicPackage /> : <Login />} />
+                        <Route
+                            path="/free"
+                            element={
+                                <PrivateRoute>
+                                    <Freemium />
+                                </PrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="/basic"
+                            element={
+                                <PrivateRoute>
+                                    <BasicPackage />{' '}
+                                </PrivateRoute>
+                            }
+                        />
                         <Route
                             path="/standard"
-                            element={loggedIn ? <StandardPackage /> : <Login />}
+                            element={
+                                <PrivateRoute>
+                                    <StandardPackage />
+                                </PrivateRoute>
+                            }
                         />
                         <Route
                             path="/premium"
-                            element={loggedIn ? <PremiumPackage /> : <Login />}
+                            element={
+                                <PrivateRoute>
+                                    <PremiumPackage />
+                                </PrivateRoute>
+                            }
                         />
                         <Route path="/search/products" element={<AdsPage />} />
                         <Route path="/terms_and_conditions" element={<Terms />} />
@@ -108,24 +125,73 @@ const Index = () => {
                         <Route path="/eduka/faq" element={<FAQSPage />} />
                         <Route path="/ad_info/:id" element={<AdInfo />} />
                         <Route path="/seller/store/" element={<SellersAds />} />
-                        <Route path="/profile" element={<Profile />} />
-                        <Route path="/profile/myads" element={<MyAds />} />
+                        <Route
+                            path="/profile"
+                            element={
+                                <PrivateRoute>
+                                    <Profile />
+                                </PrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="/profile/myads"
+                            element={
+                                <PrivateRoute>
+                                    <MyAds />
+                                </PrivateRoute>
+                            }
+                        />
                         <Route
                             path="/profile/pending"
-                            element={loggedIn ? <Pending /> : <Login />}
+                            element={
+                                <PrivateRoute>
+                                    {' '}
+                                    <Pending />
+                                </PrivateRoute>
+                            }
                         />
                         <Route
                             path="/profile/declined"
-                            element={loggedIn ? <Declined /> : <Login />}
+                            element={
+                                <PrivateRoute>
+                                    <Declined />{' '}
+                                </PrivateRoute>
+                            }
                         />
                         {/* <Route path="/new-ad" element={<CreateAds />} /> */}
-                        <Route path="/profile/closed" element={loggedIn ? <Closed /> : <Login />} />
-                        <Route path="/profile/drafts" element={loggedIn ? <Drafts /> : <Login />} />
+                        <Route
+                            path="/profile/closed"
+                            element={
+                                <PrivateRoute>
+                                    {' '}
+                                    <Closed />
+                                </PrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="/profile/drafts"
+                            element={
+                                <PrivateRoute>
+                                    <Drafts />{' '}
+                                </PrivateRoute>
+                            }
+                        />
                         <Route
                             path="/notifications"
-                            element={loggedIn ? <Notification /> : <Login />}
+                            element={
+                                <PrivateRoute>
+                                    <Notification />
+                                </PrivateRoute>
+                            }
                         />
-                        <Route path="/messages" element={<Messages />} />
+                        <Route
+                            path="/messages"
+                            element={
+                                <PrivateRoute>
+                                    <Messages />
+                                </PrivateRoute>
+                            }
+                        />
                     </Routes>
                 </ScrollToTop>
             </div>

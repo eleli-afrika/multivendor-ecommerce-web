@@ -82,7 +82,7 @@ export const LoggingUser = createAsyncThunk('auth/logginguser', async (formData:
         }
     } catch (error: any) {
         toast.error(error.response.data.Message);
-        console.log(error.response.data);
+        // console.log(error.response.data);
         throw error;
     }
 });
@@ -96,14 +96,14 @@ export const UpdattingOfUser = createAsyncThunk(
     'auth/updatingofuser',
     async ({ userid, formData }: { userid: string; formData: any }) => {
         const response = await UpdateOfUser(userid, formData);
-        console.log(response.data.Data);
+        // console.log(response.data.Data);
         return response.data.Data;
     }
 );
 
 export const GettingSellers = createAsyncThunk('auth/getsellers', async () => {
     const response = await GetSellers();
-    console.log(response.data.Data);
+    // console.log(response.data.Data);
     return response.data.Data;
 });
 

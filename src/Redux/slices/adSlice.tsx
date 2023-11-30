@@ -54,7 +54,7 @@ export const FetchProductImages = createAsyncThunk(
 export const FetchMyProduct = createAsyncThunk('ad/fetchmyproduct', async (id: any, {}) => {
     try {
         const response = await fetchSingle(id);
-        console.log(response.data);
+        // console.log(response.data);
         return response.data.Data.productdata;
     } catch (error) {
         console.error('Error fetching product:', error);
@@ -140,16 +140,16 @@ const AdSlice = createSlice({
                 state.isLoading = false;
                 state.seller = action.payload;
             })
-            .addCase(FetchProduct.rejected, (state, action) => {
-                console.log(action);
+            .addCase(FetchProduct.rejected, (state, _action) => {
+                // console.log(action);
                 state.isLoading = false;
             })
-            .addCase(FetchProductImages.rejected, (state, action) => {
-                console.log(action);
+            .addCase(FetchProductImages.rejected, (state, _action) => {
+                // console.log(action);
                 state.isLoading = false;
             })
-            .addCase(FetchProductSeller.rejected, (state, action) => {
-                console.log(action);
+            .addCase(FetchProductSeller.rejected, (state, _action) => {
+                // console.log(action);
                 state.isLoading = false;
             });
 
