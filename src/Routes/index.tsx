@@ -125,7 +125,7 @@ const Index = () => {
                             path="/notifications"
                             element={loggedIn ? <Notification /> : <Login />}
                         />
-                        <Route path="/messages" element={loggedIn ? <Messages /> : <Login />} />
+                        <Route path="/messages" element={<Messages />} />
                     </Routes>
                 </ScrollToTop>
             </div>

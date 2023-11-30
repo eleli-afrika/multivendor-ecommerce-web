@@ -1,7 +1,7 @@
 import { Table } from 'antd';
 import { Edit, Visibility } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FetchLoggedUsersProducts } from '../../Redux/slices/AdsSlice';
 import { GettingUserById } from '../../Redux/slices/AuthSlice';
 import { AppDispatch } from '../../Redux/store';

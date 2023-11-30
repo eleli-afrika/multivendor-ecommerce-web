@@ -1,14 +1,15 @@
 // import Sidebar from '../../components/Dashboard/Sidebar';
-import ChatSidebar from '../../components/Chat/ChatSidebar';
-import ChartBody from '../../components/Chat/ChartBody';
-import { useState } from 'react';
+// import ChatSidebar from '../../components/Chat/ChatSidebar';
+// import ChartBody from '../../components/Chat/ChartBody';
+// import { useState } from 'react';
+// import Sidebar from '../../components/Dashboard/Sidebar';
 
 const Messages = () => {
-    const [sidebarActive, setSidebarActive] = useState(true);
-    const [chatBodyActive, setChatBodyActive] = useState(false);
+    // const [sidebarActive, setSidebarActive] = useState(true);
+    // const [chatBodyActive, setChatBodyActive] = useState(false);
     return (
         <div className="flex parent h-screen  bg-gray-light p-3 ">
-            <div className="flex  mx-auto my-body  border h-[100%]">
+            {/* <div className="flex  mx-auto my-body  border h-[100%]">
                 <div
                     className={`${
                         sidebarActive
@@ -37,7 +38,8 @@ const Messages = () => {
                         chatBodyActive={chatBodyActive}
                     />
                 </div>
-            </div>
+            </div> */}
+            <p className="text-black-main text-centers mt-2">Hello, you do not have any messages</p>
         </div>
     );
 };
