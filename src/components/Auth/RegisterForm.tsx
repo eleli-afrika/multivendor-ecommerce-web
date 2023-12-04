@@ -207,7 +207,7 @@ const RegisterForm: React.FC = ({}) => {
                                 className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange "
                                 required
                             >
-                                <option value="">select location</option>
+                                <option value="">Select location</option>
                                 {locations.map((location) => (
                                     <option key={location.id} value={location.name}>
                                         {location.name}

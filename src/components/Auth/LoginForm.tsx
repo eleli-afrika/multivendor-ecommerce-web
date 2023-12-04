@@ -81,23 +81,23 @@ const LoginForm: React.FC = ({}) => {
                                 className="block text-gray-700 text-sm font-bold mb-2 relative"
                             >
                                 Password:
-                                <input
-                                    type={showPassword ? 'text' : 'password'}
-                                    id="password"
-                                    name="password"
-                                    value={formData.password}
-                                    onChange={handleChange}
-                                    className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange h-12"
-                                    placeholder={`Enter password `}
-                                />
-                                <button
-                                    type="button"
-                                    onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute top-1/2 right-4"
-                                >
-                                    {showPassword ? <FaEyeSlash /> : <FaEye />}
-                                </button>
                             </label>
+                            <input
+                                type={showPassword ? 'text' : 'password'}
+                                id="password"
+                                name="password"
+                                value={formData.password}
+                                onChange={handleChange}
+                                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange h-12"
+                                placeholder={`Enter password `}
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute top-1/2 right-4"
+                            >
+                                {showPassword ? <FaEyeSlash /> : <FaEye />}
+                            </button>
                         </div>
 
                         <button
