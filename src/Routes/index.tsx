@@ -38,7 +38,7 @@ import PrivateRoute from '../components/PrivateRoute';
 
 const Index = () => {
     const [, setShowLogin] = useState<boolean>(false);
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [, setLoggedIn] = useState(false);
     const dispatch = useDispatch<AppDispatch>();
 
     useEffect(() => {

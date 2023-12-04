@@ -1,4 +1,4 @@
-import { FaFacebook, FaPhone, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
+import { FaFacebook, FaEnvelope } from 'react-icons/fa';
 
 import { IconButton } from '@mui/material';
 import { Link } from 'react-router-dom';
@@ -88,7 +88,7 @@ const Footer = () => {
                                 </Link>
                             </IconButton>
                         </li>
-                        <li className="mb-1">
+                        {/* <li className="mb-1">
                             <IconButton
                                 style={{
                                     backgroundColor: 'white',
@@ -104,7 +104,7 @@ const Footer = () => {
                                     <FaPhone color="gray" />
                                 </Link>
                             </IconButton>
-                        </li>
+                        </li> */}
                         <li className="mb-1">
                             <IconButton
                                 style={{
