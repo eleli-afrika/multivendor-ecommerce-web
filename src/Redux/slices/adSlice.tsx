@@ -8,6 +8,7 @@ interface AdState {
     seller: [];
     isLoading: boolean;
     sellerad: ProductData | null;
+    sellerAdImages: [];
 }
 
 const initialState: AdState = {
@@ -16,6 +17,7 @@ const initialState: AdState = {
     seller: [],
     isLoading: false,
     sellerad: null,
+    sellerAdImages: [],
 };
 
 export const FetchProduct = createAsyncThunk('ad/fetchproduct', async (id: any, { dispatch }) => {
@@ -168,7 +170,7 @@ const AdSlice = createSlice({
             .addCase(FetchMyProductImages.fulfilled, (state, action) => {
                 // console.log(action);
                 state.isLoading = false;
-                state.adImages = action.payload;
+                state.sellerAdImages = action.payload;
             })
 
             .addCase(FetchMyProduct.rejected, (state, action) => {

@@ -50,12 +50,11 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
         isactive: true,
         isapproved: false,
     });
-    console.log(ad);
 
     useEffect(() => {
         const fetchData = async () => {
-            await dispatch(FetchMyProduct(id));
             await dispatch(FetchMyProductImages(id));
+            await dispatch(FetchMyProduct(id));
         };
 
         fetchData();
@@ -79,6 +78,7 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
                 isactive: true,
                 isapproved: false,
             });
+            setmainimagePreview(sellerad.mainimage);
         }
     }, [sellerad, adImages]);
 
