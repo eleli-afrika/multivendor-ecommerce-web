@@ -237,10 +237,10 @@ const RegisterForm: React.FC = ({}) => {
                                 />
                             )}
                         </div>
-                        <div className="mb-4">
+                        <div className="mb-4 relative">
                             <label
                                 htmlFor="password"
-                                className="block text-gray-700 text-sm font-bold mb-2 relative"
+                                className="block text-gray-700 text-sm font-bold mb-2 "
                             >
                                 Password:
                             </label>
@@ -258,7 +258,7 @@ const RegisterForm: React.FC = ({}) => {
                             <button
                                 type="button"
                                 onClick={() => setShowPassword(!showPassword)}
-                                className="absolute top-1/2 right-4"
+                                className="absolute right-2 top-1/2 transform -translate-y-1/2"
                             >
                                 {showPassword ? <FaEyeSlash /> : <FaEye />}
                             </button>
@@ -270,10 +270,10 @@ const RegisterForm: React.FC = ({}) => {
                             </p> */}
                         </div>
 
-                        <div className="mb-4">
+                        <div className="mb-4 relative">
                             <label
                                 htmlFor="confirmPassword"
-                                className="block text-gray-700 text-sm  font-bold mb-2 relative"
+                                className="block text-gray-700 text-sm  font-bold mb-2 "
                             >
                                 Confirm Password:
                             </label>
@@ -289,7 +289,7 @@ const RegisterForm: React.FC = ({}) => {
                             <button
                                 type="button"
                                 onClick={() => setShowPassword(!showPassword)}
-                                className="absolute top-1/2 right-4"
+                                className="absolute right-2 top-1/2 transform -translate-y-1/6"
                             >
                                 {showPassword ? <FaEyeSlash /> : <FaEye />}
                             </button>

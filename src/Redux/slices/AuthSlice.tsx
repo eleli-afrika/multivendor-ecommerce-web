@@ -47,25 +47,23 @@ export const getLoggedInUser = createAsyncThunk('auth/getLoggedInUser', async ()
 export const RegisteringUser = createAsyncThunk('auth/registeringUser', async (formData: any) => {
     try {
         const response = await RegistrationOfUser(formData);
-        // console.log('Response from server:', response);
 
-        // Check if the response status indicates an error
         if (response.status === 400) {
-            // Check if the response contains an error message
             if (response.data && response.data.Data && response.data.Data.Error) {
                 toast.error(response.data.Data.Message);
-                throw new Error(response.data.Data.Message);
+                return Promise.reject(new Error(response.data.Data.Message));
             } else {
-                throw new Error('An unexpected error occurred during registration.');
+                return Promise.reject(
+                    new Error('An unexpected error occurred during registration.')
+                );
             }
         } else {
-            // Handle successful response
             return response;
         }
     } catch (error: any) {
         console.error('Error in Registering User:', error.response.data.Error);
         toast.error(error.response.data.Message);
-        throw error;
+        return Promise.reject(error);
     }
 });
 
@@ -79,11 +77,13 @@ export const LoggingUser = createAsyncThunk('auth/logginguser', async (formData:
             return response;
         } else {
             toast.error(response.data.Message);
+            // Return a rejected promise to trigger the catch block in handleSubmit
+            return Promise.reject(new Error(response.data.Message));
         }
     } catch (error: any) {
         toast.error(error.response.data.Message);
-        // console.log(error.response.data);
-        throw error;
+        // Return a rejected promise to trigger the catch block in handleSubmit
+        return Promise.reject(error);
     }
 });
 

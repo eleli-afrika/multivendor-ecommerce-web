@@ -13,6 +13,7 @@ const LoginForm: React.FC = ({}) => {
     const dispatch = useDispatch<AppDispatch>();
     const [showPassword, setShowPassword] = useState(false);
     const isLoading = useSelector((state: any) => state.auth.isLoading);
+    const userToken = useSelector((state: any) => state.auth.userToken);
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -33,19 +34,18 @@ const LoginForm: React.FC = ({}) => {
                 password: '',
             });
 
-            navigate('/');
+            if (!isLoading && userToken) {
+                navigate('/');
+            }
         } catch (error) {
             navigate('/login');
         }
     };
 
-    if (isLoading) {
-        return <Loader />;
-    }
-
     return (
         <>
             <div className="h-screen mx-auto p-4 bg-gray-light w-screen">
+                {isLoading && <Loader />}
                 <div
                     className="min-w-[300px] max-w-[600px] h-5/6 w-full bg-white rounded-2xl p-2 py-8 md:p-10 price "
                     style={{ margin: 'auto' }}
@@ -75,10 +75,10 @@ const LoginForm: React.FC = ({}) => {
                                 placeholder="Enter your email address"
                             />
                         </div>
-                        <div className="mb-4">
+                        <div className="mb-4 relative">
                             <label
                                 htmlFor="password"
-                                className="block text-gray-700 text-sm font-bold mb-2 relative"
+                                className="block text-gray-700 text-sm font-bold mb-2 "
                             >
                                 Password:
                             </label>
@@ -94,7 +94,7 @@ const LoginForm: React.FC = ({}) => {
                             <button
                                 type="button"
                                 onClick={() => setShowPassword(!showPassword)}
-                                className="absolute top-1/2 right-4"
+                                className="absolute right-2 top-1/2 transform -translate-y-1/6"
                             >
                                 {showPassword ? <FaEyeSlash /> : <FaEye />}
                             </button>
