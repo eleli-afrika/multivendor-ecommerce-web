@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getLoggedInUser } from '../Redux/slices/AuthSlice';
 import Minslider from '../components/landing/minislider';
-import Package from '../components/services/Package';
 import Sponsered from '../components/landing/Sponsered';
 import { FetchProductsAsync } from '../Redux/slices/AdsSlice';
 import { AppDispatch } from '../Redux/store';
@@ -46,10 +45,6 @@ const Landing = () => {
                         <Minslider Ads={Ads} />
                         <Sponsered Ads={Ads} />
                         <Popular Ads={Ads} />
-                        <div className=" md:block">
-                            {' '}
-                            <Package />
-                        </div>
                     </div>
                 </div>
             </div>

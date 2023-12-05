@@ -61,34 +61,23 @@ const RegisterForm: React.FC = ({}) => {
             toast.error('Please select a valid location.');
             return;
         }
-        try {
-            await dispatch(RegisteringUser(formData));
-            // Registration successful, navigate to login and reset form data
-            navigate('/login');
-            setFormData({
-                firstname: '',
-                lastname: '',
-                email: '',
-                phone: '',
-                userimage: '',
-                location: '',
-                password: '',
-                confirmPassword: '',
-            });
-        } catch (error: any) {
-            // Registration failed, navigate to register and display error
-            navigate('/register');
-            toast.error(error.message);
-        }
+        await dispatch(RegisteringUser({ formData, navigate }));
+        setFormData({
+            firstname: '',
+            lastname: '',
+            email: '',
+            phone: '',
+            userimage: '',
+            location: '',
+            password: '',
+            confirmPassword: '',
+        });
     };
-
-    if (isLoading) {
-        return <Loader />;
-    }
 
     return (
         <>
             <div className="h-screen mx-auto p-4 bg-gray-light w-screen overflow-auto">
+                {isLoading && <Loader />}
                 <div
                     className="min-w-[300px] max-w-[600px] h-auto w-full bg-white rounded-2xl p-2 py-8 md:p-10 price "
                     style={{ margin: 'auto' }}

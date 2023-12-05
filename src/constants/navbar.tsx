@@ -11,7 +11,7 @@ import { BiSolidBellRing } from 'react-icons/bi';
 import { setProfileOpener } from '../Redux/slices/opener';
 import Searchbar from './searchbar';
 // import { setLoader } from "../Redux/slices/LoaderSlice";
-import { getLoggedInUser } from '../Redux/slices/AuthSlice';
+import { getLoggedInUser, setUser } from '../Redux/slices/AuthSlice';
 import { AppDispatch } from '../Redux/store';
 // import { Search } from '@mui/icons-material';
 // import { currentUser } from "../Redux/hooks/user.actions";
@@ -55,12 +55,13 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
     const [userSmallnav, setUserSmallNav] = useState(false);
     // console.log(user);
 
-    const Logout = () => {
+    const Logout = async () => {
         localStorage.removeItem('userToken');
+        await dispatch(setUser(null));
         navigate('/login');
     };
 
-    useEffect(() => {}, [userToken]);
+    useEffect(() => {}, [userToken, user]);
     return (
         <nav
             className={`w-full  flex flex-col items-center justify-center   py-0 px-[10px] lg:px-20 fixed price top-0 z-20 ${

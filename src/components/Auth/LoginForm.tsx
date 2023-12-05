@@ -13,7 +13,7 @@ const LoginForm: React.FC = ({}) => {
     const dispatch = useDispatch<AppDispatch>();
     const [showPassword, setShowPassword] = useState(false);
     const isLoading = useSelector((state: any) => state.auth.isLoading);
-    const userToken = useSelector((state: any) => state.auth.userToken);
+    // const userToken = useSelector((state: any) => state.auth.userToken);
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -27,19 +27,11 @@ const LoginForm: React.FC = ({}) => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        try {
-            await dispatch(LoggingUser(formData));
-            setFormData({
-                email: '',
-                password: '',
-            });
-
-            if (!isLoading && userToken) {
-                navigate('/');
-            }
-        } catch (error) {
-            navigate('/login');
-        }
+        await dispatch(LoggingUser({ formData, navigate }));
+        setFormData({
+            email: '',
+            password: '',
+        });
     };
 
     return (
@@ -73,6 +65,7 @@ const LoginForm: React.FC = ({}) => {
                                 onChange={handleChange}
                                 className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange h-12"
                                 placeholder="Enter your email address"
+                                required
                             />
                         </div>
                         <div className="mb-4 relative">
@@ -90,6 +83,7 @@ const LoginForm: React.FC = ({}) => {
                                 onChange={handleChange}
                                 className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange h-12"
                                 placeholder={`Enter password `}
+                                required
                             />
                             <button
                                 type="button"

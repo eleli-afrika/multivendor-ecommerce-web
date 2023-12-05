@@ -49,7 +49,7 @@ export const DashboardLinks = [
     icon: A1,
   },
   {
-    name: "profile",
+    name: "Profile",
     url: "profile",
     icon: A4,
   },
