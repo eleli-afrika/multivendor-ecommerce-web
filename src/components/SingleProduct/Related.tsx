@@ -2,8 +2,9 @@ import { useSelector } from 'react-redux';
 import Productcard from '../Global/PopularCard';
 
 const Related = () => {
-    const Ads = useSelector((state: any) => state.AllAds.Ads);
+    const Ads = useSelector((state: any) => state.ad.similarAds);
     console.log(Ads);
+
     function formatPriceWithCommas(price: any) {
         if (price) {
             return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -12,7 +13,7 @@ const Related = () => {
     }
     return (
         <div className="lg:p-5 ">
-            <div className="pb-2  bg-gray-light">
+            <div className="pb-2  bg-gray-light ">
                 <div className="py-3  flex flex-row items-center justify-between px-5 md:justify-center">
                     <h1 className="text-stone-700">You may also like</h1>
                     {/* <button className="underline rounded-lg px-2 text-sm py-1 text-slate-500">
@@ -24,12 +25,12 @@ const Related = () => {
                     {Ads?.map((product: any) => (
                         <>
                             <Productcard
-                                key={product?.product_data?.producttid}
-                                image={`${product?.product_data?.mainimage}`}
-                                name={product?.product_data?.productname}
-                                price={formatPriceWithCommas(product?.product_data?.productprice)}
+                                key={product.producttid}
+                                image={`${product?.mainimage}`}
+                                name={product?.productname}
+                                price={formatPriceWithCommas(product?.productprice)}
                                 // seller={product?.user_name}
-                                id={product?.product_data?.producttid}
+                                id={product?.producttid}
                                 // description={product?.product_data?.productdescription}
                             />
                         </>

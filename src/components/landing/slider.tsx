@@ -62,9 +62,9 @@ const ImageSlider = () => {
                                 <i className="text-gray-500">Let's help you sell </i>
                             </p>
                             <h2 className=" text-xl lg:text-2xl font-bold">{image.tagline}</h2>
-                            <button className="border-secondary-orange border-spacing-1 bg-secondary-orange rounded p-2 capitalize m-2 font-normal text-sm hover:bg-primary-orange cursor-pointer">
+                            {/* <button className="border-secondary-orange border-spacing-1 bg-secondary-orange rounded p-2 capitalize m-2 font-normal text-sm hover:bg-primary-orange cursor-pointer">
                                 {image.navigate}
-                            </button>
+                            </button> */}
                         </div>
                     </div>
                 ))}

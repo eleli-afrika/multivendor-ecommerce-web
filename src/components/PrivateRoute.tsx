@@ -8,7 +8,7 @@ interface PrivateRouteProps {
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
     const user = localStorage.getItem('userToken');
-    console.log(user);
+    // console.log(user);
     return user ? <>{children}</> : <Navigate to="/login" replace />;
 };
 

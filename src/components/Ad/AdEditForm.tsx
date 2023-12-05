@@ -14,7 +14,7 @@ import { Delete } from '@mui/icons-material';
 import Loader from '../../constants/loader';
 
 import { AppDispatch } from '../../Redux/store';
-import { FetchMyProduct, FetchMyProductImages } from '../../Redux/slices/adSlice';
+import { FetchMyProduct } from '../../Redux/slices/adSlice';
 
 type AdFormProps = {
     id: any;
@@ -27,9 +27,9 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
     const [subcategories, setSubcategories] = useState<subcategoryData[]>([]);
     const [loading, setLoading] = useState(false);
-    const { sellerad, adImages, isLoading } = useSelector((state: any) => state.ad);
-    const ad = sellerad;
+    const { sellerad, sellerAdImages, isLoading } = useSelector((state: any) => state.ad);
 
+    const adImages = sellerAdImages;
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
 
@@ -53,7 +53,6 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await dispatch(FetchMyProductImages(id));
             await dispatch(FetchMyProduct(id));
         };
 
@@ -72,17 +71,18 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
                 subcategory: sellerad.subcategory,
                 producttype: sellerad.producttype,
                 brand: sellerad.brand,
-                mainimage: sellerad.mainimage,
+                mainimage: '',
                 productimages: adImages,
                 producttid: '',
                 isactive: true,
                 isapproved: false,
             });
             setmainimagePreview(sellerad.mainimage);
+            setSelectedImages(adImages);
         }
     }, [sellerad, adImages]);
 
-    console.log(ad);
+    console.log(adImages);
 
     const getCategory = async () => {
         setLoading(true);
@@ -524,7 +524,7 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
                                     />
                                 </div>
 
-                                <div className="mb-2">
+                                <div className="mb-2 flex  items-center">
                                     <label
                                         htmlFor="mainimage"
                                         className="block text-gray-700 text-sm font-bold mb-2 cursor-pointer"
@@ -533,15 +533,7 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
                                         <div
                                             className={`h-20 w-20 rounded-full border-stone-500 border flex items-center justify-center`}
                                         >
-                                            {mainimagePreview ? (
-                                                <img
-                                                    src={mainimagePreview}
-                                                    alt="Cover Image Preview"
-                                                    className="w-20 h-20 rounded-full object-cover"
-                                                />
-                                            ) : (
-                                                <BsFillImageFill size={40} />
-                                            )}
+                                            <BsFillImageFill size={40} />
                                         </div>
                                     </label>
                                     <input
@@ -551,6 +543,11 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
                                         className="hidden w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
                                         placeholder="Upload your Cover Image"
                                         onChange={handlemainimageChange}
+                                    />
+                                    <img
+                                        src={mainimagePreview || undefined}
+                                        alt=""
+                                        className="w-20 h-20 rounded-full object-cover"
                                     />
                                 </div>
 
@@ -584,7 +581,11 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
                                                 className="flex  flex-row h-20 w-20 relative"
                                             >
                                                 <img
-                                                    src={URL.createObjectURL(image)}
+                                                    src={
+                                                        image
+                                                            ? URL.createObjectURL(image)
+                                                            : undefined
+                                                    }
                                                     alt={`Image ${index + 1}`}
                                                     className="object-cover rounded h-full w-full"
                                                 />
