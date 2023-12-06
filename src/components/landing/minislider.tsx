@@ -19,8 +19,6 @@ const CardSlider: React.FC<AdFormProps> = ({ Ads }) => {
     const startXRef = useRef<number | null>(null);
     const startScrollLeftRef = useRef<number | null>(null);
 
-    let isMounted = true;
-
     useEffect(() => {
         const wrapper = wrapperRef.current;
         const carousel = carouselRef.current;
@@ -120,7 +118,7 @@ const CardSlider: React.FC<AdFormProps> = ({ Ads }) => {
         };
 
         const autoPlay = () => {
-            timeoutIdRef.current = window.setTimeout(() => {
+            const intervalId = setInterval(() => {
                 if (carousel) {
                     const cardWidth = firstCardElement?.offsetWidth || 0;
                     const newPosition = carousel.scrollLeft + cardWidth;
@@ -134,10 +132,10 @@ const CardSlider: React.FC<AdFormProps> = ({ Ads }) => {
                         carousel.scrollLeft = newPosition;
                     }
                 }
-
-                // Continue autoplay regardless of screen size
-                autoPlay();
             }, 5000);
+
+            // Save the intervalId to clear it later during cleanup
+            timeoutIdRef.current = intervalId;
         };
 
         autoPlay();
@@ -179,7 +177,7 @@ const CardSlider: React.FC<AdFormProps> = ({ Ads }) => {
                 wrapper.removeEventListener('mouseleave', autoPlay);
             }
         };
-    }, []);
+    }, [Ads]);
 
     // ... (rest of the component code)
 
