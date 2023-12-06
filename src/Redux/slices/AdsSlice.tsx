@@ -62,7 +62,7 @@ export const FetchLoggedUsersProducts = createAsyncThunk(
     async (id: any) => {
         try {
             const response = await fetchLoggedUsersProducts(id);
-            console.log(response);
+            // console.log(response);
             return response.data.Data;
         } catch (error) {
             console.error("Error fetching logged user's products:", error);
