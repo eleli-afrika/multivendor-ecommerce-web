@@ -1,6 +1,6 @@
 import { Avatar } from 'antd';
 import { DashboardLinks } from '../../data/links';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { CloseTwoTone } from '@mui/icons-material';
 import { setProfileOpener } from '../../Redux/slices/opener';
