@@ -38,25 +38,25 @@ const BasicPackage = () => {
                                     /> */}
                                     <h2 className="capitalize mt-5 font-bold"> paypill No:</h2>
                                     <ul className="flex gap-3 font-bold text-2xl">
-                                        <div className="flex gap-2">
-                                            <li className=" border-[4px] rounded p-5 border-green-dark">
+                                        <div className="flex  gap-1 lg:gap-2">
+                                            <li className=" border-[4px] rounded p-2 lg:p-5 border-green-dark">
                                                 5
                                             </li>
-                                            <li className=" border-[4px] rounded p-5 border-green-dark">
+                                            <li className=" border-[4px] rounded p-2 lg:p-5 border-green-dark">
                                                 4
                                             </li>
-                                            <li className=" border-[4px] rounded p-5 border-green-dark">
+                                            <li className=" border-[4px] rounded p-2 lg:p-5 border-green-dark">
                                                 6
                                             </li>
                                         </div>
-                                        <div className="flex gap-2">
-                                            <li className=" border-[4px] rounded p-5 border-green-dark">
+                                        <div className="flex gap-1 lg:gap-2">
+                                            <li className=" border-[4px] rounded  p-2 lg:p-5 border-green-dark">
                                                 1
                                             </li>
-                                            <li className=" border-[4px] rounded p-5 border-green-dark">
+                                            <li className=" border-[4px] rounded p-2 lg:p-5 border-green-dark">
                                                 5
                                             </li>
-                                            <li className=" border-[4px] rounded p-5 border-green-dark">
+                                            <li className=" border-[4px] rounded p-2 lg:p-5 border-green-dark">
                                                 9
                                             </li>
                                         </div>

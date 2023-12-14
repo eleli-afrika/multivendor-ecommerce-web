@@ -5,7 +5,7 @@ function Productcard({ image, name, price, id }: productCard) {
     const navigate = useNavigate();
 
     return (
-        <div className="w-[47vw] md:w-[250px] rounded-xl p-0  h-[250px] lg:h-[280px] mb-2 cursor-pointer px-2 hover:shadow-custom">
+        <div className="w-[47vw] md:w-[250px] rounded-xl p-0  h-[250px] lg:h-[280px] mb-2 cursor-pointer px-2 ">
             <div
                 className="flex h-full flex-col max-w-sm rounded-xl bg-none md:bg-stone-50 radius-2xl border-gray-300 mb-2 relative hover:scale-105 duration-300"
                 onClick={() => navigate(`/ad_info/${id}`)}

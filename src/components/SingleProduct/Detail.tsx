@@ -220,11 +220,7 @@ const ProductInfo = () => {
 
                 <div className="mt-2 rounded" style={{ height: 'auto' }}>
                     <div className="flex flex-col md:flex-row gap-3 md:flex-1">
-                        <div
-                            className=" price lg-w-[50%]"
-                            style={{ borderRadius: '0.25rem' }}
-                            hidden
-                        >
+                        <div className=" price lg-w-[50%]" style={{ borderRadius: '0.25rem' }}>
                             <h1 className="text-center py-4 mb-2 bg-primary-orange rounded-tl rounded-tr  text-white font-bold">
                                 Seller Details
                             </h1>

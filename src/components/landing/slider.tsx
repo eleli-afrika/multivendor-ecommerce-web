@@ -51,6 +51,8 @@ const ImageSlider = () => {
               rounded-[20px] w-[90%] p-[1rem] "
                             style={{
                                 position: 'absolute',
+                                height: '50%',
+                                width: '70%',
                                 top: '50%',
                                 left: '50%',
                                 transform: 'translate(-50%, -50%)',
@@ -59,7 +61,7 @@ const ImageSlider = () => {
                         >
                             <p>eDUKA</p>
                             <p>
-                                <i className="text-gray-500">Let's help you sell </i>
+                                <i className="text-white">Let's help you sell </i>
                             </p>
                             <h2 className=" text-xl lg:text-2xl font-bold">{image.tagline}</h2>
                             {/* <button className="border-secondary-orange border-spacing-1 bg-secondary-orange rounded p-2 capitalize m-2 font-normal text-sm hover:bg-primary-orange cursor-pointer">
