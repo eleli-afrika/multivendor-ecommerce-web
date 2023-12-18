@@ -3,7 +3,7 @@ import Productcard from '../Global/PopularCard';
 
 const Related = () => {
     const Ads = useSelector((state: any) => state.ad.similarAds);
-    console.log(Ads);
+    // console.log(Ads);
 
     function formatPriceWithCommas(price: any) {
         if (price) {
