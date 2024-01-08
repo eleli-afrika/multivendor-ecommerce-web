@@ -13,6 +13,7 @@ import {
 } from '../Redux/slices/AdsSlice';
 import { AppDispatch } from '../Redux/store';
 import { GetInquiries } from '../Redux/hooks/inquiry';
+import CardHeader from '../components/Global/CardHeader';
 
 const Landing = () => {
     const userToken = useSelector((state: any) => state.auth.userToken);
@@ -75,7 +76,17 @@ const Landing = () => {
                 <div className="parent px-0 lg:px-5">
                     <div className="mx-0 lg:mx:auto">
                         <Minslider Ads={TopAds} />
+                        <CardHeader
+                            cardName="Sponsored Ads"
+                            linkTitle={'See All'}
+                            link={'/sponsored_ads'}
+                        />
                         <Sponsered Ads={SponseredAds} />
+                        <CardHeader
+                            cardName="All Ads Listing"
+                            linkTitle={'See All'}
+                            link={'/all_ads'}
+                        />
                         <Popular Ads={Ads} />
                     </div>
                 </div>

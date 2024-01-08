@@ -1,0 +1,25 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
+interface PageTitleProps {
+    cardName: string;
+    linkTitle: string;
+    link: string;
+}
+
+const CardHeader: React.FC<PageTitleProps> = ({ cardName, linkTitle, link }) => {
+    const navigate = useNavigate();
+    return (
+        <div className="py-3 px-[20px]  flex flex-row items-center justify-between ">
+            <h1 className="text-stone-500 my-2 font-bold">{cardName}</h1>
+            <button
+                className="underline rounded-lg px-2 text-sm py-1 text-slate-500 my-2 font-bold"
+                onClick={() => navigate(link)}
+            >
+                {linkTitle}
+            </button>
+        </div>
+    );
+};
+
+export default CardHeader;

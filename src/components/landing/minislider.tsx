@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import './slider.css'; // Import your stylesheet here
 import { useNavigate } from 'react-router-dom';
+import CardHeader from '../Global/CardHeader';
 
 type AdFormProps = {
     Ads: any[];
@@ -186,12 +187,12 @@ const CardSlider: React.FC<AdFormProps> = ({ Ads }) => {
     return (
         <div className="wrapper mt-5 overflow-hidden " ref={wrapperRef}>
             <div className="bg-gray-light px-[7px] ">
-                <h1 className="text-stone-500 my-2 font-bold mt-2">Top Ads</h1>
+                <CardHeader cardName="Top Ads" linkTitle={'See All'} link={'/top_ads'} />
                 <i id="left" className="fa-solid fa-angle-left"></i>
                 <ul className="carousel   py-4 " ref={carouselRef}>
                     {Ads.map((item: any) => (
                         <li
-                            className="card rounded-lg bg-none  w-full lg:w-[47vw] lg:max-w-[220px] h-[250px] lg:h-[240px]  duration-200 cursor-pointer hover:scale-95 "
+                            className="card rounded-lg bg-none  w-full lg:w-[47vw] lg:max-w-[220px] h-[250px] lg:h-[240px]  duration-200 cursor-pointer hover:scale-95  "
                             key={item.product_data.producttid}
                             onClick={() => navigate(`ad_info/${item.product_data.producttid}`)}
                         >
@@ -203,7 +204,6 @@ const CardSlider: React.FC<AdFormProps> = ({ Ads }) => {
                                         borderTopRightRadius: '0.75rem',
                                         borderTopLeftRadius: '0.75rem',
                                     }}
-                                    alt="img"
                                     draggable="false"
                                 />
                             </div>

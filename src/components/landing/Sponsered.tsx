@@ -9,11 +9,13 @@ import SponsereCard from '../Global/SponseredCard';
 import { useSelector } from 'react-redux';
 // import { ProductData } from '../../interface/common';
 import Loader from '../../constants/loader';
+import { useNavigate } from 'react-router-dom';
 // import { FaFacebook, FaPhone, FaWhatsapp } from 'react-icons/fa';
 
 // import Loader from '../../constants/loader';
 const Popular = ({ Ads }: any) => {
     const isLoading = useSelector((state: any) => state.AllAds.isLoading);
+    // const navigate = useNavigate();
 
     // console.log(products);
 
@@ -34,12 +36,15 @@ const Popular = ({ Ads }: any) => {
     }
     return (
         <div className="mt-3">
-            <div className="py-3 px-[20px]  flex flex-row items-center justify-between ">
+            {/* <div className="py-3 px-[20px]  flex flex-row items-center justify-between ">
                 <h1 className="text-stone-500 my-2 font-bold">Sponsored Ads</h1>
-                <button className="underline rounded-lg px-2 text-sm py-1 text-slate-500 my-2 font-bold">
+                <button
+                    className="underline rounded-lg px-2 text-sm py-1 text-slate-500 my-2 font-bold"
+                    onClick={() => navigate('/sponsored_ads')}
+                >
                     See all
                 </button>
-            </div>
+            </div> */}
 
             <div className="flex  gap-4 flex-wrap lg:gap-5 items-center justify-center lg:justify-normal">
                 {Ads?.map((product: any) => (

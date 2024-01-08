@@ -38,6 +38,7 @@ import PrivateRoute from '../components/PrivateRoute';
 import PrivacyPolicy from '../pages/privacy';
 import AllTopAds from '../pages/AllTopAds';
 import AllSponsoredAds from '../pages/AllSponsoredAds';
+import AllAds from '../pages/AllAds';
 
 const Index = () => {
     const [, setShowLogin] = useState<boolean>(false);
@@ -130,6 +131,7 @@ const Index = () => {
                         <Route path="/seller/store/:id" element={<SellersAds />} />
                         <Route path="/top_ads" element={<AllTopAds />} />
                         <Route path="/sponsored_ads" element={<AllSponsoredAds />} />
+                        <Route path="/all_ads" element={<AllAds />} />
 
                         <Route
                             path="/profile"
