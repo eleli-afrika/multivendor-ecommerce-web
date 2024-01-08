@@ -25,7 +25,7 @@ const AdsPage = () => {
                 {' '}
                 <Filters Ads={Ads} />
             </div>
-            <div className="flex-1 mx-auto  my-body p-5">
+            <div className="flex-1 mx-auto  my-body ">
                 {isLoading && <Loader />}
                 {!isLoading && Ads?.length > 0 ? (
                     <Popular Ads={Ads} />
