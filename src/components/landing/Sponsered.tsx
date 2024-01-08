@@ -9,7 +9,7 @@ import SponsereCard from '../Global/SponseredCard';
 import { useSelector } from 'react-redux';
 // import { ProductData } from '../../interface/common';
 import Loader from '../../constants/loader';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 // import { FaFacebook, FaPhone, FaWhatsapp } from 'react-icons/fa';
 
 // import Loader from '../../constants/loader';
