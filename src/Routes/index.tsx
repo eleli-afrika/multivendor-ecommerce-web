@@ -36,6 +36,8 @@ import StandardPackage from '../components/Packages/standard';
 import UserSidebar from '../components/Dashboard/Sidebar';
 import PrivateRoute from '../components/PrivateRoute';
 import PrivacyPolicy from '../pages/privacy';
+import AllTopAds from '../pages/AllTopAds';
+import AllSponsoredAds from '../pages/AllSponsoredAds';
 
 const Index = () => {
     const [, setShowLogin] = useState<boolean>(false);
@@ -126,6 +128,9 @@ const Index = () => {
                         <Route path="/eduka/faq" element={<FAQSPage />} />
                         <Route path="/ad_info/:id" element={<AdInfo />} />
                         <Route path="/seller/store/:id" element={<SellersAds />} />
+                        <Route path="/top_ads" element={<AllTopAds />} />
+                        <Route path="/sponsored_ads" element={<AllSponsoredAds />} />
+
                         <Route
                             path="/profile"
                             element={
