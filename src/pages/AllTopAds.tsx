@@ -30,7 +30,7 @@ const AllTopAds = () => {
                 <Filters Ads={Ads} />
             </div>
             <div className="flex-1 mx-auto  my-body ">
-                <h2 className="p-[20px]">Sponsored Ads</h2>
+                <h2 className="p-[20px]">Top Ads</h2>
                 {isLoading && <Loader />}
                 {!isLoading && Ads?.length > 0 ? <Popular Ads={Ads} /> : <div></div>}
             </div>
