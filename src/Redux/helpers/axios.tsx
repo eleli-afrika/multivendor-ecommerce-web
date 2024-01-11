@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const axiosService = axios.create({
     // baseURL: 'https://eleliafrika.com:8000',
-    // baseURL: 'http://192.168.0.112:8000',
+    // baseURL: 'https://localhost:8000',
     baseURL: 'https://34.93.14.27:8000',
 });
 
