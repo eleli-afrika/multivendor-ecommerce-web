@@ -21,10 +21,7 @@ const Filters = ({ Ads }: any) => {
         const filteredAds = Ads?.filter(
             (ad: any) => ad.product_data.productprice >= min && ad.product_data.productprice <= max
         );
-        if (filteredAds.length == 0) {
-            dispatch(setSearchResults(Ads));
-            return Ads
-        }
+
         dispatch(setSearchResults(filteredAds));
     };
 
