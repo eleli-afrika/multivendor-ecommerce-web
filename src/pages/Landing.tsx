@@ -1,98 +1,102 @@
-import Sidebar from '../constants/sidebar';
-import ImageSlider from '../components/landing/slider';
-import Popular from '../components/landing/popular';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getLoggedInUser } from '../Redux/slices/AuthSlice';
-import Minslider from '../components/landing/minislider';
-import Sponsered from '../components/landing/Sponsered';
+import Sidebar from "../constants/sidebar";
+import ImageSlider from "../components/landing/slider";
+import Popular from "../components/landing/popular";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getLoggedInUser } from "../Redux/slices/AuthSlice";
+import Minslider from "../components/landing/minislider";
+import Sponsered from "../components/landing/Sponsered";
 import {
-    FetchProductsAsync,
-    FetchSponsoredProductsAsync,
-    FetchTopProductsAsync,
-} from '../Redux/slices/AdsSlice';
-import { AppDispatch } from '../Redux/store';
-import { GetInquiries } from '../Redux/hooks/inquiry';
-import CardHeader from '../components/Global/CardHeader';
+  FetchProductsAsync,
+  FetchSponsoredProductsAsync,
+  FetchTopProductsAsync,
+} from "../Redux/slices/AdsSlice";
+import { AppDispatch } from "../Redux/store";
+import { GetInquiries } from "../Redux/hooks/inquiry";
+import CardHeader from "../components/Global/CardHeader";
 
 const Landing = () => {
-    const userToken = useSelector((state: any) => state.auth.userToken);
-    const dispatch = useDispatch<AppDispatch>();
-    const { Ads, SponseredAds, TopAds } = useSelector((state: any) => state.AllAds);
-    const [inquiry, setInquiry] = useState([]);
-    const user = useSelector((state: any) => state.auth.user);
+  const userToken = useSelector((state: any) => state.auth.userToken);
+  const dispatch = useDispatch<AppDispatch>();
+  const { Ads, SponseredAds, TopAds } = useSelector(
+    (state: any) => state.AllAds
+  );
+  const [inquiry, setInquiry] = useState([]);
+  const user = useSelector((state: any) => state.auth.user);
 
-    useEffect(() => {
-        document.title = 'eDuka';
-    }, []);
-    useEffect(() => {
-        dispatch(getLoggedInUser());
-    }, [dispatch]);
+  useEffect(() => {
+    document.title = "eDuka";
+  }, []);
+  useEffect(() => {
+    dispatch(getLoggedInUser());
+  }, [dispatch]);
 
-    const getUser = async () => {
-        dispatch(getLoggedInUser());
+  const getUser = async () => {
+    dispatch(getLoggedInUser());
+  };
+
+  // fetch products
+  useEffect(() => {
+    dispatch(FetchProductsAsync());
+  }, []);
+
+  useEffect(() => {
+    dispatch(FetchTopProductsAsync());
+  }, []);
+
+  useEffect(() => {
+    dispatch(FetchSponsoredProductsAsync());
+  }, []);
+
+  useEffect(() => {
+    if (userToken) {
+      getUser();
+    }
+  }, []);
+
+  useEffect(() => {
+    const fetch = async () => {
+      const response = await GetInquiries();
+      const data = response.data;
+      const usersInquiries = data.filter(
+        (item: any) => item.user === user.userid
+      );
+      setInquiry(usersInquiries);
+      console.log(inquiry);
     };
 
-    // fetch products
-    useEffect(() => {
-        dispatch(FetchProductsAsync());
-    }, []);
-
-    useEffect(() => {
-        dispatch(FetchTopProductsAsync());
-    }, []);
-
-    useEffect(() => {
-        dispatch(FetchSponsoredProductsAsync());
-    }, []);
-
-    useEffect(() => {
-        if (userToken) {
-            getUser();
-        }
-    }, []);
-
-    useEffect(() => {
-        const fetch = async () => {
-            const response = await GetInquiries();
-            const data = response.data;
-            const usersInquiries = data.filter((item: any) => item.user === user.userid);
-            setInquiry(usersInquiries);
-            console.log(inquiry);
-        };
-
-        fetch();
-    }, []);
-    return (
-        <div>
-            <div className="">
-                <div className="flex parent ">
-                    <Sidebar />
-                    <div className="flex-1 mx-auto  my-body ">
-                        <ImageSlider />
-                    </div>
-                </div>
-
-                <div className="parent px-0 lg:px-5">
-                    <div className="mx-0 lg:mx:auto">
-                        <Minslider Ads={TopAds} />
-                        <CardHeader
-                            cardName="Sponsored Ads"
-                            linkTitle={'See All'}
-                            link={'/sponsored_ads'}
-                        />
-                        <Sponsered Ads={SponseredAds} />
-                        <CardHeader
-                            cardName="All Ads Listing"
-                            linkTitle={'See All'}
-                            link={'/all_ads'}
-                        />
-                        <Popular Ads={Ads} />
-                    </div>
-                </div>
-            </div>
+    fetch();
+  }, []);
+  return (
+    <div>
+      <div className="">
+        <div className="flex  ">
+          <Sidebar />
+          <div className="flex-1 mx-auto  my-body ">
+            <ImageSlider />
+          </div>
         </div>
-    );
+
+        <div className="py-2 mt-2  max-w-7xl mx-auto">
+          <div className="mx-0 lg:mx:auto">
+            <Minslider Ads={TopAds} />
+            <CardHeader
+              cardName="Sponsored Ads"
+              linkTitle={"See All"}
+              link={"/sponsored_ads"}
+            />
+            <Sponsered Ads={SponseredAds} />
+            <CardHeader
+              cardName="All Ads Listing"
+              linkTitle={"See All"}
+              link={"/all_ads"}
+            />
+            <Popular Ads={Ads} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Landing;
