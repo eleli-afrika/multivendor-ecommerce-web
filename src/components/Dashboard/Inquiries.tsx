@@ -63,11 +63,13 @@ const Inquiries = () => {
                                 markInquiryAsRead(item?._id);
                             }}
                         >
-                            <p className="font-bold line-clamp-1">{item?.message}</p>
+                            <p className={` line-clamp-1 ${item.read ? '' : 'font-bold'}`}>
+                                {item?.message}
+                            </p>
                             <p className="text-gray-500">
                                 {new Date(item?.createdAt).toLocaleDateString()}
                             </p>
-                            <p>status: {item?.read ? 'has been read' : 'has not been read'}</p>
+                            {/* <p>status: {item?.read ? 'has been read' : 'has not been read'}</p> */}
                         </Link>
                         <div className="flex items-center space-x-2">
                             {item?.read ? (
