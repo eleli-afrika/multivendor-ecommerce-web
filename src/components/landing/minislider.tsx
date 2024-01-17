@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import "./slider.css"; // Import your stylesheet here
 import { useNavigate } from "react-router-dom";
-import CardHeader from "../Global/CardHeader";
 
 type AdFormProps = {
   Ads: any[];
