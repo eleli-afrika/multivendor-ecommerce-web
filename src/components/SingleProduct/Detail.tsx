@@ -64,26 +64,23 @@ const ProductInfo = () => {
     const updateFormData = (key: string, value: string) => {
         setFormData((prevData) => ({ ...prevData, [key]: value }));
     };
+    console.log(formData);
 
     const handleInquirySubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const response = await createInquiry(formData);
         console.log(response);
 
-        // setFormData({
-        //     name: '',
-        //     email: '',
-        //     message: '',
-        //     phone: '',
-        //     user: '',
-        //     product: '',
-        // });
+        setFormData({
+            name: '',
+            email: '',
+            message: '',
+            phone: '',
+            user: '',
+            product: '',
+        });
     };
 
-    // if (!currentUser) {
-    //     // You can render a loading state or return null
-    //     return <Loader />;
-    // }
     return (
         <div className="flex flex-col md:flex-row lg:gap-5 p-3 lg:p-5 w-[100%] mb-10 h-auto">
             {isLoading && <Loader />}
@@ -239,29 +236,29 @@ const ProductInfo = () => {
                         </div>
                         <div className="right md:flex-1">
                             <form onSubmit={handleInquirySubmit}>
-                                {/* <input
+                                <input
                                     type="text"
                                     className="h-10 rounded px-4 mb-2 shadow-custom w-full"
                                     placeholder="Please enter your name"
                                     onChange={(e) => updateFormData('name', e.target.value)}
-                                /> */}
-                                {/* <input
+                                />
+                                <input
                                     type="text"
                                     className="h-10 rounded px-4 mb-2 shadow-custom w-full"
                                     placeholder="Please enter your email"
                                     onChange={(e) => updateFormData('email', e.target.value)}
-                                /> */}
+                                />
                                 <textarea
                                     className="h-12  rounded px-4 mb-1 shadow-custom w-full"
                                     placeholder="Please enter your inquiry"
                                     onChange={(e) => updateFormData('message', e.target.value)}
                                 />
-                                {/* <input
+                                <input
                                     type="text"
                                     className="h-10 rounded px-4 mb-2 shadow-custom w-full"
                                     placeholder="Enter your phone"
                                     onChange={(e) => updateFormData('phone', e.target.value)}
-                                /> */}
+                                />
                                 <button className="bg-black-200 text-white px-10 py-2 mt-4 rounded hover:text-black-200 hover:bg-white transition-colors delay-300">
                                     Inquire
                                 </button>

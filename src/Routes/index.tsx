@@ -39,6 +39,7 @@ import PrivacyPolicy from '../pages/privacy';
 import AllTopAds from '../pages/AllTopAds';
 import AllSponsoredAds from '../pages/AllSponsoredAds';
 import AllAds from '../pages/AllAds';
+import InquiriesPAge from '../pages/userDash/Inquiries';
 
 const Index = () => {
     const [, setShowLogin] = useState<boolean>(false);
@@ -155,6 +156,15 @@ const Index = () => {
                                 <PrivateRoute>
                                     {' '}
                                     <Pending />
+                                </PrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="/profile/inquiries"
+                            element={
+                                <PrivateRoute>
+                                    {' '}
+                                    <InquiriesPAge />
                                 </PrivateRoute>
                             }
                         />

@@ -58,16 +58,22 @@ export const DashboardLinks = [
     url: "notifications",
     icon: A3,
   },
+  // {
+  //   name: "Messages",
+  //   url: "messages",
+  //   icon: A5,
+  // },
   {
-    name: "Messages",
-    url: "messages",
-    icon: A5,
+    name: "Inquiries",
+    url: "profile/inquiries",
+    icon: A2,
   },
   {
     name: "Support",
     url: "contact",
     icon: A2,
   },
+
 ];
 
 export const UserAdsLinks = [

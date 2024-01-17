@@ -1,7 +1,7 @@
 import Sidebar from '../constants/sidebar';
 import ImageSlider from '../components/landing/slider';
 import Popular from '../components/landing/popular';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getLoggedInUser } from '../Redux/slices/AuthSlice';
 import Minslider from '../components/landing/minislider';
@@ -12,15 +12,13 @@ import {
     FetchTopProductsAsync,
 } from '../Redux/slices/AdsSlice';
 import { AppDispatch } from '../Redux/store';
-import { GetInquiries } from '../Redux/hooks/inquiry';
+
 import CardHeader from '../components/Global/CardHeader';
 
 const Landing = () => {
     const userToken = useSelector((state: any) => state.auth.userToken);
     const dispatch = useDispatch<AppDispatch>();
     const { Ads, SponseredAds, TopAds } = useSelector((state: any) => state.AllAds);
-    const [inquiry, setInquiry] = useState([]);
-    const user = useSelector((state: any) => state.auth.user);
 
     useEffect(() => {
         document.title = 'eDuka';
@@ -52,17 +50,6 @@ const Landing = () => {
         }
     }, []);
 
-    useEffect(() => {
-        const fetch = async () => {
-            const response = await GetInquiries();
-            const data = response.data;
-            const usersInquiries = data.filter((item: any) => item.user === user.userid);
-            setInquiry(usersInquiries);
-            console.log(inquiry);
-        };
-
-        fetch();
-    }, []);
     return (
         <div>
             <div className="">
