@@ -44,7 +44,7 @@ const ImageSlider = () => {
             <img
               src={image.img}
               alt={`Image ${index + 1}`}
-              className="object-cover rounded-[0.25rem] w-[100%] p-0 m-0 h-[20vh] lg:h-[55dvh]"
+              className="object-cover rounded-[0.25rem] w-[100%] p-0 m-0 h-[20vh] lg:h-[55vh]"
             />
             <div
               className=" hidden lg:flex flex-col py-4 absolute top-0 left-0 text-white text-center 
@@ -127,7 +127,11 @@ const ImageSlider = () => {
           </div>
         </div>
         <div className="p-2 ">
-          <img src={Logo} alt="" className="bg-white w-full h-1/2    rounded" />
+          <img
+            src={Logo}
+            alt=""
+            className="bg-white w-full h-full   mt-2 animate-bounce rounded"
+          />
         </div>
       </div>
     </div>
