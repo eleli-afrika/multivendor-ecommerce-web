@@ -2,7 +2,7 @@ import A1 from "../assets/A1.png";
 import A2 from "../assets/A2.png";
 import A3 from "../assets/A3.png";
 import A4 from "../assets/A4.png";
-import A5 from "../assets/A5.png";
+// import A5 from "../assets/A5.png";
 
 export const Links = [
   // {
