@@ -30,3 +30,13 @@ export const GetInquiry = async (id: any): Promise<any> => {
         throw new Error();
     }
 };
+
+export const MarkAsRead = async (id: any, formdata: any): Promise<any> => {
+    try {
+        const response = await axios.patch(`${url}/${id}`, formdata);
+        return response.data;
+    } catch (error: any) {
+        console.error(error);
+        throw new Error();
+    }
+};

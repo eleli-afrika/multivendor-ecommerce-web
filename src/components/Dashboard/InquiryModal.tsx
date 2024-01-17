@@ -54,10 +54,16 @@ const InquiryModal: React.FC<ModalProps> = ({ setShowModal, id }) => {
                     </p>
                 </div>
                 <div className="flex space-x-4">
-                    <button className="bg-blue-800 hover:bg-blue-900 text-white px-4 py-2 rounded focus:outline-none focus:shadow-outline-blue">
+                    <button
+                        className="bg-blue-800 hover:bg-blue-900 text-white px-4 py-2 rounded focus:outline-none focus:shadow-outline-blue"
+                        onClick={() => (window.location.href = `tel:${inquiry?.phone}`)}
+                    >
                         Call
                     </button>
-                    <button className="bg-green-light hover:bg-green-dark text-white px-4 py-2 rounded focus:outline-none focus:shadow-outline-green">
+                    <button
+                        className="bg-green-light hover:bg-green-dark text-white px-4 py-2 rounded focus:outline-none focus:shadow-outline-green"
+                        onClick={() => (window.location.href = `mailto:${inquiry?.email}`)}
+                    >
                         Send Email
                     </button>
                     <button
