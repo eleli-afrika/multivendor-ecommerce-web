@@ -5,7 +5,7 @@ function Productcard({ image, name, price, id }: productCard) {
   const navigate = useNavigate();
 
   return (
-    <div className="relative  lg:h-[300px] sm:w-[200px]   w-[50vw] md:w-[210px] lg:w-[210px] xl:w-[210px] px-2 mb-4 ">
+    <div className="relative  lg:h-[300px] sm:w-[210px]   w-[50vw] md:w-[210px] lg:w-[210px] xl:w-[210px] px-2 mb-4 ">
       <div className="absolute top-0 right-[6px] lg:left-0 z-10">
         <button className="bg-secondary-orange text-[10px] px-[3px] py-[1px] lg:text-[10px] text-white lg:px-3 lg:py-1 rounded hover:bg-primary-orange">
           Sponsored
