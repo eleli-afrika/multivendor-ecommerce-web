@@ -90,11 +90,11 @@ const ProductInfo = () => {
                     {/* Images */}
                     {/* <p>{ad.userid}</p> */}
                     <div className="md:flex-1">
-                        <div className="flex flex-col gap-4 ">
+                        <div className="flex flex-col md-gap-4 ">
                             <div className="relative">
                                 <img
                                     src={` ${adImages && adImages[selectedImageIndex]}`}
-                                    className="h-auto w-full max-h-[30rem] rounded-md"
+                                    className="h-auto w-full max-h-[300px] lg:max-h-[30rem] rounded-md object-cover object-center top"
                                     alt=""
                                 />
 
@@ -231,7 +231,7 @@ const ProductInfo = () => {
                         <div className="text-white flex flex-col md:flex-1">
                             <h1 className="font-bold">Make Inquiry</h1>
                             <p className="text-gray-400">
-                                Send your message to the seller for a quick reply
+                                Send the seller an inquiry for this product
                             </p>
                         </div>
                         <div className="right md:flex-1">
