@@ -15,6 +15,7 @@ const AllTopAds = () => {
     useEffect(() => {
         // Fetch top products
         dispatch(FetchTopProductsAsync());
+        document.title = 'View Top Ads';
     }, [dispatch]);
 
     useEffect(() => {
@@ -23,12 +24,16 @@ const AllTopAds = () => {
     }, [Ads, dispatch]);
 
     return (
-        <div className="flex parent ">
-            <div className="h-screen">
+        <div className="flex parent max-w-[90rem] mx-auto mt-2 ">
+            <div className="">
                 <Filters Ads={SearchResults} />
             </div>
-            <div className="flex-1 mx-auto  my-body ">
-                <h2 className="p-[20px]">Top Ads</h2>
+            <div className="flex-1 mx-auto  my-body px:0 md:px-3 ">
+                <div className="px-[6px] md:px-0">
+                    <div className="py-3 px-[20px]  flex flex-row items-center justify-between bg-gray-light my-3 rounded-t-[8px] ">
+                        <h1 className="text-black-main my-2 font-bold">Browse Top Ads</h1>
+                    </div>
+                </div>
                 {isLoading && <Loader />}
                 {!isLoading && Ads?.length > 0 ? <Popular Ads={SearchResults} /> : <div></div>}
             </div>
