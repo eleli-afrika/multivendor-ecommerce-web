@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <div className=" w-full relative">
             <div
-                className="top-0 left-0 p-10 flex flex-wrap justify-center items-center"
+                className="top-0 left-0 p-10 flex flex-wrap justify-center"
                 style={{
                     position: 'absolute',
                     top: '0',
@@ -33,6 +33,9 @@ const Footer = () => {
                         </li>
                         <li>
                             <Link to={'/services'}></Link>
+                        </li>
+                        <li>
+                            <Link to={'/pricing'}>Pricing</Link>
                         </li>
                         <li>
                             <Link to={'/contact'}>Contact us</Link>
