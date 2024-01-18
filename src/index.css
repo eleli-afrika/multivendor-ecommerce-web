@@ -196,9 +196,13 @@ main {
 .my-sidebar {
   width: 18vw;
 }
-.my-other-sidebar {
-  width: 15vw;
-}
+
+
+/* .my-other-sidebar {
+  width: 20vw;
+  height: auto;
+  margin-bottom: 5px;
+} */
 
 .my-body {
   width: 75vw;
