@@ -1,47 +1,57 @@
 import { useEffect, useState } from 'react';
 import { GetInquiries, MarkAsRead } from '../../Redux/hooks/inquiry';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Delete, FiberManualRecord, Visibility } from '@mui/icons-material';
 import InquiryModal from './InquiryModal';
 import Loader from '../../constants/loader';
+import { getLoggedInUser } from '../../Redux/slices/AuthSlice';
+import { AppDispatch } from '../../Redux/store';
+import GlobalLoader from '../Global/GlobalLoader';
 
 const Inquiries = () => {
     const [inquiry, setInquiry] = useState([]);
-    const user = useSelector((state: any) => state.auth.user);
+    const { user } = useSelector((state: any) => state.auth);
+    const { loader } = useSelector((state: any) => state.auth.isLoading);
     const [showModal, setShowModal] = useState(false);
     const [selectedId, SetSelectedId] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const dispatch = useDispatch<AppDispatch>();
 
-    const fetch = async () => {
-        setIsLoading(true);
-        const response = await GetInquiries();
-        const data = response.data;
-        const usersInquiries = await data.filter((item: any) => item.user === user?.userid);
-        setIsLoading(false);
-        setInquiry(usersInquiries);
+    const fetchData = async () => {
+        try {
+            setIsLoading(true);
+            await dispatch(getLoggedInUser());
+            const response = await GetInquiries();
+            const data = response.data;
+            const usersInquiries = await data.filter((item: any) => item.user === user?.userid);
+            setInquiry(usersInquiries);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     useEffect(() => {
-        fetch();
-    }, []);
+        fetchData();
+    }, [dispatch, user?.userid]);
 
     const markInquiryAsRead = async (inquiryId: any): Promise<void> => {
         try {
             setIsLoading(true);
             await MarkAsRead(inquiryId);
             setIsLoading(false);
-            fetch();
+            fetchData();
         } catch (error) {
             console.error('Error marking inquiry as read:', error);
         }
     };
 
-    // Call the function to mark the inquiry as read
-
     return (
         <div className=" px-[10px] py-[20px] md:px-8 md:py-20 max-w-6xl mx-auto bg-white h-[100vh] shadow-lg">
             {isLoading && <Loader />}
+            {loader && <GlobalLoader />}
             {inquiry?.map((item: any) => (
                 <ul
                     key={item?._id}

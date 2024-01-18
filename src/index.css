@@ -287,3 +287,13 @@ padding: 2px 0;
       visibility: hidden;
   }
 }
+
+
+@keyframes wave {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
