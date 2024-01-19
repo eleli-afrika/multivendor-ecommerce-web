@@ -1,17 +1,67 @@
-// import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 import { IconButton } from '@mui/material';
 import { FaFacebook, FaEnvelope } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-// import { IconButton } from '@mui/material';
+import { createInquiry } from '../Redux/hooks/inquiry';
 
-const Contact = () => {
-    // const [loading] = useState(false);
+interface FormData {
+    name: string;
+    phone: string;
+    email: string;
+    message: string;
+    user: string;
+    product: string;
+}
+
+const Contact: React.FC = () => {
+    const [formData, setFormData] = useState<FormData>({
+        name: '',
+        email: '',
+        message: '',
+        phone: '',
+        user: 'admin',
+        product: 'nil',
+    });
+
+    const updateFormData = (key: string, value: string) => {
+        setFormData((prevData) => ({ ...prevData, [key]: value }));
+    };
+
+    const handleInquirySubmit = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        await createInquiry({
+            name: formData.name,
+            phone: formData.phone,
+            email: formData.email,
+            message: formData.message,
+            product: formData.product,
+            user: formData.user,
+        });
+
+        setFormData({
+            name: '',
+            email: '',
+            message: '',
+            phone: '',
+            user: '',
+            product: '',
+        });
+    };
 
     return (
-        <div className="xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 p-[5px]  lg:p-20  ">
-            {/* Contact card */}
+        <div className="xl:mt-12 flex xl:flex-row flex-col gap-10 p-[5px] lg:p-20  pb-10 ">
             <div className="w-full lg:w-1/2 mb-4 lg:mb-0 border-r-2 px-[10px] price rounded-[0.25rem]">
-                <form className="bg-white rounded px-8 pt-6 pb-8">
+                <form className="bg-white rounded px-8 pt-6 pb-8" onSubmit={handleInquirySubmit}>
+                    <div className=" mt-8 py-2 ">
+                        <p className="text-2xl font-bold mb-4">Hi there!</p>
+                        <p className="text-bas text-green-dark  ">
+                            We're delighted to hear from you. Please fill out the form below to get
+                            in touch with us. Whether you have a question, feedback, or an inquiry,
+                            we're here to help!
+                        </p>
+                    </div>
+
                     <div className="mb-4">
                         <label
                             htmlFor="name"
@@ -24,6 +74,9 @@ const Contact = () => {
                             id="name"
                             type="text"
                             placeholder="Enter your name"
+                            onChange={(e) => updateFormData('name', e.target.value)}
+                            value={formData.name}
+                            required
                         />
                     </div>
                     <div className="mb-4">
@@ -35,9 +88,12 @@ const Contact = () => {
                         </label>
                         <input
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-100"
-                            id="name"
+                            id="phone"
                             type="text"
                             placeholder="Enter your phone number"
+                            onChange={(e) => updateFormData('phone', e.target.value)}
+                            value={formData.phone}
+                            required
                         />
                     </div>
                     <div className="mb-4">
@@ -52,6 +108,9 @@ const Contact = () => {
                             id="email"
                             type="email"
                             placeholder="Enter your email"
+                            onChange={(e) => updateFormData('email', e.target.value)}
+                            value={formData.email}
+                            required
                         />
                     </div>
                     <div className="mb-6">
@@ -65,24 +124,26 @@ const Contact = () => {
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32 resize-none bg-gray-100"
                             id="message"
                             placeholder="Your message here"
+                            onChange={(e) => updateFormData('message', e.target.value)}
+                            value={formData.message}
+                            required
                         ></textarea>
                     </div>
                     <div className="flex items-center justify-end">
                         <button
                             className="bg-primary-orange hover:bg-secondary-orange text-white font-bold w-full py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                            type="button"
+                            type="submit"
                         >
                             Send
                         </button>
                     </div>
                 </form>
             </div>
-            {/* Message */}
-            <div className="px-[20px] price h-[fit-content] rounded-[0.25rem] lg:px-20 py-5 bg-black-main text-white">
+            <div className="w-full lg:w-1/2 px-[20px] price h-[fit-content] rounded-[0.25rem] lg:px-20 py-5 bg-black-main text-white items-center ">
                 <h1 className="text-2xl font-bold text-primary mb-6">Need to make an enquiry?</h1>
                 <p className=" mb-6">We respond between 9 a.m. and 9 p.m.</p>
-                <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4 mb-4">
-                    <h1 className="text-lg font-semibold mb-2 w-full bg-yellow">Quick Links</h1>
+                <div className="w-full  mb-4 ">
+                    <p className="text  mb-2 w-full bg-yellow">You may also reach us here:</p>
                     <ul className="list-none flex gap-1">
                         <li className="mb-1">
                             <IconButton
@@ -103,23 +164,6 @@ const Contact = () => {
                             </IconButton>
                         </li>
                         <li className="mb-1">
-                            {/* <IconButton
-                                style={{
-                                    backgroundColor: 'white',
-                                    padding: '0.4rem',
-                                    borderRadius: '0.25rem',
-                                }}
-                            >
-                                <Link
-                                    to="tel:+254706244557"
-                                    className="text-white flex items-center"
-                                    target="_blank"
-                                >
-                                    <FaPhone color="gray" />
-                                </Link>
-                            </IconButton> */}
-                        </li>
-                        <li className="mb-1">
                             <IconButton
                                 style={{
                                     backgroundColor: 'white',
@@ -135,35 +179,6 @@ const Contact = () => {
                                     <FaEnvelope color="orange" />
                                 </Link>
                             </IconButton>
-                        </li>
-                        {/* <li className="mb-1">
-                            <IconButton
-                                style={{
-                                    backgroundColor: 'white',
-                                    padding: '0.4rem',
-                                    borderRadius: '0.25rem',
-                                }}
-                            >
-                                <a href="#" className="text-white flex items-center">
-                                    <FaYoutube color="red" />
-                                </a>
-                            </IconButton>
-                        </li> */}
-                        <li className="mb-1">
-                            {/* <IconButton
-                                style={{
-                                    backgroundColor: 'white',
-                                    padding: '0.4rem',
-                                    borderRadius: '0.25rem',
-                                }}
-                            >
-                                <Link
-                                    to="https://wa.me/+254706244557/?"
-                                    className="text-white flex items-center"
-                                >
-                                    <FaWhatsapp color="green" />
-                                </Link>
-                            </IconButton> */}
                         </li>
                     </ul>
                 </div>
