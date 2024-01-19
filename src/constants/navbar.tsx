@@ -64,13 +64,13 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
     useEffect(() => {}, [userToken, user]);
     return (
         <nav
-            className={`w-full  flex flex-col items-center justify-center   py-0 px-[10px] lg:px-20 fixed price top-0 z-20 ${
+            className={`w-full  flex flex-col items-center justify-center price py-0  fixed  top-0 z-20 ${
                 scrolled ? 'bg-white' : 'bg-white'
             }`}
             // style={{ marginBottom: "2px" }}
         >
-            <div className="w-full flex  justify-center md:justify-between items-center py-2 ">
-                <div className="flex gap-2 items-center  ">
+            <div className="w-full flex  justify-center md:justify-between items-center py-2   px-[10px] lg:px-20">
+                <div className="flex gap-2 items-center   ">
                     {user && (
                         <AiOutlineMenuUnfold
                             size="32"
@@ -109,7 +109,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                     </div>
                 </div>
 
-                <ul className="list-none hidden sm:flex flex-row gap-10">
+                <ul className="list-none hidden sm:flex flex-row gap-10 items-center px-2">
                     <div>
                         <button
                             className="bg-primary-orange text-white p-1 capitalize rounded px-4 hover:bg-secondary-orange"
