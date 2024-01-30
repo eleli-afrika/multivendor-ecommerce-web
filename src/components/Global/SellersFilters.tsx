@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setSearchResults } from '../Redux/slices/AdsSlice';
+
 import { useNavigate } from 'react-router-dom';
-import { AppDispatch } from '../Redux/store';
+
 import { MenuItem, Select } from '@mui/material';
+import { setSearchResults } from '../../Redux/slices/AdsSlice';
+import { AppDispatch } from '../../Redux/store';
 
 const Filters = ({ Ads }: any) => {
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
