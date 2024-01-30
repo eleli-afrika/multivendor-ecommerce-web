@@ -1,25 +1,28 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { FetchSellerProducts } from '../Redux/slices/AdsSlice';
+import { FetchSellerProducts, setSearchResults } from '../Redux/slices/AdsSlice';
 import { Link, useParams } from 'react-router-dom';
 import { AppDispatch } from '../Redux/store';
-import Productcard from './Global/PopularCard';
 import Loader from '../constants/loader';
-import { ProductData } from '../interface/common';
+
 import { GettingUserById } from '../Redux/slices/AuthSlice';
 import { WhatsApp, Phone, Email } from '@mui/icons-material';
 // import { products } from '../data/sponsered';
 import Store from '../assets/store.avif';
 import { Avatar } from '@mui/material';
+import Filters from '../constants/Filters';
+import Popular from './Global/SellersAds';
 
 const SellersAdsComp = () => {
     const dispatch = useDispatch<AppDispatch>();
     const { isLoading, Ads } = useSelector((state: any) => state.AllAds);
-    // console.log(Ads);
+    const SearchResults = useSelector((state: any) => state.AllAds.SearchResults);
+    console.log(`searchResults`, SearchResults);
 
     const theSeller = useSelector((state: any) => state.auth.theSeller);
 
     const { id } = useParams();
+
     useEffect(() => {
         dispatch(GettingUserById(id)).then((action) => {
             if (GettingUserById.fulfilled.match(action)) {
@@ -27,24 +30,28 @@ const SellersAdsComp = () => {
                 dispatch(FetchSellerProducts(id));
             }
         });
-    }, [dispatch, id]);
+    }, []);
+
+    useEffect(() => {
+        dispatch(setSearchResults(Ads));
+    }, [Ads, dispatch]);
 
     return (
         <div className="">
             <div className="px-4">
-                <div className=" bg-yellow-600  relative w-[100%] h-[70vh] md:h-[30vh] rounded-[8px]">
+                <div className="   relative w-[100%] h-[60vh] md:h-[30vh] rounded-[8px]">
                     <img
                         src={Store}
                         alt=""
                         className="w-full h-full object-cover object-center rounded-[8px]"
                     />
-                    <div className="p-5 bg-black bg-opacity-80 justify-center  border  sm:flex md:justify-around rounded-[4px] price absolute top-0 left-0 w-full h-full">
+                    <div className="p-5 bg-black bg-opacity-80 justify-center  border  sm:flex md:justify-around rounded-[4px] price absolute top-0 left-0 w-full h-full items-center">
                         {/* User Image and Join Date */}
                         <div className=" mb-4 sm:mb-0 flex flex-col justify-between">
                             <Avatar
                                 src={` ${theSeller?.userimage}`}
                                 // src={image}
-                                className="w-24 h-24 object-cover mx-auto border border-primary-orange"
+                                className="w-[5rem] h-[5rem] object-cover mx-auto border border-primary-orange p-1"
                                 style={{
                                     height: '100px',
                                     width: '100px',
@@ -90,7 +97,7 @@ const SellersAdsComp = () => {
                         </div>
 
                         {/* User Information */}
-                        <div className="flex flex-col sm:items-start sm:pl-4 text-gray-300">
+                        <div className="flex flex-col items-center sm:items-start sm:pl-4 text-gray-300">
                             <p className="mb-2">
                                 Name:{' '}
                                 <span className="capitalize font-bold text-secondary-orange">
@@ -109,15 +116,16 @@ const SellersAdsComp = () => {
                             </button>
                         </div>
                         {/* user ads info */}
-                        <div className="grid grid-cols-2 gap-4 mt-2 text-white">
-                            <span>Total products:</span>
-                            <span>{Ads.length}</span>
-                            <span>Total Reviews:</span>
-                            <span>{theSeller?.comment}</span>
-                            <span>Total comments:</span>
-                            <span>45</span>
-                            <span>Date Joined:</span>
-                            <span>22/7/2023</span>
+                        <div className=" text-white flex flex-col items-center">
+                            <div className="flex gap-2">
+                                <span>Total products:</span>
+                                <span>{Ads.length}</span>
+                            </div>
+
+                            <div className="flex gap-2">
+                                <span>Date Joined:</span>
+                                <span>22/7/2023</span>
+                            </div>
                         </div>
 
                         {/* user contacts */}
@@ -127,25 +135,19 @@ const SellersAdsComp = () => {
 
             {/* seller's ads */}
 
-            <div className="flex  lg:gap-5  py-3 flex-wrap  lg:px-4 justify-center lg:justify-normal">
-                {isLoading ? (
-                    // Show loading indicator or message
-                    <div>
-                        <Loader />
+            <div className="flex max-w-[90rem] mx-auto my-5 ">
+                <Filters Ads={SearchResults} />
+                <div className="flex-1 mx-auto  my-body px:0 md:px-3 ">
+                    <div className="px-[6px] md:px-0">
+                        <div className="py-3 px-[20px]  flex flex-row items-center justify-between bg-gray-light my-3 rounded-t-[8px] ">
+                            <h1 className="text-black-main my-2 font-bold capitalize">
+                                Browse {theSeller?.firstname} Ads
+                            </h1>
+                        </div>
                     </div>
-                ) : (
-                    // Render products if not loading
-                    Ads.map((product: ProductData) => (
-                        <Productcard
-                            key={product.productname}
-                            image={` ${product.mainimage}`}
-                            // image={product.image}
-                            name={product.productname}
-                            price={product.productprice}
-                            id={product.producttid}
-                        />
-                    ))
-                )}
+                    {isLoading && <Loader />}
+                    {!isLoading && Ads?.length > 0 ? <Popular Ads={SearchResults} /> : <div></div>}
+                </div>
             </div>
         </div>
     );
