@@ -4,8 +4,8 @@ import Popular from '../components/landing/popular';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getLoggedInUser } from '../Redux/slices/AuthSlice';
-import Minslider from '../components/landing/minislider';
-import Sponsered from '../components/landing/Sponsered';
+// import Minslider from '../components/landing/minislider';
+// import Sponsered from '../components/landing/Sponsered';
 import {
     FetchProductsAsync,
     FetchSponsoredProductsAsync,
@@ -18,7 +18,8 @@ import CardHeader from '../components/Global/CardHeader';
 const Landing = () => {
     const userToken = useSelector((state: any) => state.auth.userToken);
     const dispatch = useDispatch<AppDispatch>();
-    const { Ads, SponseredAds, TopAds } = useSelector((state: any) => state.AllAds);
+    // const { Ads, SponseredAds, TopAds } = useSelector((state: any) => state.AllAds);
+    const { Ads } = useSelector((state: any) => state.AllAds);
     const [, setInquiry] = useState([]);
     const user = useSelector((state: any) => state.auth.user);
 

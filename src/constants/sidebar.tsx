@@ -91,7 +91,7 @@ const Sidebar = () => {
                         </div>
                     ))}
                 </ul>
-                <ul className="">
+                <ul className="hidden">
                     <h1 className="mt-3 text-stone-600 text-sm font-bold">Top Sellers</h1>
                     {sellers?.map((seller: any, index: number) => (
                         <div>
