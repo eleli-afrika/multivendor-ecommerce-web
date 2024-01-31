@@ -9,10 +9,10 @@ export const Links = [
   //   name: "Services",
   //   url: "/services",
   // },
-  {
-    name: "pricing",
-    url: "/pricing",
-  },
+  // {
+  //   name: "pricing",
+  //   url: "/pricing",
+  // },
   {
     name: "contact",
     url: "/contact",
