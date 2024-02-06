@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link, useParams } from 'react-router-dom';
 import { FetchProduct } from '../../Redux/slices/adSlice';
@@ -14,7 +14,7 @@ import { createInquiry } from '../../Redux/hooks/inquiry';
 
 const ProductInfo = () => {
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const formRef = useRef<HTMLFormElement>(null);
     const [toggle, settoggle] = useState(false);
