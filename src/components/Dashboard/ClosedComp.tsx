@@ -20,7 +20,7 @@ const AdsComp = () => {
         // console.log(id);
     }, [dispatch, id]);
 
-    const filteredAds = Ads.filter((product: ProductData) => !product.isactive);
+    const filteredAds = Ads?.filter((product: ProductData) => !product.isactive);
 
     return (
         <div className=" ">
@@ -31,8 +31,8 @@ const AdsComp = () => {
                         <div>
                             <Loader />
                         </div>
-                    ) : filteredAds.length > 0 ? (
-                        filteredAds.map((product: ProductData) => (
+                    ) : filteredAds?.length > 0 ? (
+                        filteredAds?.map((product: ProductData) => (
                             <Productcard
                                 key={product.producttid}
                                 image={`${product.mainimage}`}

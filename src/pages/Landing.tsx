@@ -66,7 +66,7 @@ const Landing = () => {
     }, []);
     return (
         <div>
-            <div className=" bg-gray-light">
+            <div className="bg-gray-light">
                 <div className="flex parent ">
                     <Sidebar />
                     <div className="flex-1 mx-auto  my-body ">

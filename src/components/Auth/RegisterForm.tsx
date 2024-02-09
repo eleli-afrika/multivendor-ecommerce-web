@@ -17,7 +17,7 @@ const RegisterForm: React.FC = ({}) => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         firstname: '',
-        // middlename: '',
+        // middlename: ''
         lastname: '',
         email: '',
         phone: '',

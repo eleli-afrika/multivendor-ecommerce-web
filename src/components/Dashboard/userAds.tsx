@@ -31,8 +31,8 @@ const AdsComp = () => {
                         <div>
                             <Loader />
                         </div>
-                    ) : Ads.length > 0 ? (
-                        Ads.map((product: ProductData) => (
+                    ) : Ads?.length > 0 ? (
+                        Ads?.map((product: ProductData) => (
                             <Productcard
                                 key={product.producttid}
                                 image={`${product.mainimage}`}
