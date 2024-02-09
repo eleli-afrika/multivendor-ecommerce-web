@@ -36,20 +36,17 @@ const LoginForm: React.FC = ({}) => {
 
     return (
         <>
-            <div className="h-screen mx-auto p-4 bg-gray-light w-screen">
+            <div className="h-screen mx-auto p-4 bg-gray-light w-screen ">
                 {isLoading && <Loader />}
                 <div
-                    className="min-w-[300px] max-w-[600px] h-5/6 w-full bg-white rounded-2xl p-2 py-8 md:p-10 price "
+                    className="min-w-[300px] max-w-[600px] h-auto  w-full bg-white rounded-2xl p-2 py-8 md:p-10  pb-20"
                     style={{ margin: 'auto' }}
                 >
                     <div className="flex items-center justify-center gap-3">
                         <img src={Logo} alt="logo" className="h-24 object-cover " />
                     </div>
 
-                    <form
-                        onSubmit={handleSubmit}
-                        className="mx-auto p-4 border rounded-lg shadow-lg mt-4 price"
-                    >
+                    <form onSubmit={handleSubmit} className="mx-auto p-4  rounded-lg mt-4 ">
                         <div className="mb-4">
                             <label
                                 htmlFor="email"
@@ -103,7 +100,7 @@ const LoginForm: React.FC = ({}) => {
 
                         <p className="text-gray-500 text-center mt-3">
                             Forgot password?
-                            <Link to="/login" className="ml-2 text-blue-500">
+                            <Link to="/reset_password" className="ml-2 text-blue-500">
                                 Reset password
                             </Link>{' '}
                         </p>

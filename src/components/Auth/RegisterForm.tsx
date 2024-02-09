@@ -86,10 +86,7 @@ const RegisterForm: React.FC = ({}) => {
                         <img src={Logo} alt="logo" className="h-24 object-cover " />
                     </div>
 
-                    <form
-                        onSubmit={handleSubmit}
-                        className="mx-auto p-4 border rounded-lg shadow-lg mt-4"
-                    >
+                    <form onSubmit={handleSubmit} className="mx-auto p-4  rounded-lg  mt-4">
                         <p className="block text-gray-700 text-sm font-bold ml-2"> Full name:</p>
                         <div className="flex gap-2">
                             <div className="mb-4">
