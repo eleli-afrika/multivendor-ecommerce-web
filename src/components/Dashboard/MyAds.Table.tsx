@@ -228,7 +228,7 @@ const AdsTable = () => {
                     <Visibility
                         className="text-primary-orange"
                         onClick={() => {
-                            navigate(`/ad_info/${record.producttid}`), console.log(text);
+                            navigate(`/product_info/${record.producttid}`), console.log(text);
                         }}
                     />
                     <Edit

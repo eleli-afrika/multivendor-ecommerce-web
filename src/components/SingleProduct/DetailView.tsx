@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link, useParams } from 'react-router-dom';
-import { FetchProduct } from '../../Redux/slices/adSlice';
+import { FetchProduct, FetchProductBySeller } from '../../Redux/slices/adSlice';
 import { ChevronLeft, ChevronRight, Email, LocationOn, Phone, WhatsApp } from '@mui/icons-material';
 import { Avatar } from 'antd';
 // import { Rating } from '@mui/material';
@@ -34,7 +34,7 @@ const ProductInfo = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            dispatch(FetchProduct(id));
+            dispatch(FetchProductBySeller(id));
         };
 
         fetchData();

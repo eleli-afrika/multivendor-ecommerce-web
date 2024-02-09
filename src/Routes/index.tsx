@@ -7,7 +7,6 @@ import Declined from '../pages/userDash/Declined';
 import Closed from '../pages/userDash/Closed';
 import Drafts from '../pages/userDash/Drafts';
 import Pricing from '../pages/Pricing';
-// import CreateAds from '../pages/CreateAds';
 import { useEffect, useState } from 'react';
 import AdsForm from '../components/Ad/AdForm';
 import Footer from '../constants/footer';
