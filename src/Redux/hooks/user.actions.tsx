@@ -64,3 +64,8 @@ export const GetSellers = async () => {
     const response = await axiosService.get(`/user/auth/fetchsellers?top="top"`);
     return response;
 };
+
+export const ResetPassword = async (formdata: any) => {
+    const response = await axiosService.post(`/user/auth/updatepassword`, formdata);
+    return response;
+};
