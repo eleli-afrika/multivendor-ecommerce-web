@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import Popular from '../components/landing/popular';
 import Filters from '../constants/Filters';
-import Loader from '../constants/loader';
+// import Loader from '../constants/loader';
 import Search from '../assets/seatch.jpg';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';

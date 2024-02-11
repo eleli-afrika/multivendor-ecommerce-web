@@ -17,7 +17,7 @@ function formatPriceWithCommas(price: any) {
 const CardSlider: React.FC<AdFormProps> = ({ Ads }) => {
     const wrapperRef = useRef<HTMLDivElement>(null);
     const carouselRef = useRef<HTMLUListElement>(null);
-    const timeoutIdRef = useRef<number | null>(null);
+    const timeoutIdRef = useRef<any | null>(null);
     const startXRef = useRef<number | null>(null);
     const startScrollLeftRef = useRef<number | null>(null);
     const navigate = useNavigate();
