@@ -25,7 +25,7 @@ const AdsComp = () => {
     return (
         <div className=" ">
             <div className=" ">
-                <div className="flex  gap-2 flex-wrap lg:gap-5 items-center justify-center lg:justify-normal">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-2">
                     {/* <div className="flex px-2 gap-3 flex-wrap lg:gap-5"> */}
                     {isLoading ? (
                         <div>
