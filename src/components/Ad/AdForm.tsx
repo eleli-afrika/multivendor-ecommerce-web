@@ -510,6 +510,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         className="hidden w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
                                         placeholder="Upload your cover image"
                                         onChange={handlemainimageChange}
+                                        required
                                     />
                                 </div>
 
@@ -536,6 +537,8 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         onChange={handleGalleryUpload}
                                         multiple
                                         max={3}
+                                        min={1}
+                                        required
                                     />
                                     <div className="flex gap-2">
                                         {selectedImages.map((image, index) => (
