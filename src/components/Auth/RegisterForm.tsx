@@ -9,19 +9,24 @@ import Loader from '../../constants/loader';
 import { locations } from '../../data/Location';
 import { Link, useNavigate } from 'react-router-dom';
 
-const RegisterForm: React.FC = ({}) => {
-    // const navigate = useNavigate();
+interface Location {
+    id: number;
+    name: string;
+    subLocations: { id: number; name: string }[];
+}
+
+const RegisterForm: React.FC = () => {
     const [showPassword, setShowPassword] = useState(false);
     const isLoading = useSelector((state: any) => state.auth.isLoading);
     const dispatch = useDispatch<AppDispatch>();
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         firstname: '',
-        // middlename: ''
         lastname: '',
         email: '',
         phone: '',
         userimage: '',
+        county: '',
         location: '',
         password: '',
         confirmPassword: '',
@@ -31,6 +36,7 @@ const RegisterForm: React.FC = ({}) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
+
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const files = e.target.files;
         if (files) {
@@ -56,11 +62,11 @@ const RegisterForm: React.FC = ({}) => {
             return;
         }
 
-        if (formData.location === 'select location') {
-            // Display an error or take appropriate action for invalid location
-            toast.error('Please select a valid location.');
+        if (!formData.county || !formData.location) {
+            toast.error('Please select a county and a location.');
             return;
         }
+
         await dispatch(RegisteringUser({ formData, navigate }));
         setFormData({
             firstname: '',
@@ -68,6 +74,7 @@ const RegisterForm: React.FC = ({}) => {
             email: '',
             phone: '',
             userimage: '',
+            county: '',
             location: '',
             password: '',
             confirmPassword: '',
@@ -87,61 +94,40 @@ const RegisterForm: React.FC = ({}) => {
                     </div>
 
                     <form onSubmit={handleSubmit} className="mx-auto p-4  rounded-lg  mt-4">
-                        <p className="block text-gray-700 text-sm font-bold ml-2"> Full name:</p>
-                        <div className="flex gap-2">
-                            <div className="mb-4">
-                                <label
-                                    htmlFor="firstname"
-                                    className="block text-gray-700 text-sm font-bold mb-2"
-                                ></label>
-                                <input
-                                    type="text"
-                                    id="firstname"
-                                    name="firstname"
-                                    value={formData.firstname}
-                                    onChange={handleChange}
-                                    className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
-                                    placeholder="First name"
-                                    required
-                                />
-                            </div>
-
-                            <div className="mb-5">
-                                <label
-                                    htmlFor="lastname"
-                                    className="block text-gray-700 text-sm font-bold mb-2"
-                                >
-                                    <p className="hidden"></p>
-                                </label>
-                                <input
-                                    type="text"
-                                    id="lastname"
-                                    name="lastname"
-                                    value={formData.lastname}
-                                    onChange={handleChange}
-                                    className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
-                                    placeholder="Second name"
-                                    required
-                                />
-                            </div>
-                        </div>
-                        {/* <div className="mb-4">
+                        <div className="mb-4">
                             <label
-                                htmlFor="lastname"
+                                htmlFor="firstname"
                                 className="block text-gray-700 text-sm font-bold mb-2"
                             >
-                                Last Name:
+                                Full Name:
                             </label>
-                            <input
-                                type="text"
-                                id="lastname"
-                                name="lastname"
-                                value={formData.lastname}
-                                onChange={handleChange}
-                                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
-                                placeholder="Enter your Last Name"
-                            />
-                        </div> */}
+                            <div className="flex gap-2">
+                                <div className="mb-4">
+                                    <input
+                                        type="text"
+                                        id="firstname"
+                                        name="firstname"
+                                        value={formData.firstname}
+                                        onChange={handleChange}
+                                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
+                                        placeholder="First name"
+                                        required
+                                    />
+                                </div>
+                                <div className="mb-5">
+                                    <input
+                                        type="text"
+                                        id="lastname"
+                                        name="lastname"
+                                        value={formData.lastname}
+                                        onChange={handleChange}
+                                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
+                                        placeholder="Last name"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                        </div>
                         <div className="mb-4">
                             <label
                                 htmlFor="email"
@@ -180,6 +166,29 @@ const RegisterForm: React.FC = ({}) => {
                         </div>
                         <div className="mb-4">
                             <label
+                                htmlFor="county"
+                                className="block text-gray-700 text-sm font-bold mb-2"
+                            >
+                                County:
+                            </label>
+                            <select
+                                id="county"
+                                name="county"
+                                value={formData.county}
+                                onChange={handleChange}
+                                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
+                                required
+                            >
+                                <option value="">Select County</option>
+                                {locations.map((location: Location) => (
+                                    <option key={location.id} value={location.name}>
+                                        {location.name}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className="mb-4">
+                            <label
                                 htmlFor="location"
                                 className="block text-gray-700 text-sm font-bold mb-2"
                             >
@@ -190,15 +199,17 @@ const RegisterForm: React.FC = ({}) => {
                                 name="location"
                                 value={formData.location}
                                 onChange={handleChange}
-                                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange "
+                                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
                                 required
                             >
-                                <option value="">Select location</option>
-                                {locations.map((location) => (
-                                    <option key={location.id} value={location.name}>
-                                        {location.name}
-                                    </option>
-                                ))}
+                                <option value="">Select Location</option>
+                                {locations
+                                    .find((location: Location) => location.name === formData.county)
+                                    ?.subLocations.map((subLocation) => (
+                                        <option key={subLocation.id} value={subLocation.name}>
+                                            {subLocation.name}
+                                        </option>
+                                    ))}
                             </select>
                         </div>
                         <div className="mb-4">
