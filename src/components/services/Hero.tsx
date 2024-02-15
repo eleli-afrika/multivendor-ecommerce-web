@@ -17,12 +17,12 @@ const Hero = () => {
                         to showcase your products to a broader audience or discover a Veriety of
                         consumables
                     </p>
-                    <button
+                    {/* <button
                         className="bg-orange-700 w-24 text-white h-[40px] rounded  hover:bg-orange-600 translate-x-2 mt-4"
                         type="submit"
                     >
                         <strong>Subscribe</strong>
-                    </button>
+                    </button> */}
                 </div>
                 <div className="order-1 md:order-2 md:w-1/2">
                     <img
