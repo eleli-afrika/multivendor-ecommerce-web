@@ -22,7 +22,7 @@ import FAQSPage from '../pages/FAQSPage';
 import Profile from '../pages/userDash/profile';
 import Login from '../pages/login';
 import Register from '../pages/Register';
-import ScrollToTop from '../components/ScrollToTop';
+// import ScrollToTop from '../components/ScrollToTop';
 import Notification from '../pages/userDash/Notifications';
 import Messages from '../pages/userDash/Messages';
 import { useDispatch } from 'react-redux';
@@ -77,154 +77,154 @@ const Index = () => {
                 <div className="md:hidden lg:hidden">
                     <UserSidebar />
                 </div>
-                <ScrollToTop>
-                    <Routes>
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/register" element={<Register />} />
-                        <Route path="/reset_password" element={<PassResetPage />} />
-                        <Route path="/" element={<Landing />} />
-                        <Route
-                            path="/Dashboard"
-                            element={
-                                <PrivateRoute>
-                                    {' '}
-                                    <UserDashboard />{' '}
-                                </PrivateRoute>
-                            }
-                        />
-                        <Route path="/pricing" element={<Pricing />} />
-                        <Route
-                            path="/free"
-                            element={
-                                <PrivateRoute>
-                                    <Freemium />
-                                </PrivateRoute>
-                            }
-                        />
-                        <Route
-                            path="/basic"
-                            element={
-                                <PrivateRoute>
-                                    <BasicPackage />{' '}
-                                </PrivateRoute>
-                            }
-                        />
-                        <Route
-                            path="/standard"
-                            element={
-                                <PrivateRoute>
-                                    <StandardPackage />
-                                </PrivateRoute>
-                            }
-                        />
-                        <Route
-                            path="/premium"
-                            element={
-                                <PrivateRoute>
-                                    <PremiumPackage />
-                                </PrivateRoute>
-                            }
-                        />
-                        <Route path="/search/products" element={<AdsPage />} />
-                        <Route path="/terms_and_conditions" element={<Terms />} />
-                        <Route path="/contact" element={<Contact />} />
-                        <Route path="/services" element={<Services />} />
-                        <Route path="/eduka/faq" element={<FAQSPage />} />
-                        <Route path="/ad_info/:id" element={<AdInfo />} />
-                        <Route path="/seller/store/:id" element={<SellersAds />} />
-                        <Route path="/top_ads" element={<AllTopAds />} />
-                        <Route path="/sponsored_ads" element={<AllSponsoredAds />} />
-                        <Route path="/all_ads" element={<AllAds />} />
+                {/* <ScrollToTop> */}
+                <Routes>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/reset_password" element={<PassResetPage />} />
+                    <Route path="/" element={<Landing />} />
+                    <Route
+                        path="/Dashboard"
+                        element={
+                            <PrivateRoute>
+                                {' '}
+                                <UserDashboard />{' '}
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route path="/pricing" element={<Pricing />} />
+                    <Route
+                        path="/free"
+                        element={
+                            <PrivateRoute>
+                                <Freemium />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/basic"
+                        element={
+                            <PrivateRoute>
+                                <BasicPackage />{' '}
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/standard"
+                        element={
+                            <PrivateRoute>
+                                <StandardPackage />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/premium"
+                        element={
+                            <PrivateRoute>
+                                <PremiumPackage />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route path="/search/products" element={<AdsPage />} />
+                    <Route path="/terms_and_conditions" element={<Terms />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/services" element={<Services />} />
+                    <Route path="/eduka/faq" element={<FAQSPage />} />
+                    <Route path="/ad_info/:id" element={<AdInfo />} />
+                    <Route path="/seller/store/:id" element={<SellersAds />} />
+                    <Route path="/top_ads" element={<AllTopAds />} />
+                    <Route path="/sponsored_ads" element={<AllSponsoredAds />} />
+                    <Route path="/all_ads" element={<AllAds />} />
 
-                        <Route
-                            path="/product_info/:id"
-                            element={
-                                <PrivateRoute>
-                                    <SellerAd />
-                                </PrivateRoute>
-                            }
-                        />
+                    <Route
+                        path="/product_info/:id"
+                        element={
+                            <PrivateRoute>
+                                <SellerAd />
+                            </PrivateRoute>
+                        }
+                    />
 
-                        <Route
-                            path="/profile"
-                            element={
-                                <PrivateRoute>
-                                    <Profile />
-                                </PrivateRoute>
-                            }
-                        />
-                        <Route
-                            path="/profile/myads"
-                            element={
-                                <PrivateRoute>
-                                    <MyAds />
-                                </PrivateRoute>
-                            }
-                        />
-                        <Route
-                            path="/profile/pending"
-                            element={
-                                <PrivateRoute>
-                                    {' '}
-                                    <Pending />
-                                </PrivateRoute>
-                            }
-                        />
-                        <Route
-                            path="/profile/inquiries"
-                            element={
-                                <PrivateRoute>
-                                    {' '}
-                                    <InquiriesPAge />
-                                </PrivateRoute>
-                            }
-                        />
-                        <Route
-                            path="/profile/declined"
-                            element={
-                                <PrivateRoute>
-                                    <Declined />{' '}
-                                </PrivateRoute>
-                            }
-                        />
-                        {/* <Route path="/new-ad" element={<CreateAds />} /> */}
-                        <Route
-                            path="/profile/closed"
-                            element={
-                                <PrivateRoute>
-                                    {' '}
-                                    <Closed />
-                                </PrivateRoute>
-                            }
-                        />
-                        <Route
-                            path="/profile/drafts"
-                            element={
-                                <PrivateRoute>
-                                    <Drafts />{' '}
-                                </PrivateRoute>
-                            }
-                        />
-                        <Route
-                            path="/notifications"
-                            element={
-                                <PrivateRoute>
-                                    <Notification />
-                                </PrivateRoute>
-                            }
-                        />
-                        <Route
-                            path="/messages"
-                            element={
-                                <PrivateRoute>
-                                    <Messages />
-                                </PrivateRoute>
-                            }
-                        />
+                    <Route
+                        path="/profile"
+                        element={
+                            <PrivateRoute>
+                                <Profile />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/profile/myads"
+                        element={
+                            <PrivateRoute>
+                                <MyAds />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/profile/pending"
+                        element={
+                            <PrivateRoute>
+                                {' '}
+                                <Pending />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/profile/inquiries"
+                        element={
+                            <PrivateRoute>
+                                {' '}
+                                <InquiriesPAge />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/profile/declined"
+                        element={
+                            <PrivateRoute>
+                                <Declined />{' '}
+                            </PrivateRoute>
+                        }
+                    />
+                    {/* <Route path="/new-ad" element={<CreateAds />} /> */}
+                    <Route
+                        path="/profile/closed"
+                        element={
+                            <PrivateRoute>
+                                {' '}
+                                <Closed />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/profile/drafts"
+                        element={
+                            <PrivateRoute>
+                                <Drafts />{' '}
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/notifications"
+                        element={
+                            <PrivateRoute>
+                                <Notification />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/messages"
+                        element={
+                            <PrivateRoute>
+                                <Messages />
+                            </PrivateRoute>
+                        }
+                    />
 
-                        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                    </Routes>
-                </ScrollToTop>
+                    <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                </Routes>
+                {/* </ScrollToTop> */}
             </div>
             <footer>
                 <Footer />
