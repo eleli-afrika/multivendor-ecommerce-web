@@ -4,7 +4,8 @@ import { useLocation } from 'react-router';
 const ScrollToTop = () => {
     const { pathname } = useLocation();
     useEffect(() => {
-        window.scrollTo(0, 0);
+        const navbarHeight = 300;
+        window.scrollTo(0, 0 - navbarHeight);
         console.log(pathname);
     }, [pathname]);
 

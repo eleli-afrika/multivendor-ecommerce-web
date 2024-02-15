@@ -5,13 +5,11 @@ import ScrollToTop from './components/ScrollToTop';
 
 function App() {
     return (
-        <div className="overflow-x-hidden app">
-            <BrowserRouter>
-                {' '}
-                <ScrollToTop />
-                <Routes />
-            </BrowserRouter>
-        </div>
+        <BrowserRouter>
+            {' '}
+            <ScrollToTop />
+            <Routes />
+        </BrowserRouter>
     );
 }
 export default App;
