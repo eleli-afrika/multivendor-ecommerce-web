@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { fetchCategories } from '../Redux/hooks/categories.actions';
 import { setCategories } from '../Redux/slices/categoriesSlice';
 import { categoryData, subcategoryData } from '../interface/common';
-// import { axiosService } from '../Redux/helpers/axios';
+import { axiosService } from '../Redux/helpers/axios';
 import { ChevronRightTwoTone } from '@mui/icons-material';
 import { SearchingProduct } from '../Redux/slices/AdsSlice';
 import { useNavigate } from 'react-router-dom';
@@ -20,7 +20,7 @@ const Sidebar = () => {
     const categories = useSelector((state: any) => state.categories.categories);
 
     const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
-    const [subcategories] = useState<subcategoryData[]>([]);
+    const [subcategories, setSubcategories] = useState<subcategoryData[]>([]);
     const [loading, setLoading] = useState(false);
     const [submenuOpen, setSubmenuOpen] = useState(false);
     const navigate = useNavigate();
@@ -29,11 +29,25 @@ const Sidebar = () => {
 
     const { open } = useSelector((state: any) => state.opener);
 
+    const tryfetchingSubcategories = async (categoryName: string) => {
+        try {
+            const response = await axiosService.get(
+                `/subcategories/getsubcategories/${categoryName}`
+            );
+            return response.data.Data;
+        } catch (error) {
+            // console.error("Error fetching subcategories:", error);
+            return [];
+        }
+    };
+
     const handleCategoryMouseOver = async (categoryName: string) => {
         if (categoryName === hoveredCategory || loading) return;
         setLoading(true);
         setHoveredCategory(categoryName);
         setLoading(false);
+        const subcategoriesData = await tryfetchingSubcategories(categoryName);
+        setSubcategories(subcategoriesData);
     };
 
     const getCategory = async () => {
@@ -58,11 +72,13 @@ const Sidebar = () => {
         dispatch(GettingSellers());
     }, []);
 
+    console.log(subcategories);
+
     return (
         <div className="rounded">
             <div className="px-4  h-[55vh] max-h-[55vh]  sticky top-0 bg-gray-light shadow-custom rounded overflow-y-auto my-sidebar no-scrollbar ">
                 <ul className="py-1">
-                    <h1 className="my-3 text-stone-600 text-sm font-bold">Top Categories</h1>
+                    <h1 className="my-3 text-stone-600 text-sm font-bold"> Categories</h1>
                     {categories?.map((Menu: categoryData, index: number) => (
                         <div>
                             <li
@@ -70,9 +86,10 @@ const Sidebar = () => {
                                 className={`flex  rounded-md cursor-pointer hover:bg-white  text-sm items-center gap-x-4 capitalize
               ${'mt-2'} ${index === 0 && 'bg-light-white'} `}
                                 onMouseOver={() => {
-                                    // handleCategoryMouseOver(Menu.categoryname);
-                                    // setSubmenuOpen(false);
+                                    handleCategoryMouseOver(Menu.categoryname);
+                                    setSubmenuOpen(true);
                                 }}
+                                // onMouseLeave={() => setSubmenuOpen(false)}
                                 onClick={() => {
                                     handleSearch(Menu.categoryname);
                                 }}
@@ -97,7 +114,7 @@ const Sidebar = () => {
                         <div>
                             <li
                                 key={seller?.ID}
-                                className={`flex  rounded-md cursor-pointer hover:bg-white  text-sm items-center gap-x-4 capitalize
+                                className={`flex  rounded-md cursor-pointer hover:bg-white  text-[10px] items-center gap-x-4 capitalize text-gray-700
               ${'mt-2'} ${index === 0 && 'bg-light-white'} `}
                                 onMouseOver={() => {
                                     // handleCategoryMouseOver(Menu.categoryname);
@@ -122,11 +139,9 @@ const Sidebar = () => {
             </div>
             {submenuOpen && (
                 <div
-                    className="submenu"
+                    className="submenu bg-gray-light"
                     style={{
-                        left: '20vw',
-
-                        // position: "sticky",
+                        left: '18.4vw',
                     }}
                     onMouseLeave={() => setSubmenuOpen(false)}
                 >
@@ -137,7 +152,7 @@ const Sidebar = () => {
                             {subcategories.map((subcategory: subcategoryData, index: number) => (
                                 <li
                                     key={index}
-                                    className={`flex  rounded-md p-2  cursor-pointer hover:bg-white  text-sm items-center gap-x-4 
+                                    className={`cursor-pointer text-sm text-gray-500 
                   ${'mt-2'} ${index === 0 && 'bg-light-white'} `}
                                 >
                                     {subcategory.subcategoryname}

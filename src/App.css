@@ -80,7 +80,7 @@
 }
 
 .submenu {
-  background: white;
+  /* background: white; */
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   position: absolute;
   top: 10rem;
@@ -90,9 +90,10 @@
   padding: 2rem;
   border-radius: 0.25rem;
   transition: all 0.3s linear;
-  max-width: 600px;
+  max-width: 1200px;
   min-width: 200px;
   height: 55vh;
+  
 }
 
 /* Add styles for the submenu to be displayed in a horizontal list */
@@ -108,6 +109,7 @@
 
 .submenu li {
   margin: 0 1rem; /* Add margin between submenu items */
+  width:200px
 }
 .submenu::before {
   content: "";
