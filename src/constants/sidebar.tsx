@@ -24,7 +24,7 @@ const Sidebar = () => {
     const [loading, setLoading] = useState(false);
     const [submenuOpen, setSubmenuOpen] = useState(false);
     const navigate = useNavigate();
-    const sellers = useSelector((state: any) => state.auth.sellers);
+    // const sellers = useSelector((state: any) => state.auth.sellers);
     // console.log(sellers);
 
     const { open } = useSelector((state: any) => state.opener);
@@ -75,7 +75,7 @@ const Sidebar = () => {
     console.log(subcategories);
 
     return (
-        <div className="rounded" onMouseLeave={() => setSubmenuOpen(false)}>
+        <div className="rounded flex relative">
             <div
                 className="px-4  h-[55vh] max-h-[55vh]  sticky top-0 bg-gray-light shadow-custom rounded overflow-y-auto my-sidebar no-scrollbar "
                 // onMouseLeave={() => setSubmenuOpen(false)}
@@ -86,8 +86,10 @@ const Sidebar = () => {
                         <div>
                             <li
                                 key={Menu.categoryname}
-                                className={`flex  rounded-md cursor-pointer hover:bg-white  text-sm items-center gap-x-4 capitalize
-              ${'mt-2'} ${index === 0 && 'bg-light-white'} `}
+                                className={`flex  rounded-md cursor-pointer hover:bg-white  text-sm items-center gap-x-4 capitalize px-2 py-2
+                              ${hoveredCategory === Menu.categoryname ? 'bg-white' : ''} ${
+                                    index === 0 && 'bg-light-white'
+                                } `}
                                 onMouseOver={() => {
                                     handleCategoryMouseOver(Menu.categoryname);
                                     setSubmenuOpen(true);
@@ -101,72 +103,47 @@ const Sidebar = () => {
                                 <span
                                     className={`${
                                         !open && ''
-                                    } origin-left duration-200 text-xs flex-1 text-stone-500`}
+                                    } origin-left duration-200 text-xs flex-1 text-gray-600`}
                                 >
                                     {Menu?.categoryname}
                                 </span>
 
-                                {/* <ChevronRightTwoTone className="ml-auto" /> */}
-                            </li>
-                        </div>
-                    ))}
-                </ul>
-                <ul className="hidden">
-                    <h1 className="mt-3 text-stone-600 text-sm font-bold">Top Sellers</h1>
-                    {sellers?.map((seller: any, index: number) => (
-                        <div>
-                            <li
-                                key={seller?.ID}
-                                className={`flex  rounded-md cursor-pointer hover:bg-white  text-[10px] items-center gap-x-4 capitalize text-gray-700
-              ${'mt-2'} ${index === 0 && 'bg-light-white'} `}
-                                onMouseOver={() => {
-                                    // handleCategoryMouseOver(Menu.categoryname);
-                                    setSubmenuOpen(false);
-                                }}
-                            >
-                                {/* <img src={Menu.categoryimage} className="h-3 w-3 object-cover " /> */}
-                                <span
-                                    className={`${
-                                        !open && ''
-                                    } origin-left duration-200 text-xs flex-1 text-stone-500`}
-                                >
-                                    <h1 className="font-bold">{`${seller?.firstname} ${seller?.lastname}`}</h1>
-                                    <h3 className="text-xs">{seller?.noofproducts} products</h3>
-                                </span>
-
-                                <ChevronRightTwoTone className="ml-auto" />
+                                <ChevronRightTwoTone className="ml-auto text-black-main" />
                             </li>
                         </div>
                     ))}
                 </ul>
             </div>
-            {submenuOpen && (
-                <div
-                    className="submenu bg-gray-light"
-                    style={{
-                        left: '18.4vw',
-                    }}
-                    onMouseLeave={() => setSubmenuOpen(false)}
-                >
-                    {loading ? (
-                        <div className="w-8 h-8 flex items-center justify-center animate-spin rounded-full border-t-2 border-primary-orange border-solid "></div>
-                    ) : (
-                        <ul>
-                            {subcategories.map((subcategory: subcategoryData, index: number) => (
-                                <li
-                                    key={index}
-                                    className={`cursor-pointer text-sm text-gray-500 
-                  ${'mt-2'} ${index === 0 && 'bg-light-white'} `}
-                                >
-                                    {subcategory.subcategoryname}
-                                </li>
-                            ))}
-                        </ul>
-                    )}
-                </div>
-            )}
 
-            {/* this is where the sidebar menu will sit when on smaller devices */}
+            <div>
+                {submenuOpen && (
+                    <div
+                        className=" absolute bg-gray-light  z-10 h-[55vh] w-[18vw] border-l-2 border-primary-orange px-5 shadow-custom overflow-y-auto no-scrollbar text-sm"
+                        style={{
+                            left: '18vw',
+                        }}
+                        onMouseLeave={() => setSubmenuOpen(false)}
+                    >
+                        {loading ? (
+                            <div className="w-8 h-8 flex items-center justify-center animate-spin rounded-full border-t-2 border-primary-orange border-solid "></div>
+                        ) : (
+                            <ul>
+                                {subcategories.map(
+                                    (subcategory: subcategoryData, index: number) => (
+                                        <li
+                                            key={index}
+                                            className={`cursor-pointer text-sm text-gray-500  mt-2 px-3 py-3 hover:bg-white 
+                  ${''} ${index === 0 && 'bg-light-white'} `}
+                                        >
+                                            {subcategory.subcategoryname}
+                                        </li>
+                                    )
+                                )}
+                            </ul>
+                        )}
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
