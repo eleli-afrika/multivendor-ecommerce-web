@@ -40,7 +40,7 @@ import AllSponsoredAds from '../pages/AllSponsoredAds';
 import AllAds from '../pages/AllAds';
 import InquiriesPAge from '../pages/userDash/Inquiries';
 import SellerAd from '../pages/SellerAd';
-import PassResetPage from '../pages/userDash/PassResetPage';
+import PassResetPage from '../pages/userDash/ForgotPassword';
 
 const Index = () => {
     const [, setShowLogin] = useState<boolean>(false);

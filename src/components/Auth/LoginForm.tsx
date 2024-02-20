@@ -97,13 +97,13 @@ const LoginForm: React.FC = ({}) => {
                         >
                             Submit
                         </button>
-                        {/* 
+
                         <p className="text-gray-500 text-center mt-3">
                             Forgot password?
                             <Link to="/reset_password" className="ml-2 text-blue-500">
                                 Reset password
                             </Link>{' '}
-                        </p> */}
+                        </p>
                         <p className="text-gray-500 text-center mt-3">
                             You do not have an account?
                             <Link to="/register" className="ml-2 text-blue-500">
