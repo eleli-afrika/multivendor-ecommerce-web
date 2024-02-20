@@ -146,7 +146,7 @@ const Filters = ({ Ads }: any) => {
                                     {categories?.map((category: any, index) => (
                                         <li
                                             key={index}
-                                            className={`border rounded-[16px] p-2 ${
+                                            className={`border rounded-[16px] text-sm p-2 ${
                                                 selectedCategory === category ? 'selected' : ''
                                             }`}
                                             onClick={() => {
@@ -219,7 +219,7 @@ const Filters = ({ Ads }: any) => {
                                 </Select>
                             </div>
                             <div className="scrollable-list">
-                                <ul className="text-[16px] text-gray-500 cursor-pointer  flex flex-col gap-2 px-2 justify-center">
+                                <ul className="text-sm text-gray-500 cursor-pointer  flex flex-col gap-2 px-2 justify-center">
                                     {priceRanges.map((priceRange, index) => (
                                         <li
                                             key={index}
@@ -248,7 +248,7 @@ const Filters = ({ Ads }: any) => {
                             >
                                 Sort by Brand
                             </button>
-                            <div className="text-[16px] text-gray-500 cursor-pointer  flex flex-col gap-2 px-2 justify-center">
+                            <div className="text-sm text-gray-500 cursor-pointer  flex flex-col gap-2 px-2 justify-center ">
                                 <ul className="space-y-2">
                                     {brands.map((brand: any, index) => (
                                         <li
