@@ -69,3 +69,17 @@ export const ResetPassword = async (formdata: any) => {
     const response = await axiosService.post(`/user/auth/updatepassword`, formdata);
     return response;
 };
+
+export const ResetPasswordrequest = async (formdata: any) => {
+    try {
+        const response = await axiosService.post(`/user/auth/requestresetpassword`, formdata, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        return response;
+    } catch (error) {
+        console.error('Error resetting password:', error);
+        return { success: false, message: 'An error occurred' };
+    }
+};

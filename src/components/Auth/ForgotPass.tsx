@@ -1,40 +1,34 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/logo.png';
+import { ResetPasswordrequest } from '../../Redux/hooks/user.actions';
+import Loader from '../../constants/loader';
 // import { toast } from 'react-toastify';
 
-interface PasswordResetInput {
-    email: string;
-    newPassword: string;
-    confirmPassword: string;
-}
+// interface PasswordResetInput {
+//     email: string;
+// }
 
 const ForgotPass: React.FC = () => {
-    const [formData, setFormData] = useState<PasswordResetInput>({
-        email: '',
-        newPassword: '',
-        confirmPassword: '',
-    });
+    const [email, setEmail] = useState('');
+    const [loading, setIsLoading] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-    };
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({
-            ...prev,
-            [name]: value,
-        }));
+        setIsLoading(true);
+        const response = await ResetPasswordrequest(email);
+        setIsLoading(false);
+        console.log(response);
     };
 
     return (
-        <div>
+        <div className="px-[5px] lg:px-0">
             <div className="w-full max-w-xl mx-auto bg-white rounded-lg ">
+                {loading && <Loader />}
                 <div className="flex items-center justify-center gap-3">
                     <img src={Logo} alt="logo" className="h-24 object-cover " />
                 </div>
-                <form className="  rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
+                <form className="  rounded px-4 lg:px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
                     <div className="flex items-center justify-center">
                         {' '}
                         <p className="mb-4 text-sm text-black-main ">
@@ -55,8 +49,7 @@ const ForgotPass: React.FC = () => {
                             name="email"
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             placeholder="Enter your email address"
-                            value={formData.email}
-                            onChange={handleChange}
+                            onChange={(e) => setEmail(e.target.value)}
                             required
                         />
                     </div>
