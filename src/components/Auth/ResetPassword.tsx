@@ -1,8 +1,9 @@
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../../assets/logo.png';
 import { toast } from 'react-toastify';
+import { NewPassword } from '../../Redux/hooks/user.actions';
 
 interface PasswordResetInput {
     newPassword: string;
@@ -16,11 +17,39 @@ const PasswordResetForm: React.FC = () => {
     });
     const [showNewPassword, setShowNewPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [resetToken, setResetToken] = useState('');
+    const navigate = useNavigate();
 
-    const handleSubmit = (e: React.FormEvent) => {
+    useEffect(() => {
+        setResetToken(localStorage.getItem('passToken') || ''); // Initialize resetToken with an empty string if not found in localStorage
+    }, []);
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (!resetToken) {
+            toast.error('Reset token is missing');
+            return;
+        }
         if (formData.newPassword !== formData.confirmPassword) {
             toast.error('Passwords do not match');
+            return;
+        }
+        // Call the reset password service
+        try {
+            const response = await NewPassword({
+                requestToken: resetToken,
+                password: formData.newPassword,
+            });
+
+            if (response.Success) {
+                setTimeout(() => {
+                    navigate('/login');
+                }, 200);
+            } else {
+            }
+        } catch (error: any) {
+            // Handle errors, possibly extracting message from error object
+            toast.error('An error occurred while resetting your password');
         }
     };
 

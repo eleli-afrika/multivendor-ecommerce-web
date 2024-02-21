@@ -77,6 +77,7 @@ export const ResetPasswordrequest = async (email: string) => {
         if (response.data.Success) {
             toast.success(response.data.Message);
             localStorage.setItem('passToken', response.data.Data);
+            localStorage.setItem('passCode', response.data.Data);
         } else {
             toast.error(response.data.Error);
         }
@@ -94,7 +95,25 @@ export const ConfirmCode = async (formdata: any) => {
         const response = await axiosService.post(`/user/auth/confirmcode`, formdata);
         if (response.data.Success) {
             toast.success(response.data.Message);
-            localStorage.setItem('passToken', response.data.Data);
+            // localStorage.setItem('passCode', response.data.Data);
+        } else {
+            toast.error(response.data.Error);
+        }
+        console.log(response.data);
+        return response.data;
+    } catch (error: any) {
+        toast.error(error.response.data.Error);
+        console.log(error);
+        return { success: false, message: 'An error occurred' };
+    }
+};
+
+export const NewPassword = async (formdata: any) => {
+    try {
+        const response = await axiosService.post(`/user/auth/updatepassword`, formdata);
+        if (response.data.Success) {
+            toast.success(response.data.Message);
+            // localStorage.setItem('passToken', response.data.Data);
         } else {
             toast.error(response.data.Error);
         }
