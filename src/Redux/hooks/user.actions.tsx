@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { axiosService } from '../helpers/axios';
 // import { axiosAuthServices } from "../helpers/axios";
 import { toast } from 'react-toastify';
@@ -74,18 +75,35 @@ export const ResetPassword = async (formdata: any) => {
 export const ResetPasswordrequest = async (email: string) => {
     try {
         const response = await axiosService.post(`/user/auth/requestresetpassword/${email}`);
+        if (response.data.Success) {
+            toast.success(response.data.Message);
+            localStorage.setItem('passToken', response.data.Data);
+        } else {
+            toast.error(response.data.Error);
+        }
+        console.log(response.data);
         return response.data;
     } catch (error: any) {
-        if (
-            error.response &&
-            error.response.data &&
-            error.response.data.Data &&
-            error.response.data.Data.Message
-        ) {
-            toast.error(error.response.data.Message);
+        toast.error(error.response.data.Error);
+        console.log(error);
+        return { success: false, message: 'An error occurred' };
+    }
+};
+
+export const ConfirmCode = async (formdata: any) => {
+    try {
+        const response = await axiosService.post(`/user/auth/confirmcode`, formdata);
+        if (response.data.Success) {
+            toast.success(response.data.Message);
+            localStorage.setItem('passToken', response.data.Data);
         } else {
-            toast.error('An error occurred');
+            toast.error(response.data.Error);
         }
+        console.log(response.data);
+        return response.data;
+    } catch (error: any) {
+        toast.error(error.response.data.Error);
+        console.log(error);
         return { success: false, message: 'An error occurred' };
     }
 };

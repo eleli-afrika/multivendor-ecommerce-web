@@ -1,28 +1,43 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-// import { ConfirmCode } from '../../Redux/hooks/user.actions'; // Import the appropriate action for confirming the code
+import React, { useEffect, useState } from 'react';
+import { ConfirmCode } from '../../Redux/hooks/user.actions';
 import Loader from '../../constants/loader';
+import Logo from '../../assets/logo.png';
 
 const ConfirmCodeForm: React.FC = () => {
     const [code, setCode] = useState('');
     const [loading, setLoading] = useState(false);
+    const [resetToken, setResetToken] = useState('');
+
+    useEffect(() => {
+        setResetToken(localStorage.getItem('passToken') || ''); // Initialize resetToken with an empty string if not found in localStorage
+    }, []);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
-        // Call the function to confirm the code
-        // const response = await ConfirmCode(code);
-        setLoading(false);
-        // console.log(response);
+
+        try {
+            // Call the function to confirm the code
+            const response = await ConfirmCode({ requestCode: code, requestToken: resetToken });
+            setLoading(false);
+            console.log(response);
+        } catch (error) {
+            console.error(error);
+            setLoading(false);
+            // Handle error here, such as displaying a toast message or other feedback to the user
+        }
     };
 
     return (
         <div className="px-[5px] lg:px-0">
             <div className="w-full max-w-xl mx-auto bg-white rounded-lg ">
                 {loading && <Loader />}
+
+                <div className="flex items-center justify-center gap-3">
+                    <img src={Logo} alt="logo" className="h-24 object-cover " />
+                </div>
                 <form className="  rounded px-4 lg:px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
-                    <div className="flex items-center justify-center">
-                        {' '}
+                    <div className="flex ">
                         <p className="mb-4 text-sm text-black-main">
                             Please enter the confirmation code sent to your email address.
                         </p>

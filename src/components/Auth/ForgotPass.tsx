@@ -3,11 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../../assets/logo.png';
 import { ResetPasswordrequest } from '../../Redux/hooks/user.actions';
 import Loader from '../../constants/loader';
-import { toast } from 'react-toastify';
-
-// interface PasswordResetInput {
-//     email: string;
-// }
 
 const ForgotPass: React.FC = () => {
     const [email, setEmail] = useState('');
@@ -18,15 +13,16 @@ const ForgotPass: React.FC = () => {
         e.preventDefault();
         setIsLoading(true);
         const response = await ResetPasswordrequest(email);
-        if (response.status === 200) {
-            toast.success('Your request has been received');
-            navigate('/confirm_code');
+        setIsLoading(false);
+        console.log(response);
+        if (response.Success) {
+            setTimeout(() => {
+                navigate('/confirm_code');
+            }, 200);
         } else {
-            toast.error(response.Error);
         }
 
         setIsLoading(false);
-        console.log(response);
     };
 
     return (
