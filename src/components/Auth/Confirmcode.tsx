@@ -46,7 +46,8 @@ const ConfirmCodeForm: React.FC = () => {
                 <form className="  rounded px-4 lg:px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
                     <div className="flex ">
                         <p className="mb-4 text-sm text-black-main">
-                            Please enter the confirmation code sent to your email address.
+                            Please enter the confirmation code sent to your email address. You may
+                            need to check your spam folder.
                         </p>
                     </div>
                     <div className="mb-6">

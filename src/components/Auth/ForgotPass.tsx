@@ -37,7 +37,7 @@ const ForgotPass: React.FC = () => {
                         {' '}
                         <p className="mb-4 text-sm text-black-main ">
                             Forgot your password? Please enter the email address associated with
-                            your account, and we will send you a link to reset your password.
+                            your account, and we will send you a code to reset your password.
                         </p>
                     </div>
                     <div className="mb-6">

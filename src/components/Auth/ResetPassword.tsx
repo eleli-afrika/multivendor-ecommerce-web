@@ -76,6 +76,11 @@ const PasswordResetForm: React.FC = () => {
                     <img src={Logo} alt="logo" className="h-24 object-cover " />
                 </div>
                 <form className="  rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
+                    <div className="flex ">
+                        <p className="mb-4 text-sm text-black-main text-center">
+                            Reset your password below
+                        </p>
+                    </div>
                     <div className="mb-6">
                         <label
                             htmlFor="new-password"
@@ -149,7 +154,7 @@ const PasswordResetForm: React.FC = () => {
                     <p className="items-center mt-4 text-gray-700 text-center">
                         {' '}
                         Back to{' '}
-                        <Link to="/login" className="text-blue-400">
+                        <Link to="/login" className="text-blue-400 ml-2">
                             Login
                         </Link>
                     </p>
