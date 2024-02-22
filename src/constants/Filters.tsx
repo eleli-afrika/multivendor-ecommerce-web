@@ -11,6 +11,7 @@ const Filters = ({ Ads }: any) => {
     const [selectedPriceRange, setSelectedPriceRange] = useState<string | null>(null);
     const [minPrice, setMinPrice] = useState<number | null>(null);
     const [maxPrice, setMaxPrice] = useState<number | null>(null);
+    const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
 
     const dispatch = useDispatch<AppDispatch>();
     // const navigate = useNavigate();
@@ -95,13 +96,14 @@ const Filters = ({ Ads }: any) => {
     const brands = Array.from(
         new Set(Ads?.map((ad: any) => ad.product_data?.brand.trim().toLowerCase()))
     );
+    const locations = Array.from(new Set(Ads?.map((ad: any) => ad.location.trim().toLowerCase())));
 
     const calculatePriceRanges = () => {
         if (!Ads || Ads.length === 0) {
             return [];
         }
 
-        const prices = Ads.map((ad: any) => ad.product_data?.productprice);
+        const prices = Ads?.map((ad: any) => ad.product_data?.productprice);
 
         if (!prices || prices.length === 0) {
             return [];
@@ -240,6 +242,37 @@ const Filters = ({ Ads }: any) => {
                             </div>
                         </div>
 
+                        {/* Filter by location*/}
+                        <div className="p-4">
+                            <button
+                                className="px-3 py-1 bg-primary-orange text-white cursor-pointer rounded mb-2"
+                                onClick={() => sortAds('brand')}
+                            >
+                                Sort by Location
+                            </button>
+                            <div className="scrollable-list">
+                                <ul className="text-sm text-gray-500 cursor-pointer  flex flex-col gap-2 px-2 justify-center capitalize">
+                                    {locations.map((location: any, index) => (
+                                        <li
+                                            key={index}
+                                            onClick={() => {
+                                                setSelectedLocation(location);
+                                                setSelectedCategory(null);
+                                                setSelectedBrand(null);
+                                                setSelectedPriceRange(null);
+                                                FilterAgain();
+                                            }}
+                                            className={
+                                                selectedLocation === location ? 'selected' : ''
+                                            }
+                                        >
+                                            {location}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+
                         {/* Filter by Brand */}
                         <div className="p-4">
                             <button
@@ -248,7 +281,7 @@ const Filters = ({ Ads }: any) => {
                             >
                                 Sort by Brand
                             </button>
-                            <div className="text-sm text-gray-500 cursor-pointer  flex flex-col gap-2 px-2 justify-center ">
+                            <div className="text-sm text-gray-500 cursor-pointer  flex flex-col gap-2 px-2 justify-center capitalize ">
                                 <ul className="space-y-2">
                                     {brands.map((brand: any, index) => (
                                         <li
