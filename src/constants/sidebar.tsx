@@ -91,7 +91,7 @@ const Sidebar = () => {
                         <div>
                             <li
                                 key={Menu.categoryname}
-                                className={`flex  rounded-md cursor-pointer hover:bg-white  text-sm items-center gap-x-4 capitalize px-2 py-2
+                                className={`flex  rounded-md cursor-pointer hover:bg-white  text-sm items-center gap-x-4 capitalize px-2 py-1
                               ${hoveredCategory === Menu.categoryname ? 'bg-white' : ''} ${
                                     index === 0 && 'bg-light-white'
                                 } `}
