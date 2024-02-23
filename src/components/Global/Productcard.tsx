@@ -17,6 +17,7 @@ function Productcard({ image, name, price, id }: productCard) {
                     borderTopRightRadius: '0.75rem',
                     borderTopLeftRadius: '0.75rem',
                 }}
+                // loading="lazy"
             />
             <div className="py-1 lg:h-2/5 flex flex-col ">
                 <h1 className="text-[15px] text-black-main lg:text-md capitalize h-[40px] line-clamp-2 leading-tight overflow-y-hidden">
