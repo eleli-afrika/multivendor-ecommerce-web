@@ -72,16 +72,16 @@ const Sidebar = () => {
             }}
         >
             <div
-                className="px-4  h-[55vh] max-h-[55vh]  sticky top-0 bg-gray-light shadow-custom rounded overflow-y-auto my-sidebar no-scrollbar "
+                className="px-4  h-[55vh] max-h-[55vh]  sticky top-0 bg-gray-light shadow-custom rounded overflow-y-auto my-sidebar no-scrollbar py-2"
                 // onMouseLeave={() =>}
             >
                 <ul className="py-1">
-                    <h1 className="my-3 text-stone-600 text-sm font-bold"> Categories</h1>
+                    {/* <h1 className="my-3 text-stone-600 text-sm font-bold"> Categories</h1> */}
                     {categories?.map((Menu: categoryData, index: number) => (
                         <div>
                             <li
                                 key={Menu.categoryname}
-                                className={`flex  rounded-md cursor-pointer hover:bg-white  text-sm items-center gap-x-4 px-2 py-1
+                                className={`flex  rounded-md cursor-pointer hover:bg-white  text-sm items-center gap-x-4 px-2 py-[7px]
                               ${hoveredCategory === Menu.categoryname ? 'bg-white' : ''} ${
                                     index === 0 && 'bg-light-white'
                                 } `}
