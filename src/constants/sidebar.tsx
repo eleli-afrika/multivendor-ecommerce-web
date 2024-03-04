@@ -79,7 +79,7 @@ const Sidebar = () => {
             >
                 {loading ? (
                     <div className="flex justify-center items-center h-full">
-                        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary-orange transition-all duration-300"></div>
+                        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-primary-orange transition-all duration-300"></div>
                     </div>
                 ) : (
                     <ul className="py-1">
@@ -88,7 +88,7 @@ const Sidebar = () => {
                             <div>
                                 <li
                                     key={Menu.categoryname}
-                                    className={`flex  rounded-md cursor-pointer hover:bg-white  text-sm items-center gap-x-4 px-2 py-2
+                                    className={`flex  rounded-md cursor-pointer hover:bg-white  text-sm items-center gap-x-4 px-2 py-2 text-gray-800
                               ${hoveredCategory === Menu.categoryname ? 'bg-white' : ''} ${
                                         index === 0 && 'bg-light-white'
                                     } `}
@@ -139,7 +139,7 @@ const Sidebar = () => {
                                     (subcategory: subcategoryData, index: number) => (
                                         <li
                                             key={index}
-                                            className={`cursor-pointer text-sm gap-x-4 px-3 py-1 hover:bg-white text-stone-500 
+                                            className={`cursor-pointer text-[12px] gap-x-4 px-3 py-1 hover:bg-white   text-gray-800
                   ${''} ${index === 0 && 'bg-light-white'} `}
                                             onClick={() => {
                                                 handleSearch(subcategory?.subcategoryname);
