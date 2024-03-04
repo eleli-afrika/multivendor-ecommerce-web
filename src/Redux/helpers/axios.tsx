@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 export const axiosService = axios.create({
-    baseURL: 'https://api.eduka.co.ke',
-    // baseURL: 'http://localhost:8000',
+    // baseURL: 'https://api.eduka.co.ke',
+    baseURL: 'http://localhost:8000',
     // baseURL: 'https://137.184.189.199:8000',
 });
 

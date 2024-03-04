@@ -49,10 +49,12 @@ interface categoryData {
   categoryname: string;
   categoryimage: string;
   categoryid: string;
+  totalproducts:any;
 }
 
 interface subcategoryData {
   subcategoryname: string;
   subcategoryimage: string;
   parentcategory: string;
+  totalproducts:any;
 }

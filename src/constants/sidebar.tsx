@@ -74,72 +74,81 @@ const Sidebar = () => {
             }}
         >
             <div
-                className="px-4  h-[55vh] max-h-[55vh]  sticky top-0 bg-gray-light shadow-custom rounded overflow-y-auto my-sidebar no-scrollbar py-2"
+                className="px-4  h-[55vh] max-h-[55vh]  sticky top-0 bg-gray-light shadow-custom rounded overflow-y-auto my-sidebar  py-2"
                 // onMouseLeave={() =>}
             >
-                {loading && (
+                {loading ? (
                     <div className="flex justify-center items-center h-full">
-                        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-primary-orange transition-all duration-300"></div>
+                        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary-orange transition-all duration-300"></div>
                     </div>
-                )}
-                <ul className="py-1">
-                    {/* <h1 className="my-3 text-stone-600 text-sm font-bold"> Categories</h1> */}
-                    {categories?.map((Menu: categoryData, index: number) => (
-                        <div>
-                            <li
-                                key={Menu.categoryname}
-                                className={`flex  rounded-md cursor-pointer hover:bg-white  text-sm items-center gap-x-4 px-2 py-[7px]
+                ) : (
+                    <ul className="py-1">
+                        {/* <h1 className="my-3 text-stone-600 text-sm font-bold"> Categories</h1> */}
+                        {categories?.map((Menu: categoryData, index: number) => (
+                            <div>
+                                <li
+                                    key={Menu.categoryname}
+                                    className={`flex  rounded-md cursor-pointer hover:bg-white  text-sm items-center gap-x-4 px-2 py-2
                               ${hoveredCategory === Menu.categoryname ? 'bg-white' : ''} ${
-                                    index === 0 && 'bg-light-white'
-                                } `}
-                                onMouseOver={() => {
-                                    handleCategoryMouseOver(Menu.categoryname);
-                                    setSubmenuOpen(true);
-                                }}
-                                onClick={() => {
-                                    handleSearch(Menu.categoryname);
-                                }}
-                            >
-                                {/* <img src={Menu?.categoryimage} className="h-3 w-3 object-cover  " /> */}
-                                <span
-                                    className={`${
-                                        !open && ''
-                                    } origin-left duration-200 text-xs flex-1 text-gray-600`}
+                                        index === 0 && 'bg-light-white'
+                                    } `}
+                                    onMouseOver={() => {
+                                        handleCategoryMouseOver(Menu.categoryname);
+                                        setSubmenuOpen(true);
+                                    }}
+                                    onClick={() => {
+                                        handleSearch(Menu.categoryname);
+                                    }}
                                 >
-                                    {Menu?.categoryname}
-                                </span>
+                                    {/* <img src={Menu?.categoryimage} className="h-3 w-3 object-cover  " /> */}
+                                    <span
+                                        className={`${
+                                            !open && ''
+                                        } origin-left duration-200 text-xs flex-1 text-gray-600`}
+                                    >
+                                        <div className="flex flex-col gap-1">
+                                            <p> {Menu?.categoryname}</p>
+                                            <p> {Menu?.totalproducts} ads</p>
+                                        </div>
+                                    </span>
 
-                                <ChevronRightTwoTone className="ml-auto text-black-main" />
-                            </li>
-                        </div>
-                    ))}
-                </ul>
+                                    <ChevronRightTwoTone className="ml-auto text-black-main" />
+                                </li>
+                            </div>
+                        ))}
+                    </ul>
+                )}
             </div>
 
             <div>
                 {submenuOpen && (
                     <div
-                        className=" absolute bg-gray-light  z-10 h-[55vh] w-[18vw] border-l-2 border-primary-orange px-5 shadow-custom overflow-y-auto no-scrollbar text-sm pt-5"
+                        className=" absolute bg-gray-light  z-10 h-[55vh] w-[18vw] border-l-2 border-primary-orange px-5 shadow-custom overflow-y-auto text-sm pt-5"
                         style={{
                             left: '18vw',
                         }}
                         onMouseLeave={() => setSubmenuOpen(false)}
                     >
                         {loading ? (
-                            <div className="w-8 h-8 flex items-center justify-center animate-spin rounded-full border-t-2 border-primary-orange border-solid "></div>
+                            <div className="flex justify-center items-center h-full">
+                                <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary-orange transition-all duration-300"></div>
+                            </div>
                         ) : (
                             <ul>
                                 {subcategories?.map(
                                     (subcategory: subcategoryData, index: number) => (
                                         <li
                                             key={index}
-                                            className={`cursor-pointer text-sm text-gray-500  px-3 py-3 hover:bg-white 
+                                            className={`cursor-pointer text-sm gap-x-4 px-3 py-1 hover:bg-white text-stone-500 
                   ${''} ${index === 0 && 'bg-light-white'} `}
                                             onClick={() => {
                                                 handleSearch(subcategory?.subcategoryname);
                                             }}
                                         >
-                                            {subcategory?.subcategoryname}
+                                            <div className="flex flex-col">
+                                                <p> {subcategory?.subcategoryname}</p>
+                                                <p> {subcategory?.totalproducts} ads</p>
+                                            </div>
                                         </li>
                                     )
                                 )}
