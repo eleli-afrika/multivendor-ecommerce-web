@@ -8,6 +8,7 @@ import { AppDispatch } from "../../Redux/store";
 import Loader from "../../constants/loader";
 import { locations } from "../../data/Location";
 import { Link, useNavigate } from "react-router-dom";
+import Icon from '../Global/Icon'
 import { FaCartPlus } from "react-icons/fa";
 
 interface Location {
@@ -112,10 +113,8 @@ const RegisterForm: React.FC = () => {
           style={{ margin: "auto" }}
         >
           <div className="flex items-center justify-center gap-3">
-            <div className="text-primary-orange text-8xl">
-              <FaCartPlus />
+            <Icon icon={FaCartPlus} />
             </div>
-          </div>
 
           <form
             onSubmit={handleSubmit}

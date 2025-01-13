@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ResetPasswordrequest } from "../../Redux/hooks/user.actions";
 import Loader from "../../constants/loader";
 import { FaCartPlus } from "react-icons/fa";
+import Icon from "../Global/Icon";
 
 const ForgotPass: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -30,8 +31,8 @@ const ForgotPass: React.FC = () => {
       <div className="w-full max-w-xl mx-auto bg-white rounded-lg ">
         {loading && <Loader />}
         <div className="flex items-center justify-center gap-3">
-          <div className="text-primary-orange text-8xl pt-4">
-            <FaCartPlus />
+          <div className="pt-10">
+            <Icon icon={FaCartPlus} />
           </div>
         </div>
         <form

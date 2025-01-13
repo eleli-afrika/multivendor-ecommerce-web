@@ -6,6 +6,7 @@ import { LoggingUser } from "../../Redux/slices/AuthSlice";
 import { AppDispatch } from "../../Redux/store";
 import Loader from "../../constants/loader";
 import { Link, useNavigate } from "react-router-dom";
+import Icon from "../Global/Icon";
 
 const LoginForm: React.FC = ({}) => {
   const navigate = useNavigate();
@@ -42,9 +43,7 @@ const LoginForm: React.FC = ({}) => {
           style={{ margin: "auto" }}
         >
           <div className="flex items-center justify-center gap-3">
-            <div className="text-primary-orange text-8xl">
-              <FaCartPlus />
-            </div>
+            <Icon icon={FaCartPlus} />
           </div>
 
           <form
