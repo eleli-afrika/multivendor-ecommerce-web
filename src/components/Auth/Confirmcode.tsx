@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { ConfirmCode } from "../../Redux/hooks/user.actions";
 import Loader from "../../constants/loader";
-import { useNavigate } from "react-router-dom";
-import { FaCartPlus } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+import image from "../../assets/shop.png";
 
 const ConfirmCodeForm: React.FC = () => {
   const [code, setCode] = useState("");
@@ -30,6 +30,7 @@ const ConfirmCodeForm: React.FC = () => {
           navigate("/reset_password");
         }, 200);
       } else {
+        // Handle unsuccessful response if needed
       }
     } catch (error) {
       console.error(error);
@@ -39,52 +40,57 @@ const ConfirmCodeForm: React.FC = () => {
   };
 
   return (
-    <div className="px-[5px] lg:px-0">
-      <div className="w-full max-w-xl mx-auto bg-white rounded-lg ">
-        {loading && <Loader />}
-
-        <div className="flex items-center justify-center gap-3">
-          <div className="text-primary-yellow text-8xl">
-            <FaCartPlus />
+    <div className="h-screen mx-auto p-4 bg-gradient-to-r from-fuchsia-300 to-fuchsia-400 w-screen">
+      <div className="h-3/4 w-3/4 ml-48 mt-8 bg-gradient-to-b from-slate-50 to-fuchsia-200">
+        <div className="grid grid-cols-2 h-full gap-4">
+          <div className="flex flex-col justify-center items-start p-16">
+            <h1 className="text-5xl font-bold text-fuchsia-700">
+              E-COMMERCE STORE
+            </h1>
+            <p className="mt-4 text-sm text-fuchsia-400">
+              Shop a variety of quality products at great prices. Find
+              everything you need, from trends to essentials!
+            </p>
+            <img src={image} alt="E-Commerce" className="h-100 w-100" />
+          </div>
+          <div className="h-[580px] w-[450px] bg-fuchsia-300 mx-auto mt-12 mb-16 rounded-3xl p-8">
+            <form onSubmit={handleSubmit}>
+              <h1 className="pt-32 text-center font-bold text-4xl text-fuchsia-700">
+                Password Reset
+              </h1>
+              <p className="pl-8 pr-8 mt-2 text-center text-fuchsia-600 text-sm">
+                Please enter the confirmation code sent to your email address.
+                You may need to check your spam folder.
+              </p>
+              <div className="relative flex flex-row justify-self-center w-2/3 pt-6 rounded-lg">
+                <input
+                  type="text"
+                  id="code"
+                  name="code"
+                  className="w-full font-serif text-fuchsia-500 placeholder-fuchsia-400 font-semibold italic text-2xl"
+                  placeholder="Confirmation code"
+                  onChange={(e) => setCode(e.target.value)}
+                  required
+                />
+              </div>
+              <button
+                className="flex flex-row justify-self-center w-1/2 bg-fuchsia-700 hover:bg-fuchsia-500 pointer-cursor text-2xl text-white p-1 font-serif text-center mt-6 rounded-full"
+                type="submit"
+              >
+                Confirm Code
+              </button>
+              <p className="text-fuchsia-600 text-center mt-3">
+                Back to{" "}
+                <Link
+                  to="/login"
+                  className="ml-2 text-fuchsia-500 hover:bg-fuchsia-900"
+                >
+                  Login
+                </Link>
+              </p>
+            </form>
           </div>
         </div>
-        <form
-          className="  rounded px-4 lg:px-8 pt-6 pb-8 mb-4"
-          onSubmit={handleSubmit}
-        >
-          <div className="flex ">
-            <p className="mb-4 text-sm text-black-main">
-              Please enter the confirmation code sent to your email address. You
-              may need to check your spam folder.
-            </p>
-          </div>
-          <div className="mb-6">
-            <label
-              htmlFor="code"
-              className="block text-gray-700 text-sm font-bold mb-2"
-            >
-              Confirmation Code
-            </label>
-            <input
-              type="text"
-              id="code"
-              name="code"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="Enter confirmation code"
-              onChange={(e) => setCode(e.target.value)}
-              required
-            />
-          </div>
-
-          <div className="flex items-center justify-between">
-            <button
-              className="bg-primary-orange hover:bg-secondary-orange text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline items-center w-full"
-              type="submit"
-            >
-              Confirm Code
-            </button>
-          </div>
-        </form>
       </div>
     </div>
   );
