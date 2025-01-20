@@ -8,7 +8,7 @@ export const Accordions = [
   {
     id: 1,
     img: Shopping,
-    tagline: "Welcome to eDUKA",
+    tagline: "Welcome to eCOMMERCE",
     navigate: "Explore",
     url: "",
     name: "Product Name",
