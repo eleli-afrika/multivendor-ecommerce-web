@@ -26,7 +26,7 @@ const Landing = () => {
     const user = useSelector((state: any) => state.auth.user);
 
     useEffect(() => {
-        document.title = 'eDuka';
+        document.title = 'eCommerce';
     }, []);
     useEffect(() => {
         dispatch(getLoggedInUser());
@@ -61,11 +61,14 @@ const Landing = () => {
             const data = response.data;
             const usersInquiries = data.filter((item: any) => item.user === user?.userid);
             setInquiry(usersInquiries);
-            // console.log(inquiry);
+            
+            
         };
+
 
         fetch();
     }, []);
+    console.log(Ads);
     return (
         <div>
             <div className="bg-gray-light">
@@ -97,7 +100,10 @@ const Landing = () => {
                                 <ProductLoader count={6} />
                             </div>
                         ) : (
+                            
+                     
                             <Popular Ads={Ads} />
+                            
                         )}
                     </div>
                 </div>
