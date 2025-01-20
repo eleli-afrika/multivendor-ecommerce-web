@@ -7,7 +7,7 @@ export const axiosService = axios.create({
 });
 
 axiosService.interceptors.request.use(async (req) => {
-  let token = localStorage.getItem("userToken");
+  const token = localStorage.getItem("userToken");
   if (token) {
     req.headers["x-access-token"] = token;
   }

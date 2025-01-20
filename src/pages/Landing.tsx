@@ -1,11 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Sidebar from "../constants/sidebar";
 import ImageSlider from "../components/landing/slider";
 import Popular from "../components/landing/popular";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getLoggedInUser } from "../Redux/slices/AuthSlice";
-// import Minslider from '../components/landing/minislider';
-// import Sponsered from '../components/landing/Sponsered';
+import Minslider from "../components/landing/minislider";
+import Sponsered from "../components/landing/Sponsered";
 
 import {
   FetchProductsAsync,
@@ -20,8 +22,10 @@ import ProductLoader from "../components/Global/ProductLoader";
 const Landing = () => {
   const userToken = useSelector((state: any) => state.auth.userToken);
   const dispatch = useDispatch<AppDispatch>();
-  // const { Ads, SponseredAds, TopAds } = useSelector((state: any) => state.AllAds);
-  const { Ads, isLoading } = useSelector((state: any) => state.AllAds);
+  const { Ads, SponseredAds, TopAds, isLoading } = useSelector(
+    (state: any) => state.AllAds
+  );
+  //   const { Ads, isLoading } = useSelector((state: any) => state.AllAds);
   console.log(Ads);
   const [, setInquiry] = useState([]);
   const user = useSelector((state: any) => state.auth.user);
@@ -40,21 +44,21 @@ const Landing = () => {
   // fetch products
   useEffect(() => {
     dispatch(FetchProductsAsync());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(FetchTopProductsAsync());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(FetchSponsoredProductsAsync());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (userToken) {
       getUser();
     }
-  }, []);
+  }, [getUser, userToken]);
 
   useEffect(() => {
     const fetch = async () => {
@@ -81,14 +85,18 @@ const Landing = () => {
 
         <div className="py-2 mt-2  max-w-7xl mx-auto ">
           <div className="mx-0 lg:mx:auto">
-            {/* <CardHeader cardName="Top Ads" linkTitle={'See All'} link={'/top_ads'} />
-                        <Minslider Ads={TopAds} />
-                        <CardHeader
-                            cardName="Sponsored Ads"
-                            linkTitle={'See All'}
-                            link={'/sponsored_ads'}
-                        />
-                        <Sponsered Ads={SponseredAds} /> */}
+            <CardHeader
+              cardName="Top Ads"
+              linkTitle={"See All"}
+              link={"/top_ads"}
+            />
+            <Minslider Ads={TopAds} />
+            <CardHeader
+              cardName="Sponsored Ads"
+              linkTitle={"See All"}
+              link={"/sponsored_ads"}
+            />
+            <Sponsered Ads={SponseredAds} />
             <CardHeader
               cardName="All Ads Listing"
               linkTitle={"See All"}
