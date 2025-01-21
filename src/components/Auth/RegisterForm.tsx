@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
@@ -42,12 +43,12 @@ const RegisterForm: React.FC = () => {
 
   useEffect(() => {
     const sortedCounties = [...locations].sort((a, b) =>
-      a.name.localeCompare(b.name),
+      a.name.localeCompare(b.name)
     );
     const sortedLocationsArray: Location[] = [];
     sortedCounties.forEach((county) => {
       const sortedSubLocations = [...county.subLocations].sort((a, b) =>
-        a.name.localeCompare(b.name),
+        a.name.localeCompare(b.name)
       );
       sortedLocationsArray.push({
         ...county,
@@ -58,7 +59,7 @@ const RegisterForm: React.FC = () => {
   }, []);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -215,7 +216,7 @@ const RegisterForm: React.FC = () => {
                 <option value="">Select Location</option>
                 {sortedLocations
                   .find(
-                    (location: Location) => location.name === formData.county,
+                    (location: Location) => location.name === formData.county
                   )
                   ?.subLocations.map((subLocation) => (
                     <option key={subLocation.id} value={subLocation.name}>
