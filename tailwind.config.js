@@ -17,17 +17,16 @@ export default {
           DEFAULT: "#000000",
           100: "#100d25",
           200: "#090325",
-          main:"#3D362B"
+          main: "#3D362B",
         },
-          green: {
-         
+        green: {
           dark: "#3A5e27",
-        light: "#859448",
+          light: "#859448",
         },
         "gray-light": {
           DEFAULT: "#EEEEEE",
         },
-        
+
         "white-100": {
           DEFAULT: "#f3f3f3",
         },
