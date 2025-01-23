@@ -7,15 +7,11 @@ import logo from '../assets/logo.png';
 import { IconButton } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { AiOutlineMenuUnfold } from 'react-icons/ai';
-// import { BiSolidBellRing } from "react-icons/bi";
 import { setProfileOpener } from '../Redux/slices/opener';
-import Searchbar from './searchbar';
-// import { setLoader } from "../Redux/slices/LoaderSlice";
+// import Searchbar from './searchbar';
 import { getLoggedInUser, setUser } from '../Redux/slices/AuthSlice';
 import { AppDispatch } from '../Redux/store';
-// import { Search } from '@mui/icons-material';
-// import { currentUser } from "../Redux/hooks/user.actions";
-// import { toast } from "react-toastify";
+
 
 type NavbarProps = {
     SetShowLogin: React.Dispatch<React.SetStateAction<boolean>>;
@@ -51,7 +47,6 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
             className={`w-full  flex flex-col items-center justify-center   py-0 px-[10px] lg:px-20 fixed price top-0 z-20 ${
                 scrolled ? 'bg-white' : 'bg-white'
             }`}
-            // style={{ marginBottom: "2px" }}
         >
             <div className="w-full flex  justify-center md:justify-between items-center py-2 ">
                 <div className="flex gap-2 items-center  ">
@@ -78,7 +73,6 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                             alt="logo"
                             className=" object-contain object-center rounded  logo"
                         />
-                        {/* <p className="text-slate-600 text-xs italic">let's help you sell</p> */}
                     </Link>
 
                     <div className="p-2 ml-5 block sm:hidden">
@@ -123,12 +117,6 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                                     setUserSmallNav(!userSmallnav);
                                 }}
                             >
-                                {/* <div className="h-4 w-4 rounded-full absolute top-0 right-0">
-                                    <BiSolidBellRing className="text-red-400" />
-                                </div>
-                                <div className="h-4 text-center w-4 rounded-full absolute bg-green-400 top-0 left-0 text-[10px]">
-                                    9+
-                                </div> */}
                                 <img
                                     className=" rounded-full w-full h-full object-cover object-top"
                                     src={`${user?.userimage}`}
@@ -181,13 +169,6 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                 </ul>
 
                 <div className="sm:hidden flex flex-1 justify-end items-center">
-                    {/* <button
-                        className="bg-gray-light h-10  w-10 mr-4 rounded-full"
-                        onClick={() => dispatch(setOpener(!open))}
-                    >
-                        {' '}
-                        <Search className="font-bold" />
-                    </button> */}
                     <IconButton
                         style={{
                             color: '#991b1b',
@@ -214,16 +195,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                         }}
                     >
                         <ul className="list-none flex justify-end items-start flex-1 flex-col gap-4">
-                            {/* <div>
-                                <button
-                                    className="bg-primary-orange text-white p-1 capitalize rounded px-4 hover:bg-secondary-orange"
-                                    onClick={() => {
-                                        user ? SetShowAdsForm(true) : navigate('/login');
-                                    }}
-                                >
-                                    Sell me
-                                </button>
-                            </div> */}
+                          
                             {Links.map((nav) => (
                                 <li
                                     key={nav.name}
@@ -248,12 +220,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                                             setUserSmallNav(!userSmallnav);
                                         }}
                                     >
-                                        {/* <div className="h-4 w-4 rounded-full absolute top-0 right-0">
-                                            <BiSolidBellRing className="text-red-400" />
-                                        </div>
-                                        <div className="h-4 text-center w-4 rounded-full absolute bg-green-400 top-0 left-0 text-[10px]">
-                                            9+
-                                        </div> */}
+                                       
                                         <img
                                             className=" rounded-full w-full h-full object-cover object-top"
                                             src={`${user?.userimage}`}
@@ -315,7 +282,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                 </div>
             </div>
 
-            <Searchbar />
+            {/* <Searchbar /> */}
         </nav>
     );
 };
