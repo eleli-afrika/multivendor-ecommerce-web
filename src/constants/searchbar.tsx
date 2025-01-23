@@ -12,10 +12,9 @@ const SearchBar: React.FC = () => {
     const [, setCategories] = useState<any[]>([]);
     const [, setSubcategories] = useState<any[]>([]);
     const [, setIsLoading] = useState<boolean>(false);
-    // const { open } = useSelector((state: any) => state.opener);
+
     const [searchParam, setSearchParam] = useState<string>('');
 
-    // const Ads = useSelector((state: any) => state.AllAds.Ads);
 
     const dispatch = useDispatch<AppDispatch>();
     const navigate = useNavigate();
@@ -76,7 +75,7 @@ const SearchBar: React.FC = () => {
                     e.preventDefault(); // Prevents the form from submitting and triggering a full-page reload
                     handleSearch();
                 }}
-                className=" hidden  md:flex items-center w-screen   px-40 bg-[white] mb-2"
+                className=" hidden  md:flex items-center w-screen  px-40 bg-[white] mb-7"
             >
                 <div className="flex w-full border-2 border-secondary-orange rounded-[20px] justify-between px-0">
                     <select
@@ -86,11 +85,7 @@ const SearchBar: React.FC = () => {
                         className="px-5  border-r-2 border-secondary-orange  w-[200px]  bg-white outline-none rounded-l-[20px] py:5 text-sm text-stone-400"
                     >
                         <option value="all">Search for products</option>
-                        {/* {categories.map((category) => (
-                            <option key={category.categoryid} value={category.categoryname}>
-                                {category.categoryname}
-                            </option>
-                        ))} */}
+                       
                     </select>
 
                     <div className="relative w-[70%]  ">
@@ -128,12 +123,7 @@ const SearchBar: React.FC = () => {
                         onChange={handleCategoryChange}
                         className="p-3 border border-r-0 rounded-l-[20px] bg-white outline-none w-[10%]"
                     >
-                        {/* <option value="all">All</option> */}
-                        {/* {categories.map((category) => (
-                    <option key={category.categoryid} value={category.categoryname}>
-                      {category.categoryname}
-                    </option>
-                  ))} */}
+                        
                     </select>
 
                     <div className="relative flex-1 border py-1">
