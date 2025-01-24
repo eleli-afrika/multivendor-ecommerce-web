@@ -11,12 +11,9 @@ const AdsComp = () => {
     const { isLoading, Ads } = useSelector((state: any) => state.AllAds);
     const user = useSelector((state: any) => state.auth.user);
     const id = user?.userid;
-    // console.log(id);
-    // console.log(user);
 
     useEffect(() => {
         dispatch(FetchLoggedUsersProducts(id));
-        // console.log(id);
     }, [dispatch, id]);
 
     const filteredAds = Ads?.filter((product: ProductData) => !product.isapproved);
@@ -26,7 +23,7 @@ const AdsComp = () => {
         <div className=" ">
             <div className=" ">
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-2">
-                    {/* <div className="flex px-2 gap-3 flex-wrap lg:gap-5"> */}
+                    
                     {isLoading ? (
                         <div>
                             <Loader />
@@ -38,9 +35,9 @@ const AdsComp = () => {
                                 image={`${product.mainimage}`}
                                 name={product.productname}
                                 price={product.productprice}
-                                // seller={`${user.firstname} ${user.lastname}`}
+                                
                                 id={product.producttid}
-                                // description={product.productdescription}
+                                
                             />
                         ))
                     ) : (

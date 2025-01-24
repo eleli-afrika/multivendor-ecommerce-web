@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import SideCharts from './SideCharts';
 
 type Props = {
-    // id: any;
+    
     chatBodyActive: boolean;
     sidebarActive: boolean;
     setChatBodyActive: React.Dispatch<React.SetStateAction<boolean>>;
@@ -12,9 +12,9 @@ type Props = {
 };
 
 const ChatSidebar: React.FC<Props> = ({
-    // chatBodyActive,
+   
     setChatBodyActive,
-    // sidebarActive,
+   
     setSidebarActive,
 }) => {
     const user = useSelector((state: any) => state.auth.user);

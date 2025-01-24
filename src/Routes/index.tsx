@@ -22,7 +22,6 @@ import FAQSPage from '../pages/FAQSPage';
 import Profile from '../pages/userDash/profile';
 import Login from '../pages/login';
 import Register from '../pages/Register';
-// import ScrollToTop from '../components/ScrollToTop';
 import Notification from '../pages/userDash/Notifications';
 import Messages from '../pages/userDash/Messages';
 import { useDispatch } from 'react-redux';
@@ -51,8 +50,7 @@ const Index = () => {
 
     useEffect(() => {
         const auth = localStorage.getItem('userToken');
-        // console.log(auth);
-
+     
         if (auth == '' || auth == null || auth == undefined) {
             setLoggedIn(false);
         } else {
@@ -191,7 +189,7 @@ const Index = () => {
                             </PrivateRoute>
                         }
                     />
-                    {/* <Route path="/new-ad" element={<CreateAds />} /> */}
+                   
                     <Route
                         path="/profile/closed"
                         element={
@@ -228,7 +226,7 @@ const Index = () => {
 
                     <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 </Routes>
-                {/* </ScrollToTop> */}
+                
             </div>
             <footer>
                 <Footer />

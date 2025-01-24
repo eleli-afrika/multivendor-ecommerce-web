@@ -1,9 +1,7 @@
 import { Avatar } from 'antd';
 
 type Props = {
-    // id: any;
-    // chatBodyActive: boolean;
-    // sidebarActive: boolean;
+    
     setChatBodyActive: React.Dispatch<React.SetStateAction<boolean>>;
     setSidebarActive: React.Dispatch<React.SetStateAction<boolean>>;
 };

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setSearchResults } from '../Redux/slices/AdsSlice';
-// import { useNavigate } from 'react-router-dom';
 import { AppDispatch } from '../Redux/store';
 import { MenuItem, Select } from '@mui/material';
 
@@ -14,7 +13,6 @@ const Filters = ({ Ads }: any) => {
     const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
 
     const dispatch = useDispatch<AppDispatch>();
-    // const navigate = useNavigate();
 
     const FilterAgain = () => {
         let filteredAds = [...Ads];
@@ -44,19 +42,6 @@ const Filters = ({ Ads }: any) => {
         dispatch(setSearchResults(filteredAds));
     };
 
-    // const handlePriceRangeClick = (range: string) => {
-    //     setSelectedPriceRange(range);
-
-    //     const [min, max] = range.split(' - ').map((value) => parseInt(value.replace(/,/g, '')));
-
-    //     const filteredAds = Ads?.filter(
-    //         (ad: any) =>
-    //             ad.product_data?.productprice >= min && ad.product_data?.productprice <= max
-    //     );
-
-    //     dispatch(setSearchResults(filteredAds));
-    // };
-
     const handleCustomPriceRange = () => {
         if (minPrice !== null && maxPrice !== null) {
             const filteredAds = Ads?.filter(
@@ -84,7 +69,7 @@ const Filters = ({ Ads }: any) => {
             case 'price':
                 sortedAds.sort((a, b) => a.product_data.productprice - b.product_data.productprice);
                 break;
-            // Add more cases for sorting by other criteria if needed
+            
             default:
                 break;
         }

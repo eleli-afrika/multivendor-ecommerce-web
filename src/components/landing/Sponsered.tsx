@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import SponsereCard from "../Global/SponseredCard";
 import { useSelector } from "react-redux";
 import Loader from "../../constants/loader";

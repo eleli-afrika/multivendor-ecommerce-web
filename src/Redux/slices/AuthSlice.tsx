@@ -109,14 +109,13 @@ export const UpdattingOfUser = createAsyncThunk(
     'auth/updatingofuser',
     async ({ userid, formData }: { userid: string; formData: any }) => {
         const response = await UpdateOfUser(userid, formData);
-        // console.log(response.data.Data);
+       
         return response.data.Data;
     }
 );
 
 export const GettingSellers = createAsyncThunk('auth/getsellers', async () => {
     const response = await GetSellers();
-    // console.log(response.data.Data);
     return response.data.Data;
 });
 

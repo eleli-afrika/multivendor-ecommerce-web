@@ -12,7 +12,7 @@ const DetailLoader: React.FC<ProductLoaderProps> = ({ count }) => {
             {elements.map((element) => (
                 <Box sx={{ mx: 3 }} key={element}>
                     <Skeleton animation="wave" width={200} height={250} className={'bg-gray-700'} />
-                    {/* <Skeleton animation="wave" width={200} height={100} className={'bg-gray-700'} /> */}
+                    
                     <Skeleton width="60%" animation="wave" className={'bg-gray-700 mt-2'} />
                 </Box>
             ))}

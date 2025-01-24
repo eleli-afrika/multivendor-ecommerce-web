@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
+
 
 interface PrivateRouteProps {
     children: React.ReactNode;
@@ -8,7 +8,7 @@ interface PrivateRouteProps {
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
     const user = localStorage.getItem('userToken');
-    // console.log(user);
+
     return user ? <>{children}</> : <Navigate to="/login" replace />;
 };
 

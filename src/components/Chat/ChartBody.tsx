@@ -2,10 +2,10 @@ import { Avatar } from 'antd';
 import { AttachFile, MoreVert, SearchOutlined, InsertEmoticon, Close } from '@mui/icons-material';
 import Chart from './Chart';
 import { BiMicrophone } from 'react-icons/bi';
-// import Picker from 'emoji-picker-react';
+
 
 type Props = {
-    // id: any;
+    
     chatBodyActive: boolean;
     sidebarActive: boolean;
     setChatBodyActive: React.Dispatch<React.SetStateAction<boolean>>;

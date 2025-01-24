@@ -7,7 +7,7 @@ import Loader from '../constants/loader';
 
 import { GettingUserById } from '../Redux/slices/AuthSlice';
 import { WhatsApp, Phone, Email } from '@mui/icons-material';
-// import { products } from '../data/sponsered';
+
 import Store from '../assets/store.avif';
 import { Avatar } from '@mui/material';
 import Filters from '../constants/Filters';
@@ -50,7 +50,7 @@ const SellersAdsComp = () => {
                         <div className=" mb-4 sm:mb-0 flex flex-col justify-between">
                             <Avatar
                                 src={` ${theSeller?.userimage}`}
-                                // src={image}
+                        
                                 className="w-[5rem] h-[5rem] object-cover mx-auto border border-primary-orange p-1"
                                 style={{
                                     height: '100px',
@@ -68,14 +68,12 @@ const SellersAdsComp = () => {
                                             ?.substring(1)}?text=hello, ${theSeller?.seller_name}`}
                                         target="_blank"
 
-                                        // to=""
+                                      
                                     >
                                         <WhatsApp className="text-green-500" />
                                     </Link>
                                 </button>
-                                {/* <button className="p-2 rounded-full bg-gray-200">
-                                    <Facebook className="text-blue-500" />
-                                </button> */}
+                                
                                 <button className="p-2 rounded-full bg-gray-200">
                                     <Link
                                         to={`mailto:${theSeller?.seller_email}`}
@@ -108,11 +106,11 @@ const SellersAdsComp = () => {
                             <p className="mb-2">
                                 Email:
                                 {theSeller?.email}
-                                {/* emma@gmail.com */}
+                             
                             </p>
                             <button className="p-2 bg-green-500 text-white my-2 hover:bg-green-700 rounded-md w-[200px]">
                                 {theSeller?.phone}
-                                {/* 0791076354 */}
+                      
                             </button>
                         </div>
                         {/* user ads info */}

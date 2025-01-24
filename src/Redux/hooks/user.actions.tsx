@@ -1,5 +1,4 @@
 import { axiosService } from '../helpers/axios';
-// import { axiosAuthServices } from "../helpers/axios";
 import { toast } from 'react-toastify';
 
 export const RegisterUser = async (payload: any): Promise<any> => {
@@ -95,7 +94,7 @@ export const ConfirmCode = async (formdata: any) => {
         const response = await axiosService.post(`/user/auth/confirmcode`, formdata);
         if (response.data.Success) {
             toast.success(response.data.Message);
-            // localStorage.setItem('passCode', response.data.Data);
+            
         } else {
             toast.error(response.data.Error);
         }
@@ -113,7 +112,7 @@ export const NewPassword = async (formdata: any) => {
         const response = await axiosService.post(`/user/auth/updatepassword`, formdata);
         if (response.data.Success) {
             toast.success(response.data.Message);
-            // localStorage.setItem('passToken', response.data.Data);
+        
         } else {
             toast.error(response.data.Error);
         }

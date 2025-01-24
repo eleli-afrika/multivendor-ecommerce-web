@@ -17,7 +17,7 @@ const AdsTable = () => {
         {
             title: 'CreatedAt',
             dataIndex: 'createdAt',
-            //   render: (createdAt) => new Date(createdAt).toLocaleString(),
+            
         },
         {
             title: 'Actions',

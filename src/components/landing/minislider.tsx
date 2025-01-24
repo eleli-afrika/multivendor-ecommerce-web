@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import React, { useEffect, useRef } from "react";
 import "./slider.css"; // Import your stylesheet here
 import { useNavigate } from "react-router-dom";

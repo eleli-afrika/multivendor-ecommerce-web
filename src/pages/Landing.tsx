@@ -26,7 +26,7 @@ const Landing = () => {
   const { Ads, SponseredAds, TopAds, isLoading } = useSelector(
     (state: any) => state.AllAds
   );
-  //   const { Ads, isLoading } = useSelector((state: any) => state.AllAds);
+
   console.log(Ads);
   const [, setInquiry] = useState([]);
   const user = useSelector((state: any) => state.auth.user);

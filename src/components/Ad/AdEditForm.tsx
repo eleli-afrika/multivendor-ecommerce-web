@@ -306,7 +306,7 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
             }
             console.log(response);
         } catch (error: any) {
-            // toast.error(error.message || 'Duplicate product!');
+            
             dispatch(setLoader(false));
             Reset();
         }
@@ -327,7 +327,7 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
                         encType="multipart/form-data"
                     >
                         <div className="w-full h-full flex flex-col md:flex-row overflow-scroll price bg-white px-4 rounded py-4">
-                            {/* left-side div */}
+                            
                             <div className="w-full lg:w-3/6 h-auto rounded-l-2xl p-[5px] lg:p-5 ">
                                 <div className="flex flex-col items-end justify-center md:hidden">
                                     <img

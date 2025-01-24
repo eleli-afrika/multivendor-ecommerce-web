@@ -5,7 +5,7 @@ import ProductLoader from '../Global/ProductLoader';
 const Related = () => {
     const Ads = useSelector((state: any) => state.ad.similarAds);
     const { isLoading } = useSelector((state: any) => state.ad);
-    // console.log(Ads);
+    
 
     function formatPriceWithCommas(price: any) {
         if (price) {
@@ -32,9 +32,9 @@ const Related = () => {
                                     image={`${product?.mainimage}`}
                                     name={product?.productname}
                                     price={formatPriceWithCommas(product?.productprice)}
-                                    // seller={product?.user_name}
+                                    
                                     id={product?.producttid}
-                                    // description={product?.product_data?.productdescription}
+                                    
                                 />
                             </>
                         ))}

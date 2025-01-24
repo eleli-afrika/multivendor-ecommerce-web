@@ -14,7 +14,7 @@ function Productcard({ image, name, price, id }: productCard) {
                     className="w-full h-40 lg:h-48 object-cover rounded-t-[8px]"
                     src={image}
                     alt={name}
-                    // loading="lazy"
+                    
                 />
                 <div className="p-2">
                     <h1 className="text-[15px] text-black-main lg:text-md capitalize h-[40px] line-clamp-2 leading-tight overflow-y-hidden">

@@ -34,7 +34,7 @@ const ConfirmCodeForm: React.FC = () => {
     } catch (error) {
       console.error(error);
       setLoading(false);
-      // Handle error here, such as displaying a toast message or other feedback to the user
+      
     }
   };
 

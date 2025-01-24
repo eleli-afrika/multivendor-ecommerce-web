@@ -1,22 +1,21 @@
 import { useDispatch, useSelector } from 'react-redux';
-// import { Categories } from "../data/categories";
+
 import { setLoader } from '../Redux/slices/LoaderSlice';
 import { useEffect, useState } from 'react';
 import { fetchCategories } from '../Redux/hooks/categories.actions';
 import { setCategories } from '../Redux/slices/categoriesSlice';
 import { categoryData, subcategoryData } from '../interface/common';
-// import { axiosService } from '../Redux/helpers/axios';
+
 import { ChevronRightTwoTone } from '@mui/icons-material';
 import { SearchingProduct } from '../Redux/slices/AdsSlice';
 import { useNavigate } from 'react-router-dom';
 import { AppDispatch } from '../Redux/store';
 import { GettingSellers } from '../Redux/slices/AuthSlice';
-// import UserSidebar from '../components/Dashboard/Sidebar';
-// import { TopProducts } from '../data/topproducts';
+
 
 const Sidebar = () => {
     const dispatch = useDispatch<AppDispatch>();
-    // const [myCategories, setMyCategories] = useState([]);
+    
     const categories = useSelector((state: any) => state.categories.categories);
 
     const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
@@ -24,8 +23,6 @@ const Sidebar = () => {
     const [loading, setLoading] = useState(false);
     const [submenuOpen, setSubmenuOpen] = useState(false);
     const navigate = useNavigate();
-    // const sellers = useSelector((state: any) => state.auth.sellers);
-    // console.log(sellers);
 
     const { open } = useSelector((state: any) => state.opener);
 
@@ -43,12 +40,10 @@ const Sidebar = () => {
     };
 
     const getCategory = async () => {
-        // dispatch(setLoader(true));
         setLoading(true);
         const response = await fetchCategories();
         dispatch(setCategories(response.data.Data));
         setLoading(false);
-        // console.log(response);
         dispatch(setLoader(false));
     };
     useEffect(() => {
@@ -75,7 +70,7 @@ const Sidebar = () => {
         >
             <div
                 className="px-4  h-[55vh] max-h-[55vh]  sticky top-0 bg-gray-light shadow-custom rounded overflow-y-auto my-sidebar  py-2 "
-                // onMouseLeave={() =>}
+        
             >
                 {loading ? (
                     <div className="flex justify-center items-center h-full">
@@ -83,7 +78,6 @@ const Sidebar = () => {
                     </div>
                 ) : (
                     <ul className="py-1">
-                        {/* <h1 className="my-3 text-stone-600 text-sm font-bold"> Categories</h1> */}
                         {categories?.map((Menu: categoryData, index: number) => (
                             <div>
                                 <li
@@ -100,7 +94,6 @@ const Sidebar = () => {
                                         handleSearch(Menu.categoryname);
                                     }}
                                 >
-                                    {/* <img src={Menu?.categoryimage} className="h-3 w-3 object-cover  " /> */}
                                     <span
                                         className={`${
                                             !open && ''

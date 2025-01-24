@@ -34,9 +34,7 @@ const Footer = () => {
                         <li>
                             <Link to={'/services'}></Link>
                         </li>
-                        {/* <li>
-                            <Link to={'/pricing'}>Pricing</Link>
-                        </li> */}
+                        
                         <li>
                             <Link to={'/contact'}>Contact us</Link>
                         </li>
@@ -91,23 +89,7 @@ const Footer = () => {
                                 </Link>
                             </IconButton>
                         </li>
-                        {/* <li className="mb-1">
-                            <IconButton
-                                style={{
-                                    backgroundColor: 'white',
-                                    padding: '0.4rem',
-                                    borderRadius: '0.25rem',
-                                }}
-                            >
-                                <Link
-                                    to="tel:+254706244557"
-                                    className="text-white flex items-center"
-                                    target="_blank"
-                                >
-                                    <FaPhone color="gray" />
-                                </Link>
-                            </IconButton>
-                        </li> */}
+                       
                         <li className="mb-1">
                             <IconButton
                                 style={{
@@ -125,35 +107,7 @@ const Footer = () => {
                                 </Link>
                             </IconButton>
                         </li>
-                        {/* <li className="mb-1">
-                            <IconButton
-                                style={{
-                                    backgroundColor: 'white',
-                                    padding: '0.4rem',
-                                    borderRadius: '0.25rem',
-                                }}
-                            >
-                                <a href="#" className="text-white flex items-center">
-                                    <FaYoutube color="red" />
-                                </a>
-                            </IconButton>
-                        </li> */}
-                        {/* <li className="mb-1">
-                            <IconButton
-                                style={{
-                                    backgroundColor: 'white',
-                                    padding: '0.4rem',
-                                    borderRadius: '0.25rem',
-                                }}
-                            >
-                                <Link
-                                    to="https://wa.me/+254706244557/?"
-                                    className="text-white flex items-center"
-                                >
-                                    <FaWhatsapp color="green" />
-                                </Link>
-                            </IconButton>
-                        </li> */}
+                       
                     </ul>
                 </div>
 

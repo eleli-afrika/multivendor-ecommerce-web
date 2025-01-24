@@ -8,7 +8,7 @@ import Loader from '../../constants/loader';
 import { useState, useEffect } from 'react';
 
 const Sidebar = () => {
-    // const navigate = useNavigate();
+    
     const dispatch = useDispatch();
     const location = useLocation();
     const { user, isLoading } = useSelector((state: any) => state.auth);
@@ -16,7 +16,7 @@ const Sidebar = () => {
     const [active, setActive] = useState('');
 
     useEffect(() => {
-        // Set active link based on the current location
+       
         const currentPath = location.pathname;
         setActive(currentPath);
     }, [location.pathname]);

@@ -76,15 +76,6 @@ export const fetchLoggedUsersProducts = async (id: any) => {
     return response;
 };
 
-// export const ApproveProduct = async (id: string): Promise<any> => {
-//     try {
-//         const response = await axiosService.post(`admin/approveproduct?id=${id}`);
-//         return response;
-//     } catch (error: any) {
-//         console.error(error);
-//         throw new Error();
-//     }
-// };
 export const RejectProduct = async (id: string): Promise<any> => {
     try {
         const response = await axiosService.post(`/products/deactivate?id=${id}`);

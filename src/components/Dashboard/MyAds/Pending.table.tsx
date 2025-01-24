@@ -15,12 +15,11 @@ const AdsTable = () => {
     const user = useSelector((state: any) => state.auth.user);
     const id = user?.userid;
     const navigate = useNavigate();
-    // console.log(id);
-    // console.log(user);
+   
 
     useEffect(() => {
         dispatch(FetchLoggedUsersProducts(id));
-        // console.log(id);
+       
     }, [dispatch, id]);
 
     const filteredAds = Ads.filter((product: ProductData) => !product.isapproved);
@@ -39,7 +38,7 @@ const AdsTable = () => {
         {
             title: 'CreatedAt',
             dataIndex: 'dateadded',
-            //   render: (createdAt) => new Date(createdAt).toLocaleString(),
+           
         },
         {
             title: 'Actions',
@@ -54,8 +53,7 @@ const AdsTable = () => {
                                 navigate(`/product_info/${record.producttid}`), console.log(text);
                             }}
                         />
-                        {/* <Edit className="text-green-500 " />
-                        <Delete className="text-red-600" /> */}
+                        
                     </div>
                 );
             },

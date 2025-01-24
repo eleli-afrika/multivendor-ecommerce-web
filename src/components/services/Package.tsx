@@ -1,4 +1,4 @@
-// import Photo from '../../assets/M-PESA.jpeg';
+
 import { sliderContent } from '../../data/package';
 
 import { useNavigate } from 'react-router-dom';

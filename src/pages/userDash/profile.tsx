@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import Sidebar from '../../components/Dashboard/Sidebar';
 import Profile from '../../components/Dashboard/profile';
-// import { useNavigate } from 'react-router-dom';
 
 const profile = () => {
     useEffect(() => {

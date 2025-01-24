@@ -1,4 +1,4 @@
-// import React from "react";
+
 import { Accordions } from "../data/slider";
 
 const Popular = () => {

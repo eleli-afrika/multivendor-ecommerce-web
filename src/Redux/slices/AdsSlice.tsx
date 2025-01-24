@@ -78,7 +78,6 @@ export const SearchingProduct = createAsyncThunk('ad/searchproduct', async (para
 export const FetchSellerProducts = createAsyncThunk('ads/fetchsellerproducts', async (id: any) => {
     try {
         const response = await fetchSellersProduct(id);
-        // console.log(response);
         return response.data.Data;
     } catch (error) {
         console.error('Error fetching seller products:', error);
@@ -91,7 +90,6 @@ export const FetchLoggedUsersProducts = createAsyncThunk(
     async (id: any) => {
         try {
             const response = await fetchLoggedUsersProducts(id);
-            // console.log(response);
             return response.data.Data;
         } catch (error) {
             console.error("Error fetching logged user's products:", error);

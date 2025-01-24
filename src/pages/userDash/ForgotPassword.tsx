@@ -1,5 +1,3 @@
-// import PasswordResetForm from '../../components/Auth/ResetPassword';
-
 import ForgotPass from '../../components/Auth/ForgotPass';
 
 const PassResetPage = () => {

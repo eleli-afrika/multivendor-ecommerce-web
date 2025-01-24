@@ -60,7 +60,7 @@ const ForgotPass: React.FC = () => {
               type="email"
               id="email"
               name="email"
-              className="border pl-10 font-semibold rounded-lg focus:outline-none focus:border-primary-orange rounded w-full py-2 px-3 text-gray-700 leading-tight "
+              className="border pl-10 font-semibold rounded-lg focus:outline-none focus:border-primary-orange w-full py-2 px-3 text-gray-700 leading-tight "
               placeholder="Enter your email address"
               onChange={(e) => setEmail(e.target.value)}
               required

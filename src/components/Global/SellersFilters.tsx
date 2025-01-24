@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-// import { useNavigate } from 'react-router-dom';
 
 import { MenuItem, Select } from '@mui/material';
 import { setSearchResults } from '../../Redux/slices/AdsSlice';
@@ -15,7 +14,6 @@ const Filters = ({ Ads }: any) => {
     const [maxPrice, setMaxPrice] = useState<number | null>(null);
 
     const dispatch = useDispatch<AppDispatch>();
-    // const navigate = useNavigate();
 
     const FilterAgain = () => {
         let filteredAds = [...Ads];
@@ -45,18 +43,7 @@ const Filters = ({ Ads }: any) => {
         dispatch(setSearchResults(filteredAds));
     };
 
-    // const handlePriceRangeClick = (range: string) => {
-    //     setSelectedPriceRange(range);
-
-    //     const [min, max] = range.split(' - ').map((value) => parseInt(value.replace(/,/g, '')));
-
-    //     const filteredAds = Ads?.filter(
-    //         (ad: any) =>
-    //             ad.product_data?.productprice >= min && ad.product_data?.productprice <= max
-    //     );
-
-    //     dispatch(setSearchResults(filteredAds));
-    // };
+ 
 
     const handleCustomPriceRange = () => {
         if (minPrice !== null && maxPrice !== null) {

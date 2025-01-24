@@ -1,8 +1,7 @@
 import Productcard from '../Global/PopularCard';
-// import { ProductData } from '../../interface/common';z
 
 const Popular = ({ Ads }: any) => {
-    // const dispatch = useDispatch<AppDispatch>();
+    
 
     function formatPriceWithCommas(price: any) {
         if (price) {

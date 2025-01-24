@@ -169,7 +169,7 @@ const TermsAndConditions: React.FC = () => {
                 </p>
             </section>
 
-            {/* Continue with other sections... */}
+            
         </div>
     );
 };

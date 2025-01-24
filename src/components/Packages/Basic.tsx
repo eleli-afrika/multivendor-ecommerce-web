@@ -1,12 +1,11 @@
 import { useSelector } from 'react-redux';
 import { sliderContent } from '../../data/package';
 import { Avatar } from 'antd';
-// import mpesa from '../../assets/M-PESA.jpeg';
 
 const BasicPackage = () => {
     const Basic = sliderContent[0];
     const user = useSelector((state: any) => state.auth.user);
-    // console.log(user);
+    
     return (
         <div className=" w-[100%] lg:p-10 text-white  overflow-x-hidden">
             <div className="flex h-auto w-full bg-[white-smoke] rounded-[0.25rem] flex-wrap p-2 ">
@@ -31,11 +30,7 @@ const BasicPackage = () => {
                         <div className=" text-gray-700 p-2 pb-5 rounded-b-[0.25rem] flex lg:flex-row flex-col lg:justify-between gap-2 lg:gap-20 ">
                             <div className="w-full lg:w-1/2">
                                 <div className="flex flex-col">
-                                    {/* <img
-                                        src={mpesa}
-                                        alt=""
-                                        className=" mt-3 w-full h-[5rem] object-cover object-center rounded "
-                                    /> */}
+                                    
                                     <h2 className="capitalize mt-5 font-bold"> paypill No:</h2>
                                     <ul className="flex gap-3 font-bold text-2xl">
                                         <div className="flex  gap-1 lg:gap-2">
@@ -81,11 +76,6 @@ const BasicPackage = () => {
                         </div>
                     </div>
                 </div>
-                {/* end of Basic information */}
-
-                {/* payment details */}
-
-                {/* end of payment details */}
 
                 {/* Details sec */}
                 <div className="flex flex-col w-full p-[10px] lg:px-20 py-5 lg:w-1/3 gap-5">

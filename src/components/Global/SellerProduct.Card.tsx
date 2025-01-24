@@ -5,8 +5,7 @@ function Productcard({
     image,
     name,
     price,
-    // seller,
-    // description,
+   
     id,
 }: productCard) {
     const navigate = useNavigate();
@@ -19,11 +18,11 @@ function Productcard({
                 <img
                     className="rounded-lg w-1/3 h-full lg:h-3/5 lg:w-full object-cover bg-gray-light "
                     src={image}
-                    // loading="lazy"
+                  
                 />
                 <div className="px-3 py-2 w-2/3">
                     <div className="flex flex-row justify-between text-md">
-                        {/* <p className="text-green-400 truncate text-[10px] lg:text-md ">{seller} </p> */}
+                      
                     </div>
                     <h1 className="text-slate-700 text-xs lg:text-md font-bold uppercase">
                         {name}

@@ -36,14 +36,6 @@ const AdsTable = () => {
         });
     };
 
-    // useEffect(() => {
-    //     dispatch(GettingUserById(id)).then((action: Action<unknown>) => {
-    //         if (GettingUserById.fulfilled.match(action)) {
-    //             console.log(user);
-    //             dispatch(FetchLoggedUsersProducts(id));
-    //         }
-    //     });
-    // }, [dispatch, id]);
 
     const deleteProduct = async (id: any) => {
         try {
@@ -66,7 +58,7 @@ const AdsTable = () => {
             console.log(response);
             toast.success('product deactivated successfully...');
             dispatch(setLoader(false));
-            // dispatch(FetchLoggedUsersProducts(id));
+            
         } catch (error: any) {
             toast.error('failed to deactivate, try again later');
             console.log(error);
@@ -82,7 +74,7 @@ const AdsTable = () => {
             console.log(response);
             toast.success('product activated successfully...');
             dispatch(setLoader(false));
-            // dispatch(FetchLoggedUsersProducts(id));
+            
         } catch (error) {
             toast.error('failed to activate, try again later');
         }
@@ -98,7 +90,7 @@ const AdsTable = () => {
             console.log(response);
             toast.success('product Restored successfully...');
             dispatch(setLoader(false));
-            // dispatch(FetchLoggedUsersProducts(id));
+           
         } catch (error) {
             toast.error('failed to restore, try again later');
         }
@@ -110,8 +102,7 @@ const AdsTable = () => {
 
     const toggleProductStatus = async (_productId: any, _isActive: any) => {
         try {
-            // // Update product status here
-            // dispatch(FetchLoggedUsersProducts(id));
+          
         } catch (error) {
             console.log(error);
         }
@@ -153,14 +144,7 @@ const AdsTable = () => {
                 </span>
             ),
         },
-        // {
-        //   title: "Brand",
-        //   dataIndex: "brand",
-        // },
-        // {
-        //   title: "Category",
-        //   dataIndex: "category",
-        // },
+   
         {
             title: 'DateAdded',
             dataIndex: 'dateadded',
@@ -176,14 +160,8 @@ const AdsTable = () => {
                     </span>
                 </span>
             ),
-            // filters: [
-            //   { text: "Approved", value: "true" },
-            //   { text: "Pending", value: "false" },
-            // ],
-            // onFilter: (value: any, record: any) => {
-            //   console.log(value);
-            //   return record.isapproved === value;
-            // },
+            
+           
         },
 
         {
@@ -211,12 +189,7 @@ const AdsTable = () => {
             render: (isSuspended: Boolean, _record: any) => (
                 <span className="flex gap-2">
                     {isSuspended ? 'Suspended' : 'No'}
-                    {/* <span
-            onClick={() => toggleProductStatus(record.productid, isSuspended)}
-            className="underline"
-          >
-            {isSuspended ? "Unsuspend" : "Suspend"}
-          </span> */}
+                   
                 </span>
             ),
         },

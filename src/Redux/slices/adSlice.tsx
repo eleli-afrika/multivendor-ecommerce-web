@@ -47,7 +47,7 @@ export const FetchProductBySeller = createAsyncThunk('ad/fetchproductasseller', 
 export const FetchMyProduct = createAsyncThunk('ad/fetchmyproduct', async (id: any, {}) => {
     try {
         const response = await fetchSingle(id);
-        // console.log(response.data);
+  
         return response.data.Data;
     } catch (error) {
         console.error('Error fetching product:', error);
@@ -77,7 +77,7 @@ const AdSlice = createSlice({
             })
 
             .addCase(FetchProduct.fulfilled, (state, action) => {
-                // console.log(action);
+                
                 state.ad = action.payload.product_data;
                 state.adImages = action.payload.product_images;
                 state.seller = action.payload.seller_details;
@@ -87,7 +87,7 @@ const AdSlice = createSlice({
             })
 
             .addCase(FetchProduct.rejected, (state, _action) => {
-                // console.log(action);
+               
                 state.isLoading = false;
             });
 
@@ -97,17 +97,15 @@ const AdSlice = createSlice({
             })
 
             .addCase(FetchProductBySeller.fulfilled, (state, action) => {
-                // console.log(action);
+               
                 state.ad = action.payload.productdata;
                 state.adImages = action.payload.images;
                 state.seller = action.payload.seller_details;
-                // state.similarAds = action.payload.similar_products;
 
                 state.isLoading = false;
             })
 
             .addCase(FetchProductBySeller.rejected, (state, _action) => {
-                // console.log(action);
                 state.isLoading = false;
             });
 
@@ -117,7 +115,6 @@ const AdSlice = createSlice({
             })
 
             .addCase(FetchMyProduct.fulfilled, (state, action) => {
-                // console.log(action);
                 state.sellerad = action.payload.productdata;
                 state.sellerAdImages = action.payload.images;
                 state.isLoading = false;

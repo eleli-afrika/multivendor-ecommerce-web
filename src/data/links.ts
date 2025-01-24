@@ -2,17 +2,10 @@ import A1 from "../assets/A1.png";
 import A2 from "../assets/A2.png";
 import A3 from "../assets/A3.png";
 import A4 from "../assets/A4.png";
-// import A5 from "../assets/A5.png";
+
 
 export const Links = [
-  // {
-  //   name: "Services",
-  //   url: "/services",
-  // },
-  // {
-  //   name: "pricing",
-  //   url: "/pricing",
-  // },
+
   {
     name: "contact",
     url: "/contact",
@@ -58,11 +51,7 @@ export const DashboardLinks = [
     url: "notifications",
     icon: A3,
   },
-  // {
-  //   name: "Messages",
-  //   url: "messages",
-  //   icon: A5,
-  // },
+ 
   {
     name: "Inquiries",
     url: "profile/inquiries",
@@ -83,16 +72,9 @@ export const UserAdsLinks = [
   },
   {
     name: "Pending",
-    url: "/profile/pending", // Removed leading space
+    url: "/profile/pending", 
   },
-  // {
-  //   name: "drafts",
-  //   url: "/profile/drafts",
-  // },
-  // {
-  //   name: "Declined",
-  //   url: "/profile/declined",
-  // },
+
   {
     name: "closed",
     url: "/profile/closed",
