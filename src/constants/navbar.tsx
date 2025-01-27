@@ -8,7 +8,6 @@ import { IconButton } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { AiOutlineMenuUnfold } from 'react-icons/ai';
 import { setProfileOpener } from '../Redux/slices/opener';
-// import Searchbar from './searchbar';
 import { getLoggedInUser, setUser } from '../Redux/slices/AuthSlice';
 import { AppDispatch } from '../Redux/store';
 
@@ -282,7 +281,6 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                 </div>
             </div>
 
-            {/* <Searchbar /> */}
         </nav>
     );
 };
