@@ -83,7 +83,7 @@ const Profile: React.FC = () => {
         <div className="flex flex-col md:flex-row gap-10 ">
             {/* linkings */}
             <div
-                className=" bg-gray-100 h-72 p-4 pb-3 flex flex-col gap-2 capitalize min-w-[350px] lg:min-w-[400px]"
+                className=" bg-gray-100 h-full p-4 pb-3 flex flex-col gap-2 capitalize min-w-[350px] lg:min-w-[400px]"
                 style={{ borderRadius: '0.25rem', minWidth: '350px' }}
             >
                 <div
@@ -111,19 +111,20 @@ const Profile: React.FC = () => {
                 >
                     <p>password and security</p>
                 </div>
-            </div>
-            {/* userinfo */}
-            <div className="bg-gray-100 h-auto w-auto flex-col p-5 pb-5 bg-yellow">
+
                 {/* userpic */}
-                <div
-                    className="bg-white p-5 flex gap-3 text-gray-500 price"
-                    style={{ borderRadius: '0.25rem' }}
-                >
-                    <Avatar src={` ${user?.userimage}`} className="h-[100px] w-[100px] border" />
+                <div className="flex flex-col bg-white p-5 gap-3 text-gray-500 price" >
+
+                    <Avatar src={` ${user?.userimage}`} className=" border items-center justify-center " />
                     <div className="text-center">
                         <input type="file" accept="image/*" onChange={handleImageChange} />
                     </div>
                 </div>
+
+            </div>
+            {/* userinfo */}
+            <div className="bg-gray-100 h-auto w-auto flex-col p-5 pb-5 bg-yellow">
+                
                 {/* more userInfo */}
                 <div
                     className="mt-2 text-gray-500 bg-white p-4"

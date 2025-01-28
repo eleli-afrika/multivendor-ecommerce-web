@@ -115,12 +115,12 @@ const RegisterForm: React.FC = () => {
       <div className="flex justify-center items-center rounded-2xl shadow-lg max-w-6xl mx-auto m-3  h-full">
 
                 {/* image */}
-        <div className="w-1/2 h-full hidden md:flex justify-center items-center ">
+        <div className="md:w-1/2 h-full hidden md:flex justify-center items-center ">
           <img src={advert} alt="Shopping" className="w-full h-screen rounded-l-2xl  object-cover" />
         </div>
 
                  {/* form */}
-        <div  className="w-1/2 h-full bg-white rounded-r-2xl p-9 shadow-md ">
+        <div  className="w-full md:w-1/2 h-full bg-white rounded-r-2xl p-9 shadow-md ">
         {isLoading && <Loader />}
           <div className="flex items-center justify-center gap-3">
             <Icon icon={FaCartPlus} />

@@ -43,14 +43,14 @@ const LoginForm: React.FC = ({}) => {
 
   return (
     <>
-      <div className="flex justify-center items-center shadow-lg max-w-6xl mx-auto m-3 rounded-2xl  h-3/4 ">
+      <div className="flex md:justify-center md:items-center shadow-lg max-w-6xl mx-auto m-3 rounded-2xl  h-3/4 w-full">
             {/* image */}
         <div className="w-1/2 h-full hidden md:flex justify-center items-center ">
           <img src={advert} alt="Shopping" className="w-full h-full rounded-l-2xl  object-cover" />
         </div>
 
               {/* form */}
-        <div className="w-1/2 bg-white rounded-r-2xl p-9 h-full shadow-md "  >
+        <div className="w-full md:w-1/2  bg-white rounded-r-2xl p-9 h-full shadow-md "  >
           {isLoading && <Loader />}
           <div className="flex items-center justify-center gap-3">
             <Icon icon={FaCartPlus} />
