@@ -13,6 +13,8 @@ import { FaSignInAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { MdPassword } from "react-icons/md";
 
+import advert from "../../assets/analysis.png"
+
 const LoginForm: React.FC = ({}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
@@ -41,12 +43,15 @@ const LoginForm: React.FC = ({}) => {
 
   return (
     <>
-      <div className="h-screen mx-auto p-4 bg-gray-light w-screen ">
-        {isLoading && <Loader />}
-        <div
-          className="min-w-[300px] max-w-[600px] h-auto  w-full bg-white rounded-2xl p-2 py-8 md:p-10  pb-20"
-          style={{ margin: "auto" }}
-        >
+      <div className="flex justify-center items-center shadow-lg max-w-6xl mx-auto m-3 rounded-2xl  h-3/4 ">
+            {/* image */}
+        <div className="w-1/2 h-full hidden md:flex justify-center items-center ">
+          <img src={advert} alt="Shopping" className="w-full h-full rounded-l-2xl  object-cover" />
+        </div>
+
+              {/* form */}
+        <div className="w-1/2 bg-white rounded-r-2xl p-9 h-full shadow-md "  >
+          {isLoading && <Loader />}
           <div className="flex items-center justify-center gap-3">
             <Icon icon={FaCartPlus} />
           </div>

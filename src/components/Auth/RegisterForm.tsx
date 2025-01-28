@@ -16,6 +16,8 @@ import { MdEmail } from "react-icons/md";
 import { MdPassword } from "react-icons/md";
 import { HiMiniUser } from "react-icons/hi2";
 
+import advert from "../../assets/analysis.png"
+
 interface Location {
   id: number;
   name: string;
@@ -110,16 +112,20 @@ const RegisterForm: React.FC = () => {
   };
 
   return (
-    <>
-      <div className="mx-auto p-4 bg-gray-light w-screen overflow-auto">
+      <div className="flex justify-center items-center rounded-2xl shadow-lg max-w-6xl mx-auto m-3  h-full">
+
+                {/* image */}
+        <div className="w-1/2 h-full hidden md:flex justify-center items-center ">
+          <img src={advert} alt="Shopping" className="w-full h-screen rounded-l-2xl  object-cover" />
+        </div>
+
+                 {/* form */}
+        <div  className="w-1/2 h-full bg-white rounded-r-2xl p-9 shadow-md ">
         {isLoading && <Loader />}
-        <div
-          className="min-w-[300px] max-w-[600px] h-auto w-full bg-white rounded-2xl p-2 py-8 md:p-10 price "
-          style={{ margin: "auto" }}
-        >
           <div className="flex items-center justify-center gap-3">
             <Icon icon={FaCartPlus} />
           </div>
+          
           <h1 className="text-3xl font-semibold text-center text-gray-900 mb-6 mt-6">
             <FaUserAlt className="inline-block mr-2 text-blue-600" />
             Sign Up
@@ -302,8 +308,8 @@ const RegisterForm: React.FC = () => {
             </p>
           </form>
         </div>
-      </div>
-    </>
+        </div>
+   
   );
 };
 
