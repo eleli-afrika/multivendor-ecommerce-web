@@ -15,7 +15,7 @@ const Related = () => {
     }
     return (
         <div className="py-2 mt-2  max-w-7xl mx-auto  px-[6px] md:px-0">
-            <div className="py-3 px-[20px]  flex flex-row items-center justify-between bg-gray-light my-3 rounded-t-[8px] ">
+            <div className="py-3 px-[20px]  flex flex-row items-center justify-between bg-gray-light my-3 rounded-t-[8px] font-bold">
                 <h1 className="text-black-main my-2 font-bold">You May also Like</h1>
             </div>
             <div className="pb-2  bg-white px-[5px] shadow-lg">

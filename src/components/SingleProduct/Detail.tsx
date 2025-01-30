@@ -107,7 +107,7 @@ const ProductInfo = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row lg:gap-5 p-3 lg:p-5 w-[100%] mb-10 h-auto">
+    <div className="flex flex-col md:flex-row lg:gap-5 p-3 lg:p-5 w-[100%] mb-10 h-auto max-w-7xl mx-auto">
       {/* Part 1 */}
       <div className="md:flex-1">
         <div className="flex flex-col md:flex-row md:gap-5">
@@ -251,6 +251,7 @@ const ProductInfo = () => {
           </div>
         )}
       </div>
+
       {/* Part 3*/}
       <div className="md:flex-1 p-4">
         {isLoading ? (
@@ -265,7 +266,7 @@ const ProductInfo = () => {
                 style={{ backgroundColor: "#0c2e4e" }}
               >
                 <div className="text-white flex flex-col md:flex-1">
-                  <h1 className="font-bold">Make Inquiry</h1>
+                  <h1 className="font-bold ">Make Inquiry</h1>
                   <p className="text-gray-400">
                     Send the seller an inquiry for this product
                   </p>
@@ -313,14 +314,14 @@ const ProductInfo = () => {
                 <div
                   className=" price lg-w-[50%]"
                   style={{ borderRadius: "0.25rem" }}
-                >
+                 >
                   <h1 className="text-center py-4 mb-2 bg-primary-orange rounded-tl rounded-tr  text-white font-bold">
                     Seller Details
                   </h1>
-                  {/* <hr
-                className=""
-                style={{ borderColor: "#0c2e4e", margin: "0" }}
-              /> */}
+                   {/* <hr
+                 className=""
+                 style={{ borderColor: "#0c2e4e", margin: "0" }}
+                 /> */}
 
                   <div className="sm:flex-1 flex-col md:justify-around  gap-4 px-5 lg:w-[300px]">
                     <div className="text-center">
@@ -339,7 +340,7 @@ const ProductInfo = () => {
                           Phone:{seller?.seller_phonenumber}{" "}
                           {/* Phone : 0791055992 */}
                         </p>
-                        <p className="text-center">
+                        <p className="text-center break-all whitespace-normal">
                           Email:{seller?.seller_email}{" "}
                         </p>
                         {/* <p className="text-center">Email:janedoe@gmail.com </p> */}
@@ -418,6 +419,7 @@ const ProductInfo = () => {
           </div>
         )}
       </div>
+      
     </div>
   );
 };

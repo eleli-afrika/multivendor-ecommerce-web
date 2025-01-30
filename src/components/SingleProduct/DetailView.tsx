@@ -87,7 +87,7 @@ const ProductInfo = () => {
     };
 
     return (
-        <div className="flex flex-col md:flex-row lg:gap-5 p-3 lg:p-5 w-[100%] mb-10 h-auto">
+        <div className="flex flex-col md:flex-row lg:gap-5 p-3 lg:p-5 w-[100%] mb-10 h-auto max-w-7xl mx-auto">
             {isLoading && <Loader />}
             {/* Part 1 */}
             <div className="md:flex-1">
@@ -121,6 +121,7 @@ const ProductInfo = () => {
                                         <ChevronRight />
                                     </IconButton>
                                 </div>
+
                             </div>
 
                             <div className="flex gap-4 p-4">
@@ -149,7 +150,7 @@ const ProductInfo = () => {
                 <div className="flex flex-col gap-2 md:flex-row md:gap-5 p-5">
                     {/* <span>{ad?.CreatedAt}</span> */}
                     <span>
-                        Category: <i className="text-primary-orange">{ad?.category}</i>
+                        Category:  <i className="text-primary-orange">{ad?.category}</i>
                         {/* Category: <i className="text-primary-orange">Home and Office</i> */}
                     </span>
                     <span>
@@ -219,6 +220,7 @@ const ProductInfo = () => {
                         </button>
                     </div>
                 </div>
+
             </div>
             {/* Part 2 */}
             <div className="md:flex-1 p-4">
@@ -320,6 +322,7 @@ const ProductInfo = () => {
                                     </div>
                                 </div>
                             </div>
+
                             <div className="flex gap-3 mt-4 p-5 text-center">
                                 <button className="p-2 rounded-full bg-gray-200" onClick={() => {}}>
                                     <Link
@@ -351,6 +354,7 @@ const ProductInfo = () => {
                                     </Link>
                                 </button>
                             </div>
+
                         </div>
                         <div className="bg-gray-200 p-6 rounded shadow-custom md:flex-1">
                             <h1 className="font-bold">Safety tips</h1>

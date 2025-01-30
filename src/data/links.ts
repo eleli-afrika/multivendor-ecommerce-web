@@ -14,6 +14,10 @@ export const Links = [
   //   url: "/pricing",
   // },
   {
+    name: "home",
+    url: "/",
+  },
+  {
     name: "contact",
     url: "/contact",
   },

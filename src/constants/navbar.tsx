@@ -87,16 +87,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                 </div>
 
                 <ul className="list-none hidden sm:flex flex-row gap-10">
-                    <div>
-                        <button
-                            className="bg-primary-orange text-white p-1 capitalize rounded px-4 hover:bg-secondary-orange"
-                            onClick={() => {
-                                user ? SetShowAdsForm(true) : navigate('/login');
-                            }}
-                        >
-                            Sell
-                        </button>
-                    </div>
+                   
                     {Links.map((nav) => (
                         <li
                             key={nav.name}
@@ -108,6 +99,18 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                             <Link to={nav.url}>{nav.name}</Link>
                         </li>
                     ))}
+
+                    <div>
+                        <button
+                            className="bg-primary-orange text-white p-1 capitalize rounded px-4 hover:bg-secondary-orange"
+                            onClick={() => {
+                                user ? SetShowAdsForm(true) : navigate('/login');
+                            }}
+                        >
+                            Sell
+                        </button>
+                    </div>
+
                     {user ? (
                         <ul className="font-medium flex flex-col px-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 md:border-0 ">
                             <div
@@ -123,7 +126,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                                 />
                                 {userSmallnav && (
                                     <div
-                                        className=" absolute text-sm flex text-start justify-start items-start text-stone-600  flex-col gap-1 p-4 font-normal  rounded-[3px] bg-gray-200 right-4 w-[150px] "
+                                        className=" absolute text-sm flex text-start justify-start items-start text-stone-600  flex-col gap-2 p-4 font-normal  rounded-[3px] bg-gray-200 right-4 w-[150px] "
                                         onClick={() => setToggle(false)}
                                         onMouseLeave={() => setUserSmallNav(false)}
                                     >
@@ -131,25 +134,25 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                                             className="hover:underline hover:text-green-400 cursor-pointer"
                                             onClick={() => navigate('/profile')}
                                         >
-                                            profile
+                                            Profile
                                         </p>
                                         <p
                                             className="hover:underline hover:text-green-400 cursor-pointer"
                                             onClick={() => navigate('/profile/myads')}
                                         >
-                                            dashboard
+                                            Dashboard
                                         </p>
                                         <p
                                             className="hover:underline hover:text-green-400 cursor-pointer"
                                             onClick={() => navigate('/notifications')}
                                         >
-                                            notifications
+                                            Notifications
                                         </p>
                                         <button
-                                            className="hover:underline hover:text-green-400 cursor-pointer"
+                                            className="hover:underline hover:text-green-400 cursor-pointer pt-4 px-5 font-bold text-primary-orange"
                                             onClick={Logout}
                                         >
-                                            log out
+                                            Log out
                                         </button>
                                     </div>
                                 )}
@@ -228,7 +231,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                                         {userSmallnav && (
                                             <div
                                                 className=" absolute text-sm flex text-start justify-start items-start text-stone-600  
-                                                flex-col gap-1 p-4 font-normal  rounded-[3px] bg-gray-200  right-4"
+                                                flex-col gap-2 p-4 font-normal  rounded-[3px] bg-gray-200  right-4"
                                                 onClick={() => setToggle(false)}
                                                 onMouseLeave={() => {
                                                     setUserSmallNav(false);
@@ -254,10 +257,10 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                                                     notifications
                                                 </p>
                                                 <button
-                                                    className="hover:underline hover:text-green-400 cursor-pointer "
+                                                    className="hover:underline hover:text-green-400 cursor-pointer font-bold text-primary-orange px-3 pt-4"
                                                     onClick={Logout}
                                                 >
-                                                    log out
+                                                    Log out
                                                 </button>
                                             </div>
                                         )}

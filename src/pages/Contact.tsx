@@ -1,6 +1,8 @@
-import { useState, FormEvent } from 'react';
+ import { useState, FormEvent } from 'react';
 import { IconButton } from '@mui/material';
 import { FaFacebook, FaEnvelope } from 'react-icons/fa';
+import { FaInstagram } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { createInquiry } from '../Redux/hooks/inquiry';
 
@@ -50,7 +52,7 @@ const Contact: React.FC = () => {
     };
 
     return (
-        <div className=" flex xl:flex-row flex-col gap-10 p-[5px] lg:p-5  pb-10 ">
+        <div className=" flex xl:flex-row flex-col gap-10 p-[5px] lg:p-5  pb-10 mx-auto max-w-7xl  ">
             <div className="w-full lg:w-1/2 mb-4 lg:mb-0 border-r-2 px-[10px] price rounded-[0.25rem]">
                 <form className="bg-white rounded px-8 pt-6 pb-8" onSubmit={handleInquirySubmit}>
                     <div className=" mt-8 py-2 ">
@@ -148,7 +150,7 @@ const Contact: React.FC = () => {
                         <li className="mb-1">
                             <IconButton
                                 style={{
-                                    backgroundColor: 'white',
+                                    backgroundColor: '',
                                     color: 'blue',
                                     padding: '0.4rem',
                                     borderRadius: '0.25rem',
@@ -166,7 +168,7 @@ const Contact: React.FC = () => {
                         <li className="mb-1">
                             <IconButton
                                 style={{
-                                    backgroundColor: 'white',
+                                    backgroundColor: '',
                                     padding: '0.4rem',
                                     borderRadius: '0.25rem',
                                 }}
@@ -177,6 +179,40 @@ const Contact: React.FC = () => {
                                     className="text-white flex items-center"
                                 >
                                     <FaEnvelope color="orange" />
+                                </Link>
+                            </IconButton>
+                        </li>
+                        <li className="mb-1">
+                            <IconButton
+                                style={{
+                                    backgroundColor: '',
+                                    padding: '0.4rem',
+                                    borderRadius: '0.25rem',
+                                }}
+                            >
+                                <Link
+                                    to={`mailto:innovialtd@gmail.com`}
+                                    target="_blank"
+                                    className="text-white flex items-center"
+                                >
+                                    <FaTwitter color="blue" />
+                                </Link>
+                            </IconButton>
+                        </li>
+                        <li className="mb-1">
+                            <IconButton
+                                style={{
+                                    backgroundColor: '',
+                                    padding: '0.4rem',
+                                    borderRadius: '0.25rem',
+                                }}
+                            >
+                                <Link
+                                    to={`mailto:innovialtd@gmail.com`}
+                                    target="_blank"
+                                    className="text-white flex items-center"
+                                >
+                                    <FaInstagram color="orange" />
                                 </Link>
                             </IconButton>
                         </li>
