@@ -313,7 +313,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
     return (
         <>
             {showAdsForm && (
-                <div className="fixed inset-0 px-[10px] lg:px-5 min-h-full w-full bg-black-200/50 z-50 flex items-center justify-center py-2 overflow-y-auto ">
+                <div className="fixed inset-0 h-fit px-[10px] lg:px-5 min-h-full w-full bg-black-200/50 z-50 flex items-center justify-center py-2 overflow-y-auto ">
                     {loading && <Loader />}
                     <form
                         className="w-full lg:w-4/6 h-5/6  rounded-2xl shadow-2xl"
@@ -364,7 +364,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         onChange={handleInputChange}
                                         className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange h-auto"
                                         placeholder="Enter your product description"
-                                        minLength={100}
+                                        minLength={50}
                                         style={{ minHeight: '100px' }}
                                         // maxLength={600}
                                         required
@@ -600,6 +600,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                     Add Product
                                 </button>
                             </div>
+
                             {/* Right div ends here */}
                         </div>
                     </form>
