@@ -1,6 +1,6 @@
-main {
+/* main {
   min-height: 100vh;
-  /* using flex because of better browser support */
+  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,7 +57,7 @@ main {
   border-radius: 50%;
   color: white;
   cursor: pointer;
-  /* optional - last item */
+
   align-self: flex-start;
   min-width: 2rem;
-}
+} */

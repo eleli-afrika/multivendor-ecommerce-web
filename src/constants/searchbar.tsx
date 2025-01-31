@@ -62,7 +62,7 @@ const SearchBar: React.FC = () => {
     }, []);
 
     const handleSearch = () => {
-        console.log('Search button clicked');
+       
         dispatch(SearchingProduct(searchParam));
         navigate('/search/products');
         setSearchParam('');

@@ -6,7 +6,7 @@ import "./../faq.css";
 const FAQSPage = () => {
   const [questions] = useState(AllQuestions);
   return (
-    <section className="bg-gray-200">
+    <section className="bg-gray-200 py-16">
       <main>
         <Questions questions={questions} />
       </main>
