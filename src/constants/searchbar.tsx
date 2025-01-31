@@ -75,7 +75,7 @@ const SearchBar: React.FC = () => {
                     e.preventDefault(); // Prevents the form from submitting and triggering a full-page reload
                     handleSearch();
                 }}
-                className=" hidden  md:flex w-screen max-w-5xl mx-auto  px-40 bg-[white] mb-7"
+                className=" hidden  md:flex w-screen max-w-xl md:max-w-5xl mx-auto  px-40 bg-[white] mb-7"
             >
                 <div className="flex w-full border-2 border-secondary-orange rounded-[20px] justify-between px-0">
                     <select

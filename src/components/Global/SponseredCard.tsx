@@ -6,8 +6,8 @@ function Productcard({ image, name, price, id }: productCard) {
 
   return (
     <div className="relative  lg:h-[300px] sm:w-[200px]   w-[45vw] md:w-[210px] lg:w-[210px] xl:w-[210px] px-2 mb-4 ">
-      <div className="absolute top-0 right-2 lg:left-0 z-10">
-        <button className="bg-secondary-orange text-[10px] px-[2px] py-[1px] lg:text-[10px] text-white lg:px-3 lg:py-1 rounded hover:bg-primary-orange">
+      <div className="absolute top-0 right-2 lg:left-0 z-10 px-3">
+        <button className="bg-secondary-orange text-[10px] px-[2px] py-[1px] lg:text-[10px] text-white lg:px-1 lg:py-1 rounded hover:bg-primary-orange">
           Sponsored
         </button>
       </div>
