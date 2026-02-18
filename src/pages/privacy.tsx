@@ -14,7 +14,7 @@ const PrivacyPolicy = () => {
                 }}
             >
                 <p>
-                    This privacy notice for eDuka ("we," "us," or "our") describes how and why we
+                    This privacy notice for Eleli ("we," "us," or "our") describes how and why we
                     might collect, store, use, and/or share ("process") your information when you
                     use our services ("Services"). This includes instances when you:
                 </p>
@@ -23,19 +23,19 @@ const PrivacyPolicy = () => {
                     <li>
                         Visit our website at{' '}
                         <a
-                            href="https://eduka.co.ke/"
+                            href="https://eleli.co.ke/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-blue-500"
                         >
-                            https://eduka.co.ke/
+                            https://eleli.co.ke/
                         </a>
                         , or any website of ours that links to this privacy notice
                     </li>
                     <li>
                         Download and use our mobile application (
-                        <a href="https://eduka.co.ke/" target="_blank" rel="noopener noreferrer">
-                            https://eduka.co.ke/
+                        <a href="https://eleli.co.ke/" target="_blank" rel="noopener noreferrer">
+                            https://eleli.co.ke/
                         </a>
                         ), or any other application of ours that links to this privacy notice
                     </li>
@@ -50,8 +50,8 @@ const PrivacyPolicy = () => {
                     privacy rights and choices. If you do not agree with our policies and practices,
                     please do not use our Services. If you still have any questions or concerns,
                     please contact us at{' '}
-                    <a href="mailto:info@eduka.co.ke" className="text-blue-500">
-                        info@eduka.co.ke
+                    <a href="mailto:info@eleli.co.ke" className="text-blue-500">
+                        info@eleli.co.ke
                     </a>
                     .
                 </p>
@@ -478,7 +478,7 @@ const PrivacyPolicy = () => {
                     18 years of age has been collected, we will deactivate the account and take
                     reasonable measures to promptly delete such data from our records. If you become
                     aware of any data we may have collected from children under age 18, please
-                    contact us at info@eduka.co.ke.
+                    contact us at info@eleli.co.ke.
                 </p>
             </div>
 
@@ -523,7 +523,7 @@ const PrivacyPolicy = () => {
                     browser to remove cookies and to reject cookies. If you choose to remove cookies
                     or reject cookies, this could affect certain features or services of our
                     Services. If you have questions or comments about your privacy rights, you may
-                    email us at info@eduka.co.ke.
+                    email us at info@eleli.co.ke.
                 </p>
             </div>
 
@@ -573,7 +573,7 @@ const PrivacyPolicy = () => {
                 </h2>
                 <p>
                     If you have questions or comments about this notice, you may email us at
-                    info@eduka.co.ke
+                    info@eleli.co.ke
                 </p>
             </div>
         </div>

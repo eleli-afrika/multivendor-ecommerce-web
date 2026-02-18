@@ -133,7 +133,7 @@ const Index = () => {
                     <Route path="/terms_and_conditions" element={<Terms />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/services" element={<Services />} />
-                    <Route path="/eduka/faq" element={<FAQSPage />} />
+                    <Route path="/eleli/faq" element={<FAQSPage />} />
                     <Route path="/ad_info/:id" element={<AdInfo />} />
                     <Route path="/seller/store/:id" element={<SellersAds />} />
                     <Route path="/top_ads" element={<AllTopAds />} />

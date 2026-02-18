@@ -1,10 +1,10 @@
-import axios from 'axios';
+import { axiosService } from '../helpers/axios';
 import { toast } from 'react-toastify';
-const url = 'https://inquiries.vercel.app/inquiries';
+const basePath = '/inquiries';
 
 export const createInquiry = async (payload: any): Promise<any> => {
     try {
-        const response = await axios.post(`${url}/inquire`, payload);
+        const response = await axiosService.post(`${basePath}/inquire`, payload);
         toast.success('Your inquiry has been sent...');
         return response;
     } catch (error: any) {
@@ -16,7 +16,7 @@ export const createInquiry = async (payload: any): Promise<any> => {
 
 export const GetInquiries = async (): Promise<any> => {
     try {
-        const response = await axios.get(`${url}/all`);
+        const response = await axiosService.get(`${basePath}/user`);
         return response.data;
     } catch (error: any) {
         console.error(error);
@@ -26,7 +26,7 @@ export const GetInquiries = async (): Promise<any> => {
 
 export const GetInquiry = async (id: any): Promise<any> => {
     try {
-        const response = await axios.get(`${url}/inquiry/${id}`);
+        const response = await axiosService.get(`${basePath}/inquiry/${id}`);
         return response.data;
     } catch (error: any) {
         console.error(error);
@@ -36,7 +36,7 @@ export const GetInquiry = async (id: any): Promise<any> => {
 
 export const MarkAsRead = async (id: any): Promise<any> => {
     try {
-        const response = await axios.patch(`${url}/read/${id}`);
+        const response = await axiosService.patch(`${basePath}/read/${id}`);
         return response.data;
     } catch (error: any) {
         console.error(error);
@@ -46,7 +46,7 @@ export const MarkAsRead = async (id: any): Promise<any> => {
 
 export const DeleteInquiry = async (id: any): Promise<any> => {
     try {
-        const response = await axios.delete(`${url}/${id}`);
+        const response = await axiosService.delete(`${basePath}/${id}`);
         toast.success('Deleted successfully...');
         return response.data;
     } catch (error: any) {

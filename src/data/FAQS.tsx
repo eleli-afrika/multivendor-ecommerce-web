@@ -17,7 +17,7 @@ const questions = [
     {
         index: 4,
         title: 'How can I contact customer support?',
-        info: 'Our customer support team is available 24/7. You can reach out to us through the "Contact Us" page on our website. Alternatively, you can send us an email at info@eduka.co.ke ',
+        info: 'Our customer support team is available 24/7. You can reach out to us through the "Contact Us" page on our website. Alternatively, you can send us an email at info@eleli.co.ke ',
     },
     {
         index: 5,

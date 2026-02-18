@@ -8,7 +8,7 @@ const TermsAndConditions: React.FC = () => {
             <section className="mb-4">
                 <h2 className="text-xl font-semibold mb-2">Introduction</h2>
                 <p>
-                    We are thrilled to welcome you to eDUKA. Our platform offers a marketplace for
+                    We are thrilled to welcome you to Eleli. Our platform offers a marketplace for
                     advertisements and classifieds. These Terms and Conditions define the rules and
                     expectations for using our services.
                 </p>

@@ -59,7 +59,7 @@ const Footer = () => {
                             <Link to={'/contact'}>Support</Link>
                         </li>
                         <li>
-                            <Link to={'/eduka/faq'}>FAQS</Link>
+                            <Link to={'/eleli/faq'}>FAQS</Link>
                         </li>
                         <li>
                             <Link to={'/terms_and_conditions'}>Terms and conditions</Link>
@@ -83,7 +83,7 @@ const Footer = () => {
                                 }}
                             >
                                 <Link
-                                    to="https://www.facebook.com/eduka.ke.9"
+                                    to="https://www.facebook.com/eleli.ke.9"
                                     target="_blank"
                                     className="text-white flex items-center"
                                 >
@@ -159,7 +159,7 @@ const Footer = () => {
 
                 <div style={{ borderTop: ' solid 2px #DC5F00' }} className="w-full">
                     <p className="text-center text-white py-2 mt-2">
-                        © EDUKA 2023 || All Rights Reserved
+                        © ELELI 2023 || All Rights Reserved
                     </p>
                 </div>
             </div>

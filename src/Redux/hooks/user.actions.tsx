@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 export const RegisterUser = async (payload: any): Promise<any> => {
     try {
         const response = await axiosService.post('/user/auth/signup', payload);
-        localStorage.setItem('userToken', response.data.token);
+        localStorage.setItem('userToken', response.data.Data);
         return response;
     } catch (error: any) {
         console.log(error);
@@ -17,7 +17,7 @@ export const RegisterUser = async (payload: any): Promise<any> => {
 export const LoginUser = async (payload: any): Promise<any> => {
     try {
         const response = await axiosService.post('/user/auth/signin', payload);
-        localStorage.setItem('userToken', response.data.token);
+        localStorage.setItem('userToken', response.data.Data);
         return response;
     } catch (error: any) {
         console.log(error, 'a terrible error occurred');
@@ -62,7 +62,7 @@ export const UpdateOfUser = async (userid: any, formdata: any) => {
 };
 
 export const GetSellers = async () => {
-    const response = await axiosService.get(`/user/auth/fetchsellers?top="top"`);
+    const response = await axiosService.get('/user/auth/fetchsellers');
     return response;
 };
 

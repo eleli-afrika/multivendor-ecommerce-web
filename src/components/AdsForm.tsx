@@ -9,7 +9,7 @@ const AdsForm = () => {
   };
   return (
     <div className="container mx-auto p-4 bg-gray-light mt-4 rounded w-[650px] m-5">
-      <div className="text-center m-4">Create your next ad on Eduka!!!</div>
+      <div className="text-center m-4">Create your next ad on Eleli!!!</div>
       <Form>
         <Form.Item
           label="Name"

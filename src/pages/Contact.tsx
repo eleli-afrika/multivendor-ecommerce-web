@@ -162,7 +162,7 @@ const Contact: React.FC = () => {
                 }}
               >
                 <Link
-                  to="https://www.facebook.com/eduka.ke.9"
+                  to="https://www.facebook.com/eleli.ke.9"
                   target="_blank"
                   className="text-white flex items-center"
                 >

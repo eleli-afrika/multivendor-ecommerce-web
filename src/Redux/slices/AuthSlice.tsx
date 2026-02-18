@@ -161,7 +161,7 @@ const authSlice = createSlice({
             .addCase(LoggingUser.fulfilled, (state, action) => {
                 state.isLoading = false;
                 // Update userToken with the token received in the action payload
-                state.userToken = action.payload!.data.token;
+                state.userToken = action.payload!.data.Data;
             })
             .addCase(LoggingUser.rejected, (state) => {
                 state.isLoading = false;
