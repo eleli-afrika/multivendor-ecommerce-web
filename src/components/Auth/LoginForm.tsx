@@ -13,7 +13,7 @@ import { FaSignInAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { MdPassword } from "react-icons/md";
 
-const LoginForm: React.FC = ({}) => {
+const LoginForm: React.FC = ({ }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const [showPassword, setShowPassword] = useState(false);

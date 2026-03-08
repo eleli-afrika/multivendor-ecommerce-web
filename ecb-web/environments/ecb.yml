@@ -1,0 +1,4 @@
+name: ecb
+variables:
+  - secret: true
+    name: token

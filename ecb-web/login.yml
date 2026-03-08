@@ -1,0 +1,22 @@
+info:
+  name: login
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: https://ecbe.eleliafrika.cloud/user/auth/signin
+  body:
+    type: json
+    data: |-
+      {
+        "username":"lesosioayub@gmail.com",
+        "password":"passwordsecure"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

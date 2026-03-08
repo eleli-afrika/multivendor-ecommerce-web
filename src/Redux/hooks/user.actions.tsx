@@ -27,7 +27,8 @@ export const LoginUser = async (payload: any): Promise<any> => {
 
 export const currentUser = async () => {
     try {
-        const response = await axiosService.get('/user/auth/getuser');
+        // const response = await axiosService.get('/user/auth/getuser');
+        const response = await axiosService.get('/user/auth/profile');
         return response;
     } catch (error: any) {
         console.log(error, 'someError');
@@ -36,18 +37,41 @@ export const currentUser = async () => {
 };
 
 export const loggedInUser = async () => {
-    const response = await axiosService.get('/user/auth/getuser');
+    // const response = await axiosService.get('/user/auth/getuser');
+    const response = await axiosService.get('/user/auth/profile');
     return response;
 };
 
+// export const RegistrationOfUser = async (formdata: any) => {
+//     const response = await axiosService.post('/user/auth/signup', formdata);
+//     console.log(response);
+//     return response;
+// };
+
 export const RegistrationOfUser = async (formdata: any) => {
-    const response = await axiosService.post('/user/auth/signup', formdata);
-    console.log(response);
+    const payload = {
+        firstname: formdata.firstname.trim(),
+        middlename: formdata.middlename.trim(),
+        lastname: formdata.lastname.trim(),
+        location: formdata.location.trim(),
+        email: formdata.email.trim().toLowerCase(),
+        phone: formdata.phone.trim(),
+        password: formdata.password,
+
+    };
+
+    console.log("signup payload:", payload);
+
+    const response = await axiosService.post('/user/auth/signup', payload);
+
+    console.log("signup response:", response);
     return response;
 };
 
 export const LogginOfUser = async (formdata: any) => {
+    // console.log("login payload:", formdata);
     const response = await axiosService.post('/user/auth/signin', formdata);
+    // console.log("login response:", response.data);
     return response;
 };
 

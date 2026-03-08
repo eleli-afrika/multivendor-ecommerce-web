@@ -22,7 +22,8 @@ interface AuthState {
 const initialState: AuthState = {
     user: null,
     isLoading: false,
-    userToken: localStorage.getItem('userToken') || '',
+    // userToken: localStorage.getItem('userToken') || '',
+    userToken: localStorage.getItem('userToken'),
     theSeller: null,
     sellers: [],
 };
@@ -44,57 +45,129 @@ export const getLoggedInUser = createAsyncThunk('auth/getLoggedInUser', async ()
     return null;
 });
 
+// export const RegisteringUser = createAsyncThunk(
+//     'auth/registeringUser',
+//     async ({ formData, navigate }: { formData: any; navigate: any }) => {
+//         try {
+//             const response = await RegistrationOfUser(formData);
+//             toast.success('User created successfully');
+//             setTimeout(() => {
+//                 navigate('/login');
+//             }, 2000);
+
+//             if (response.status === 400) {
+//                 if (response.data && response.data.Data && response.data.Data.Error) {
+//                     toast.error(response.data.Data.Message);
+//                     return Promise.reject(new Error(response.data.Data.Message));
+//                 } else {
+//                     return Promise.reject(
+//                         new Error('An unexpected error occurred during registration.')
+//                     );
+//                 }
+//             } else {
+//                 return response;
+//             }
+//         } catch (error: any) {
+//             console.error('Error in Registering User:', error.response.data.Error);
+//             toast.error(error.response.data.Message);
+//             return Promise.reject(error);
+//         }
+//     }
+// );
+
+
 export const RegisteringUser = createAsyncThunk(
     'auth/registeringUser',
-    async ({ formData, navigate }: { formData: any; navigate: any }) => {
+    async ({ formData, navigate }: { formData: any; navigate: any }, { rejectWithValue }) => {
         try {
             const response = await RegistrationOfUser(formData);
-            toast.success('User created successfully');
+
+            toast.success(response.data?.message || 'User created successfully');
+
             setTimeout(() => {
                 navigate('/login');
             }, 2000);
 
-            if (response.status === 400) {
-                if (response.data && response.data.Data && response.data.Data.Error) {
-                    toast.error(response.data.Data.Message);
-                    return Promise.reject(new Error(response.data.Data.Message));
-                } else {
-                    return Promise.reject(
-                        new Error('An unexpected error occurred during registration.')
-                    );
-                }
-            } else {
-                return response;
-            }
+            return response.data;
         } catch (error: any) {
-            console.error('Error in Registering User:', error.response.data.Error);
-            toast.error(error.response.data.Message);
-            return Promise.reject(error);
+            console.error('Full signup error:', error);
+            console.error('Signup error data:', error?.response?.data);
+            console.error('Signup error status:', error?.response?.status);
+
+            const message =
+                error?.response?.data?.message ||
+                error?.response?.data?.Message ||
+                error?.response?.data?.error ||
+                error?.response?.data?.Error ||
+                'Invalid data';
+
+            toast.error(message);
+            return rejectWithValue(message);
         }
     }
 );
 
+// export const LoggingUser = createAsyncThunk(
+//     'auth/logginguser',
+//     async ({ formData, navigate }: { formData: any; navigate: any }) => {
+//         try {
+//             const response = await LogginOfUser(formData);
+//             console.log(response.data);
+
+//             if (response.status === 200) {
+//                 localStorage.setItem('userToken', response.data.Data);
+//                 toast.success(`Welcome, ${response.data.Message}`);
+//                 setTimeout(() => {
+//                     navigate('/');
+//                 }, 2000);
+//                 return response;
+//             } else {
+//                 toast.error(response.data.Message);
+//                 return Promise.reject(new Error(response.data.Message));
+//             }
+//         } catch (error: any) {
+//             toast.error(error.response.data.Message);
+//             return Promise.reject(error);
+//         }
+//     }
+// );
+
+
 export const LoggingUser = createAsyncThunk(
     'auth/logginguser',
-    async ({ formData, navigate }: { formData: any; navigate: any }) => {
+    async ({ formData, navigate }: { formData: any; navigate: any }, { rejectWithValue }) => {
         try {
             const response = await LogginOfUser(formData);
-            console.log(response.data);
 
-            if (response.status === 200) {
-                localStorage.setItem('userToken', response.data.Data);
-                toast.success(`Welcome, ${response.data.Message}`);
-                setTimeout(() => {
-                    navigate('/');
-                }, 2000);
-                return response;
-            } else {
-                toast.error(response.data.Message);
-                return Promise.reject(new Error(response.data.Message));
+            const token = response?.data?.token;
+            const message = response?.data?.message || 'Login successful';
+
+            if (!token) {
+                console.error("No token in login response:", response.data);
+                return rejectWithValue("No token returned from server");
             }
+
+            localStorage.setItem('userToken', token);
+            toast.success(message);
+
+            setTimeout(() => {
+                navigate('/');
+            }, 2000);
+
+            return response.data;
         } catch (error: any) {
-            toast.error(error.response.data.Message);
-            return Promise.reject(error);
+            console.error("login error:", error?.response?.data || error);
+
+            const message =
+                error?.response?.data?.message ||
+                error?.response?.data?.Message ||
+                error?.response?.data?.error ||
+                error?.response?.data?.Error ||
+                error?.message ||
+                'Login failed';
+
+            toast.error(message);
+            return rejectWithValue(message);
         }
     }
 );
