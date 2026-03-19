@@ -1,5 +1,14 @@
 import { Route, Routes } from 'react-router-dom';
 import Landing from '../pages/Landing';
+import LandingPage from '../pages/LandingPage';
+import ProductDetailPage from '../pages/ProductDetailPage';
+import VendorStorePage from '../pages/VendorStorePage';
+import SearchPage from '../pages/SearchPage';
+import DashboardPage from '../pages/DashboardPage';
+import CheckoutPage from '../pages/CheckoutPage';
+import OrderTrackingPage from '../pages/OrderTrackingPage';
+import ChatPage from '../pages/ChatPage';
+import PricingPage from '../pages/PricingPage';
 import UserDashboard from '../pages/userDash/Dashboard';
 import MyAds from '../pages/userDash/MyAds';
 import Pending from '../pages/userDash/Pending';
@@ -87,6 +96,13 @@ const Index = () => {
                     <Route path="/reset_password" element={<ResetPasswordPage />} />
                     <Route path="/confirm_code" element={<ConfirmCodePage />} />
                     <Route path="/" element={<Landing />} />
+                    <Route path="/marketplace" element={<LandingPage />} />
+                    <Route path="/products" element={<SearchPage />} />
+                    <Route path="/product/:id" element={<ProductDetailPage />} />
+                    <Route path="/checkout" element={<CheckoutPage />} />
+                    <Route path="/orders/:id" element={<OrderTrackingPage />} />
+                    <Route path="/chat" element={<PrivateRoute><ChatPage /></PrivateRoute>} />
+                    <Route path="/pricing-new" element={<PricingPage />} />
                     <Route
                         path="/Dashboard"
                         element={
@@ -136,6 +152,8 @@ const Index = () => {
                     <Route path="/eleli/faq" element={<FAQSPage />} />
                     <Route path="/ad_info/:id" element={<AdInfo />} />
                     <Route path="/seller/store/:id" element={<SellersAds />} />
+                    <Route path="/shop/:id" element={<VendorStorePage />} />
+                    <Route path="/dashboard-new" element={<PrivateRoute><DashboardPage /></PrivateRoute>} />
                     <Route path="/top_ads" element={<AllTopAds />} />
                     <Route path="/sponsored_ads" element={<AllSponsoredAds />} />
                     <Route path="/all_ads" element={<AllAds />} />
