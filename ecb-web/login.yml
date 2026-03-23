@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: https://ecbe.eleliafrika.cloud/user/auth/signin
+  url: http://localhost:8000/user/auth/signin
   body:
     type: json
     data: |-
